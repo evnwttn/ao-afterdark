@@ -7,12 +7,6 @@ app.listen(port, () => {
   console.log(`app listening on port ${port}`);
 });
 
-
-
-///
-
-// Importing the express package
-
 // Import middleware
 // import { logger, corsHandler } from './middleware';
 
