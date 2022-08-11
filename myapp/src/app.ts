@@ -1,20 +1,16 @@
 import * as express from 'express';
+import { logger, corsHandler } from './middleware';
 
 const app = express.default();
 const port = 3005;
+
+app.use(logger);
+app.use(corsHandler);
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
 });
 
-// Import middleware
-// import { logger, corsHandler } from './middleware';
-
-// Init express app
-
-// Register middlewares
-// app.use(logger);
-// app.use(corsHandler);
 
 // app.post("/contact", (req, res) => {
 // 	console.log('here')
@@ -25,6 +21,3 @@ app.listen(port, () => {
 // 	.status(200)	
 // 	.json({ data: 'this should work' });
 // });
-
-// Start our server and listen on port 3005
-// app.listen(port, () => console.log("server listening @ 3005"));
