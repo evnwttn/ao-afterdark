@@ -24,26 +24,19 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
+const middleware_1 = require("./middleware");
 const app = express.default();
 const port = 3005;
+app.use(middleware_1.logger);
+app.use(middleware_1.corsHandler);
+app.post("/contact", (req, res) => {
+    console.log('here');
+    console.log(JSON.stringify(req.body, null, 4));
+    res
+        .header('Access-Control-Allow-Origin', '*')
+        .status(200)
+        .json({ data: 'this should work' });
+});
 app.listen(port, () => {
     console.log(`app listening on port ${port}`);
 });
-///
-// Importing the express package
-// Import middleware
-// import { logger, corsHandler } from './middleware';
-// Init express app
-// Register middlewares
-// app.use(logger);
-// app.use(corsHandler);
-// app.post("/contact", (req, res) => {
-// 	console.log('here')
-// 	console.log(JSON.stringify(req.body, null, 4))
-// 	res
-// 	.header('Access-Control-Allow-Origin', '*')	 			
-// 	.status(200)	
-// 	.json({ data: 'this should work' });
-// });
-// Start our server and listen on port 3005
-// app.listen(port, () => console.log("server listening @ 3005"));
