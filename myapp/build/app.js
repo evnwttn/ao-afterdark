@@ -22,30 +22,21 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
-const body_parser_1 = __importDefault(require("body-parser"));
 const middleware_1 = require("./middleware");
 const app = express.default();
 const port = 3005;
-const jsonParser = body_parser_1.default.json();
-// const urlencodedParser = bodyParser.urlencoded({ extended: false })
 app.use(middleware_1.logger);
 app.use(middleware_1.corsHandler);
-app.post("/contact", jsonParser, (req, res) => {
+app.use(express.json());
+app.post("/contact", (req, res) => {
     console.log(req.body);
-    res.status(200).json({ data: `yo` });
+    // 	console.log(JSON.stringify(req.body, null, 4))
+    res
+        .status(200)
+        .json({ data: `yo` });
 });
-// app.post("/contact", (req, res) => {
-// 	console.log('here')
-// 	console.log(JSON.stringify(req.body, null, 4))
-// 	res
-// 	.status(200)	
-// 	.json({ data: 'this should work' });
-// });
 app.listen(port, () => {
     console.log(`app listening on port ${port}`);
 });

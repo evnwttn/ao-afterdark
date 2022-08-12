@@ -7,15 +7,15 @@ const port = 3005;
 app.use(logger);
 app.use(corsHandler);
 app.use(express.json());
+app.use(express.urlencoded());
 
 app.post("/contact", (req, res) => {
 	console.log(req.body)
 	// 	console.log(JSON.stringify(req.body, null, 4))
 
-
-	res
-	.status(200)
-	.json({ data: `yo` })
+	// res
+	// .status(200)
+	// .json({ data: `yo` })
 })
 
 app.listen(port, () => {
