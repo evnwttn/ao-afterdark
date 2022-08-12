@@ -12,7 +12,6 @@ app.post("/contact", (req, res) => {
 	console.log(JSON.stringify(req.body, null, 4))
 
 	res
-	.header('Access-Control-Allow-Origin', '*')	 			
 	.status(200)	
 	.json({ data: 'this should work' });
 });
