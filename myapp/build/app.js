@@ -30,9 +30,9 @@ const port = 3005;
 app.use(middleware_1.logger);
 app.use(middleware_1.corsHandler);
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.post("/contact", (req, res) => {
-    console.log(req.body);
-    // 	console.log(JSON.stringify(req.body, null, 4))
+    console.log(JSON.stringify(req.body, null, 4));
     res
         .status(200)
         .json({ data: `yo` });
