@@ -26,17 +26,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
 const middleware_1 = require("./middleware");
 const app = express.default();
-const port = 3005;
+const port = process.env.PORT || 5000;
 app.use(middleware_1.logger);
 app.use(middleware_1.corsHandler);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.post("/contact", (req, res) => {
-    console.log(`post || ${JSON.stringify(req.body, null, 4)}`);
-    res
-        .status(200)
-        .json({ data: `yo` });
+    console.log(req.body);
 });
+// app.post("/contact", (req, res) => {
+// 	console.log(JSON.stringify(req.body, null, 4))
+// 	res
+// 	.status(200)
+// 	.json({ data: `yo` })
+// })
 app.listen(port, () => {
     console.log(`app listening on port ${port}`);
 });
