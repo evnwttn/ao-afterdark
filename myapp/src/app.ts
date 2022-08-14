@@ -10,8 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
 app.post("/contact", (req, res) => {
-		console.log(JSON.stringify(req.body, null, 4))
-
+		console.log(`post /contact || ${JSON.stringify(req.body, null, 4)}`)
 	res
 	.status(200)
 	.json({ data: `yo` })
