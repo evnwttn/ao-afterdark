@@ -1,8 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.corsHandler = void 0;
+exports.cors = void 0;
 //@ts-ignore
-function corsHandler(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
+function cors(req, res, next) {
+    console.log("cors middleware");
+    res.set({
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "*",
+        "Access-Control-Allow-Headers": "*",
+    });
+    next();
 }
-exports.corsHandler = corsHandler;
+exports.cors = cors;

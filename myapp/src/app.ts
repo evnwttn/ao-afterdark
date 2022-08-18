@@ -1,24 +1,17 @@
-import * as express from 'express';
-import { logger, corsHandler } from './middleware';
+import * as express from "express";
+import { logger, cors } from "./middleware";
+import { contactsHandler } from "./handlers";
 
 const app = express.default();
 const port = process.env.PORT || 5000;
 
-app.use(logger);
-app.use(corsHandler);
+// app.use(logger);
+app.use(cors);
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
+// app.use(express.urlencoded({ extended: true }))
 
-app.post("/contact", (req, res) => {
-	console.log(JSON.stringify(req.body, null, 4))
-	res
-	.status(200)
-	.json({ data: `yo` })
-})
+app.post("/contact", contactsHandler);
 
 app.listen(port, () => {
-	console.log(`app listening on port ${port}`);
-  });
-    
-
-
+  console.log(`app listening on port ${port}`);
+});
