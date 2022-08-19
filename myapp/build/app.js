@@ -26,6 +26,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
 const middleware_1 = require("./middleware");
 const handlers_1 = require("./handlers");
+require('dotenv').config();
 const app = express.default();
 const port = process.env.PORT || 5000;
 app.use(middleware_1.cors);

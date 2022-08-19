@@ -1,4 +1,27 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -10,16 +33,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.contactsHandler = void 0;
-require('dotenv').config();
+// import * as fs from 'fs/promises';
+const emailjs = __importStar(require("@emailjs/browser"));
 function contactsHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        // emailjs.send(
-        //   process.env.EMAILJS_SERVICE_ID,
-        //   process.env.EMAILJS_TEMPLATE_ID,
-        //   req.body,
-        //   process.env.EMAILJS_USER_ID
-        // );
-        console.log(process.env.EMAILJS_SERVICE_ID);
+        const templateParams = {
+            user_name: req.body.name,
+            user_email: req.body.email,
+            message: req.body.message
+        };
+        try {
+            yield emailjs.send("contact_service", "contact_form", templateParams, process.env.EMAILJS_USER_ID)
+                .then(function (response) {
+                console.log('SUCCESS!', response.status, response.text);
+            }, function (error) {
+                console.log('FAILED...', error);
+            });
+            res
+                .status(200)
+                .json({ message: `yo` });
+        }
+        catch (error) {
+            res.sendStatus(500);
+        }
+        console.log(process.env.EMAILJS_USER_ID);
     });
 }
 exports.contactsHandler = contactsHandler;
