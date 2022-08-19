@@ -10,11 +10,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.contactsHandler = void 0;
-// import * as fs from 'fs/promises';
-// import emailjs from '@emailjs/browser';
 require('dotenv').config();
 function contactsHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
+        // emailjs.send(
+        //   process.env.EMAILJS_SERVICE_ID,
+        //   process.env.EMAILJS_TEMPLATE_ID,
+        //   req.body,
+        //   process.env.EMAILJS_USER_ID
+        // );
         console.log(process.env.EMAILJS_SERVICE_ID);
     });
 }
