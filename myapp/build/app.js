@@ -28,10 +28,8 @@ const middleware_1 = require("./middleware");
 const handlers_1 = require("./handlers");
 const app = express.default();
 const port = process.env.PORT || 5000;
-// app.use(logger);
 app.use(middleware_1.cors);
 app.use(express.json());
-// app.use(express.urlencoded({ extended: true }))
 app.post("/contact", handlers_1.contactsHandler);
 app.listen(port, () => {
     console.log(`app listening on port ${port}`);
