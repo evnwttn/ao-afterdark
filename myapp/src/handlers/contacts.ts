@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 // import * as fs from 'fs/promises';
 import * as emailjs from '@emailjs/browser';
 
-
 export async function contactsHandler(req: Request, res: Response) {
   const templateParams = {
     user_name: req.body.name, 
