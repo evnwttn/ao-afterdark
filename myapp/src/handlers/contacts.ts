@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { SMTPClient, Message } from 'emailjs';
-import * as fs from 'fs/promises';
+import { SMTPClient } from 'emailjs';
+// import * as fs from 'fs/promises';
 
 const client = new SMTPClient({
 	user: 'user',
@@ -9,20 +9,21 @@ const client = new SMTPClient({
 	ssl: true,
 });
 
+
 export async function contactsHandler(req: Request, res: Response) {
-  const message = new Message({
-    text: 'i hope this works',
-    from: 'you <username@outlook.com>',
-    to: 'someone <someone@your-email.com>, another <another@your-email.com>',
-    cc: 'else <else@your-email.com>',
-    subject: 'testing emailjs',
-    attachment: [
-      { data: '<html>i <i>hope</i> this works!</html>', alternative: true },
-      { path: 'path/to/file.zip', type: 'application/zip', name: 'renamed.zip' },
-    ],
-  });
-  
   console.log(JSON.stringify(req.body, null, 4));
+
+  try {
+    const message = await client.sendAsync({
+      text: 'testing from ev to ev',
+      from: 'you <username@gmail.com>',
+      to: 'Evan <evnwttn@gmail.com>',
+      subject: 'testing emailjs',
+    });
+    console.log(message);
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 // export async function contactsHandler(req: Request, res: Response) {
