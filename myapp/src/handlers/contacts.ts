@@ -15,7 +15,6 @@ export async function contactsHandler(req: Request, res: Response) {
     process.env.EMAILJS_USER_ID);
     res
       .status(200)
-      .json({ message: `email from ${req.body.name} sent` });
   } catch (error) {
     res.sendStatus(500)
   }
