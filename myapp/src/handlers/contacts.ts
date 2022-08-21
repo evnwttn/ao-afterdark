@@ -12,12 +12,7 @@ export async function contactsHandler(req: Request, res: Response) {
     await emailjs.send("contact_service",
     "contact_form",
     templateParameters,
-    process.env.EMAILJS_USER_ID)
-        .then(function(res) {
-           console.log('SUCCESS!', res.status, res.text);
-        }, function(err) {
-           console.log('FAILED...', err);
-        });
+    process.env.EMAILJS_USER_ID);
     res
       .status(200)
       .json({ message: `email from ${req.body.name} sent` });

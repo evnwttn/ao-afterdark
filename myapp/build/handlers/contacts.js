@@ -33,44 +33,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.contactsHandler = void 0;
-// import * as fs from 'fs/promises';
 const emailjs = __importStar(require("@emailjs/browser"));
 function contactsHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const templateParams = {
+        const templateParameters = {
             user_name: req.body.name,
             user_email: req.body.email,
             message: req.body.message
         };
         try {
-            yield emailjs.send("contact_service", "contact_form", templateParams, process.env.EMAILJS_USER_ID)
-                .then(function (response) {
-                console.log('SUCCESS!', response.status, response.text);
-            }, function (error) {
-                console.log('FAILED...', error);
-            });
+            yield emailjs.send("contact_service", "contact_form", templateParameters, process.env.EMAILJS_USER_ID);
             res
                 .status(200)
-                .json({ message: `yo` });
+                .json({ message: `email from ${req.body.name} sent` });
         }
         catch (error) {
             res.sendStatus(500);
         }
-        console.log(process.env.EMAILJS_USER_ID);
     });
 }
 exports.contactsHandler = contactsHandler;
-// export async function contactsHandler(req: Request, res: Response) {
-//     console.log(JSON.stringify(req.body, null, 4));
-//     // console.log(req.body.name)
-//     // console.log(req.body.email)
-//     // console.log(req.body.message)
-//     try {
-//       await fs.writeFile('test.json', req.body);
-//       res
-//         .status(200)
-//         .json({ message: `yo` });
-//     } catch (error) {
-//       res.sendStatus(500)
-//     }
-// }
