@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import * as emailjs from '@emailjs/browser';
 
 export async function contactsHandler(req: Request, res: Response) {
-  const templateParams = {
+  const templateParameters = {
     user_name: req.body.name, 
     user_email: req.body.email, 
     message: req.body.message
@@ -11,12 +11,12 @@ export async function contactsHandler(req: Request, res: Response) {
   try {
     await emailjs.send("contact_service",
     "contact_form",
-    templateParams,
+    templateParameters,
     process.env.EMAILJS_USER_ID)
-        .then(function(response) {
-           console.log('SUCCESS!', response.status, response.text);
-        }, function(error) {
-           console.log('FAILED...', error);
+        .then(function(res) {
+           console.log('SUCCESS!', res.status, res.text);
+        }, function(err) {
+           console.log('FAILED...', err);
         });
     res
       .status(200)
