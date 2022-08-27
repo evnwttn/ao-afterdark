@@ -38,7 +38,7 @@ function sessionDataHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log(JSON.stringify(req.body, null, 4));
         try {
-            yield fs.writeFile('test.json', req.body);
+            yield fs.writeFile('test.json', JSON.stringify(req.body, null, 4));
             res
                 .status(200)
                 .json({ message: `earf is flat` });

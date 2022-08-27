@@ -1,0 +1,22 @@
+{
+    "parameters": [
+        "title",
+        "Vocals",
+        "FX",
+        "Rhythm Guitar",
+        "Synth"
+    ],
+    "author": "ev",
+    "id": "title",
+    "tracks": [
+        {
+            "title": "a"
+        },
+        {
+            "title": "ss"
+        },
+        {
+            "title": "dd"
+        }
+    ]
+}
