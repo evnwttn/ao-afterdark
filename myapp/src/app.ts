@@ -10,7 +10,8 @@ const port = process.env.PORT || 5000;
 app.use(cors);
 app.use(express.json());
 
-app.post("/contact", contactsHandler, sessionDataHandler);
+app.post("/contact", contactsHandler);
+app.post("/sessionData", sessionDataHandler)
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
