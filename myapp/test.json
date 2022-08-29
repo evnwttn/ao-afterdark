@@ -1,22 +1,13 @@
 {
     "parameters": [
         "title",
-        "Vocals",
-        "FX",
-        "Rhythm Guitar",
-        "Synth"
+        "Mix"
     ],
     "author": "ev",
-    "id": "title",
+    "id": "ass",
     "tracks": [
         {
-            "title": "a"
-        },
-        {
-            "title": "ss"
-        },
-        {
-            "title": "dd"
+            "title": "1"
         }
     ]
 }

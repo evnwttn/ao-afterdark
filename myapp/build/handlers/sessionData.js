@@ -36,7 +36,7 @@ exports.sessionDataHandler = void 0;
 const fs = __importStar(require("fs/promises"));
 function sessionDataHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log(JSON.stringify(req.body, null, 4));
+        console.log(JSON.stringify(req.body.author, null, 4));
         try {
             yield fs.writeFile('test.json', JSON.stringify(req.body, null, 4));
             res
