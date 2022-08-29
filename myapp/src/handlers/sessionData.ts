@@ -12,3 +12,4 @@ export async function sessionDataHandler(req: Request, res: Response) {
     }
 
 }
+
