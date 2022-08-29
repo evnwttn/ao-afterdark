@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import * as fs from 'fs/promises';
 
-export async function sessionDataHandler(req: Request, res: Response) {
+export async function newSessionHandler(req: Request, res: Response) {
     try {
       await fs.writeFile('test.json', JSON.stringify(req.body, null, 4));
       res

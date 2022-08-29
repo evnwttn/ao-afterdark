@@ -1,2 +1,2 @@
 export * from './contacts';
-export * from './sessionData';
+export * from './new';
