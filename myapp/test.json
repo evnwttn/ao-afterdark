@@ -1,13 +1,21 @@
 {
-    "parameters": [
-        "title",
-        "Mix"
-    ],
-    "author": "ev",
-    "id": "ass",
-    "tracks": [
-        {
-            "title": "1"
-        }
-    ]
+ "parameters": [
+  "title",
+  "Bass",
+  "FX",
+  "Mix"
+ ],
+ "author": "Dev",
+ "id": "123",
+ "tracks": [
+  {
+   "title": "1"
+  },
+  {
+   "title": "2"
+  },
+  {
+   "title": "3"
+  }
+ ]
 }
