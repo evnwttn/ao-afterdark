@@ -4,5 +4,6 @@ export interface Session {
     id: string;
     author: string;
     tracks: Track[];
+    parameters: Parameter[];
 }
 
