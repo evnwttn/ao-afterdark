@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import * as fs from 'fs/promises';
 import { FileDatabase } from '../services/database';
 import { Session } from '../types';
 
