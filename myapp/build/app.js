@@ -33,6 +33,7 @@ app.use(middleware_1.cors);
 app.use(express.json());
 app.post("/contact", handlers_1.contactsHandler);
 app.post("/new", handlers_1.newSessionHandler);
+app.post("/update", handlers_1.updateSessionHandler);
 app.listen(port, () => {
     console.log(`app listening on port ${port}`);
 });
