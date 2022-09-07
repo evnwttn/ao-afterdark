@@ -37,3 +37,7 @@ app.post("/update", handlers_1.updateSessionHandler);
 app.listen(port, () => {
     console.log(`app listening on port ${port}`);
 });
+// app.post('/session/:id', sessionHandler)
+// app.get('/session/:id', sessionHAndler)
+// POST /session/0 or /session/abcdfuck
+// req.params.id

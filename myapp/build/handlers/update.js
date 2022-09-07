@@ -15,7 +15,7 @@ function updateSessionHandler(req, res) {
         try {
             console.log(req.body);
             res
-                .status(200)
+                .status(StatusCodes.OK)
                 .json({ message: `update session handler` });
         }
         catch (error) {
