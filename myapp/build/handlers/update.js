@@ -13,9 +13,8 @@ exports.updateSessionHandler = void 0;
 function updateSessionHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            console.log(req.body);
             res
-                .status(StatusCodes.OK)
+                .status(200)
                 .json({ message: `update session handler` });
         }
         catch (error) {
