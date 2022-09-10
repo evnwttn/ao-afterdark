@@ -11,8 +11,8 @@ app.use(cors);
 app.use(express.json());
 
 app.post("/contact", contactsHandler);
-app.post("/new", newSessionHandler);
-app.post("/update", updateSessionHandler);
+app.post("/session", newSessionHandler);
+app.put("/session", updateSessionHandler);
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
