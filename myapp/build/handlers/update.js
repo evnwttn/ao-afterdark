@@ -10,12 +10,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateSessionHandler = void 0;
+const database_1 = require("../services/database");
 function updateSessionHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            const db = new database_1.FileAppend();
+            yield db.modifySession(req.body);
             res
                 .status(200)
-                .json({ message: `update session handler` });
+                .json({ message: `${req.body.author} session recieved` });
         }
         catch (error) {
             res.sendStatus(500);

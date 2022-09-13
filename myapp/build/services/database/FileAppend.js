@@ -32,14 +32,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FileDatabase = void 0;
-const Database_1 = require("./Database");
+exports.FileAppend = void 0;
+const _1 = require(".");
 const fs = __importStar(require("fs/promises"));
-class FileDatabase extends Database_1.Database {
+class FileAppend extends _1.Database {
     modifySession(session) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield fs.writeFile('sessions.json', JSON.stringify(session));
+            yield fs.appendFile('sessions.json', JSON.stringify(session));
         });
     }
 }
-exports.FileDatabase = FileDatabase;
+exports.FileAppend = FileAppend;

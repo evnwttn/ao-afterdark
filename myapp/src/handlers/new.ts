@@ -5,7 +5,7 @@ import { Session } from '../types';
 export async function newSessionHandler(req: Request, res: Response) {
     try {
       const db = new FileDatabase();
-      await db.createNewSession(req.body as Session);
+      await db.modifySession(req.body as Session);
       res
         .status(200)
         .json({ message: `${req.body.author} session recieved` });
