@@ -8,5 +8,6 @@ export async function updateSessionHandler(req: Request, res: Response) {
     } catch (error) {
       res.sendStatus(500)
     }
-
+  
 }
+
