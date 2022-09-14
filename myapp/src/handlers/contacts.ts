@@ -14,8 +14,8 @@ export async function contactsHandler(req: Request, res: Response) {
     templateParameters,
     process.env.EMAILJS_USER_ID);
     res
-      .status(200)
+      .status(StatusCodes.OK)
   } catch (error) {
-    res.sendStatus(500)
+    res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR)
   }
 }
