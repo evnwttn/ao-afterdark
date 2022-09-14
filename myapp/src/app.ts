@@ -1,6 +1,6 @@
 import * as express from "express";
 import { cors } from "./middleware";
-import { contactsHandler, newSessionHandler, updateSessionHandler } from "./handlers";
+import { contactsHandler, sessionHandler } from "./handlers";
 
 require('dotenv').config()
 
@@ -11,15 +11,14 @@ app.use(cors);
 app.use(express.json());
 
 app.post("/contact", contactsHandler);
-app.post("/session", newSessionHandler);
-app.put("/session", updateSessionHandler);
+app.post("/session/:id", sessionHandler);
+app.put("/session/:id", sessionHandler);
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
 });
 
-// app.post('/session/:id', sessionHandler)
-// app.get('/session/:id', sessionHAndler)
+
 // POST /session/0 or /session/abcdfuck
 
 // req.params.id
