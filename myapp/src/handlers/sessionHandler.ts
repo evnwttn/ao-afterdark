@@ -5,7 +5,7 @@ import { Session } from '../types';
 export async function sessionHandler(req: Request, res: Response) {
     try {
       const db = new FileDatabase();
-      await db.modifySession(req.body as Session);
+      await db.updateSession(req.body as Session);
       res
         .status(StatusCodes.OK)
     } catch (error) {
