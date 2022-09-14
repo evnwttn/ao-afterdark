@@ -32,12 +32,10 @@ const port = process.env.PORT || 5000;
 app.use(middleware_1.cors);
 app.use(express.json());
 app.post("/contact", handlers_1.contactsHandler);
-app.post("/session", handlers_1.newSessionHandler);
-app.put("/session", handlers_1.updateSessionHandler);
+app.post("/session/:id", handlers_1.sessionHandler);
+app.put("/session/:id", handlers_1.sessionHandler);
 app.listen(port, () => {
     console.log(`app listening on port ${port}`);
 });
-// app.post('/session/:id', sessionHandler)
-// app.get('/session/:id', sessionHAndler)
 // POST /session/0 or /session/abcdfuck
 // req.params.id
