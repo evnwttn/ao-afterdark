@@ -4,7 +4,7 @@ import * as fs from "fs/promises";
 import os from 'os';
 
 export class FileDatabase extends Database {
-    async updateSession(session: Omit<Session, 'id'>): Promise<void> { 
+    async updateSession(session: Session): Promise<void> { 
         await fs.appendFile('sessions.json', JSON.stringify(session) + os.EOL);
     }
 }
