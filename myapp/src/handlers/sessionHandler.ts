@@ -15,4 +15,5 @@ export async function sessionHandler(req: Request, res: Response) {
 
 }
 
-
+// enum statuscodes causing error, investigate
+// assign id in backend & return to grid
