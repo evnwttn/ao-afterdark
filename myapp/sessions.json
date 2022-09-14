@@ -1,3 +1,9 @@
 {"parameters":["title","123"],"author":"123","id":"234","tracks":[{"title":"1","parameters":[{"parameter":"123","colour":"#2D2D2D","comment":""}]}]}{"parameters":["title","123"],"author":"123","id":"234","tracks":[{"title":"1","parameters":[{"parameter":"123","colour":"#2D2D2D","comment":""}]}]}
 {"parameters":["title","123"],"author":"123","id":"234","tracks":[{"title":"1","parameters":[{"parameter":"123","colour":"#F2BF80","comment":""}]}]}
 {"parameters":["title","123"],"author":"123","id":"234","tracks":[{"title":"1","parameters":[{"parameter":"123","colour":"#F2BF80","comment":"HALLO"}]}]}
+{"parameters":["title","Sax"],"id":"82f840d1-d9ad-44db-af5d-6ab2435fe9eb","author":"Ev's juicy band","sessionTitle":"the juice","tracks":[{"title":"juice blues","parameters":[{"parameter":"Sax","colour":"#2D2D2D","comment":""}]}]}
+{"parameters":["title","Vocals"],"id":"80f59be3-5044-4164-bfc1-fadc33730415","author":"123","sessionTitle":"234","tracks":[{"title":"1","parameters":[{"parameter":"Vocals","colour":"#2D2D2D","comment":""}]}]}
+{"parameters":["title","Rhythm Guitar"],"id":"5a6ebd77-f440-49eb-95a7-e7f0c32467e1","author":"ev","sessionTitle":"yoyo","tracks":[{"title":"123","parameters":[{"parameter":"Rhythm Guitar","colour":"#2D2D2D","comment":""}]}]}
+{"parameters":["title","Synth"],"id":"26987940-83a5-4a83-b5ca-4d018dedef9e","author":"ev","sessionTitle":"123","tracks":[{"title":"yoyo","parameters":[{"parameter":"Synth","colour":"#2D2D2D","comment":""}]}]}
+{"parameters":["title","Synth"],"id":"26987940-83a5-4a83-b5ca-4d018dedef9e","author":"ev","sessionTitle":"123","tracks":[{"title":"yoyo","parameters":[{"parameter":"Synth","colour":"#2D2D2D","comment":""}]}]}
+{"parameters":["title","Synth"],"id":"26987940-83a5-4a83-b5ca-4d018dedef9e","author":"ev","sessionTitle":"123","tracks":[{"title":"yoyo","parameters":[{"parameter":"Synth","colour":"#F2BF80","comment":""}]}]}

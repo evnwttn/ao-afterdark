@@ -8,9 +8,9 @@ export async function sessionHandler(req: Request, res: Response) {
       await db.updateSession(req.body as Session);
       res
         .json({ message: `${req.params.id}` })
-        .status(StatusCodes.OK)
+        .status(200)
     } catch (error) {
-      res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR)
+      res.sendStatus(500)
     }
 
 }

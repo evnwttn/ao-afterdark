@@ -18,10 +18,10 @@ function sessionHandler(req, res) {
             yield db.updateSession(req.body);
             res
                 .json({ message: `${req.params.id}` })
-                .status(StatusCodes.OK);
+                .status(200);
         }
         catch (error) {
-            res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
+            res.sendStatus(500);
         }
     });
 }
