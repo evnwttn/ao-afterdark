@@ -1,7 +1,7 @@
 import { Database } from '.';
 import { Session } from '../../types';
 import * as fs from "fs/promises";
-import os from 'os';
+import * as os from 'os';
 
 export class FileDatabase extends Database {
     async updateSession(session: Session): Promise<void> { 

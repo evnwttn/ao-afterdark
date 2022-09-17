@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { StatusCodes } from '../types';
 import * as emailjs from '@emailjs/browser';
 
 export async function contactsHandler(req: Request, res: Response) {

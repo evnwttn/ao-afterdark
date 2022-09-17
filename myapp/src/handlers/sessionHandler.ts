@@ -23,7 +23,6 @@ export async function sessionHandler(req: Request, res: Response) {
 
     await db.updateSession(req.body as Session);
     res
-      .json({ message: `${req.params.id}` })
       .status(StatusCodes.OK)
   } catch (error) {
     res.sendStatus(500)
