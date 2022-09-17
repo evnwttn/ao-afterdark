@@ -33,6 +33,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.contactsHandler = void 0;
+const types_1 = require("../types");
 const emailjs = __importStar(require("@emailjs/browser"));
 function contactsHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -44,10 +45,10 @@ function contactsHandler(req, res) {
         try {
             yield emailjs.send("contact_service", "contact_form", templateParameters, process.env.EMAILJS_USER_ID);
             res
-                .status(StatusCodes.OK);
+                .status(types_1.StatusCodes.OK);
         }
         catch (error) {
-            res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
+            res.sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR);
         }
     });
 }

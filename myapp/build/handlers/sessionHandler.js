@@ -11,14 +11,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sessionHandler = void 0;
 const database_1 = require("../services/database");
+const types_1 = require("../types");
+// function validate(body: Partial<Session>): boolean {
+//   if (typeof body.author === 'string')
+// } 
 function sessionHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const db = new database_1.FileDatabase();
+            // const myBool = validate(req.body as Partial<Session>);
+            // if (!myBool) {
+            //   return 4041
+            // }
             yield db.updateSession(req.body);
             res
-                .json({ message: `${req.params.id}` })
-                .status(200);
+                .status(types_1.StatusCodes.OK);
         }
         catch (error) {
             res.sendStatus(500);
