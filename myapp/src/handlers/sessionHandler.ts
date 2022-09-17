@@ -3,6 +3,8 @@ import { FileDatabase } from '../services/database';
 import { Session } from '../types';
 import { StatusCodes } from '../types'
 
+// title length will be 14
+
 function validate(body: Partial<Session>): boolean {
   if (body) {
     if (body.tracks && body.tracks.length <= 11 ) {

@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sessionHandler = void 0;
 const database_1 = require("../services/database");
 const types_1 = require("../types");
+// title length will be 14
 function validate(body) {
     if (body) {
         if (body.tracks && body.tracks.length <= 11) {
