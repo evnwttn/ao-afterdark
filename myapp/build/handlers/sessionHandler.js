@@ -36,7 +36,8 @@ function sessionHandler(req, res) {
             const db = new database_1.FileDatabase();
             yield db.updateSession(req.body);
             res
-                .status(types_1.StatusCodes.OK);
+                .status(types_1.StatusCodes.OK)
+                .json(req.body);
         }
         catch (error) {
             res.sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR);
