@@ -3,16 +3,21 @@ import { FileDatabase } from '../services/database';
 import { Session } from '../types';
 import { StatusCodes } from '../types'
 
+export async function sessionHandler(req: Request, res: Response) {
+  try {
+    console.log('yo')
+    const db = new FileDatabase();
+    await db.updateSession(req.body as Session);
+    res
+      .status(StatusCodes.OK)
+  } catch (error) {
+    res.sendStatus(500)
+  }
+}
+
 // function validate(body: Partial<Session>): boolean {
 //   if (typeof body.author === 'string')
 // } 
-
-
-export async function sessionHandler(req: Request, res: Response) {
-  try {
-
-    const db = new FileDatabase();
-
 
     // const myBool = validate(req.body as Partial<Session>);
 
@@ -20,12 +25,3 @@ export async function sessionHandler(req: Request, res: Response) {
     // if (!myBool) {
     //   return 4041
     // }
-
-    await db.updateSession(req.body as Session);
-    res
-      .status(StatusCodes.OK)
-  } catch (error) {
-    res.sendStatus(500)
-  }
-
-}

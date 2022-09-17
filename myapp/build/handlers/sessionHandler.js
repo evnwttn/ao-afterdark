@@ -12,17 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sessionHandler = void 0;
 const database_1 = require("../services/database");
 const types_1 = require("../types");
-// function validate(body: Partial<Session>): boolean {
-//   if (typeof body.author === 'string')
-// } 
 function sessionHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            console.log('yo');
             const db = new database_1.FileDatabase();
-            // const myBool = validate(req.body as Partial<Session>);
-            // if (!myBool) {
-            //   return 4041
-            // }
             yield db.updateSession(req.body);
             res
                 .status(types_1.StatusCodes.OK);
@@ -33,3 +27,10 @@ function sessionHandler(req, res) {
     });
 }
 exports.sessionHandler = sessionHandler;
+// function validate(body: Partial<Session>): boolean {
+//   if (typeof body.author === 'string')
+// } 
+// const myBool = validate(req.body as Partial<Session>);
+// if (!myBool) {
+//   return 4041
+// }
