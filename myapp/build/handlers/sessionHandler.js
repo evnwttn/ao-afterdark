@@ -12,10 +12,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sessionHandler = void 0;
 const database_1 = require("../services/database");
 const types_1 = require("../types");
+function validate(body) {
+    if (body) {
+        if (body.tracks && body.tracks.length <= 11) {
+            if (body.parameters && body.parameters.length <= 10) {
+                return true;
+            }
+        }
+    }
+    else {
+        return false;
+    }
+}
 function sessionHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            console.log('yo');
+            console.log(req.body.tracks.length);
             const db = new database_1.FileDatabase();
             yield db.updateSession(req.body);
             res
