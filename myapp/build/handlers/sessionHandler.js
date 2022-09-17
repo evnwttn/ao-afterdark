@@ -12,12 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sessionHandler = void 0;
 const database_1 = require("../services/database");
 const types_1 = require("../types");
-// title length will be 14
 function validate(body) {
     if (body) {
-        if (body.tracks && body.tracks.length <= 11) {
-            if (body.parameters && body.parameters.length <= 10) {
-                return true;
+        if (body.author && body.author.length <= 14) {
+            if (body.sessionTitle && body.sessionTitle.length <= 14) {
+                if (body.tracks && body.tracks.length <= 11) {
+                    if (body.parameters && body.parameters.length <= 10) {
+                        return true;
+                    }
+                }
             }
         }
     }
