@@ -20,9 +20,7 @@ function validate(body) {
             }
         }
     }
-    else {
-        return false;
-    }
+    return false;
 }
 function sessionHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {

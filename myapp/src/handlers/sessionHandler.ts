@@ -10,11 +10,10 @@ function validate(body: Partial<Session>): boolean {
         return true
       }
     }
-  } else {
-    return false
-  }
-}
+  } 
 
+  return false
+}
 
 export async function sessionHandler(req: Request, res: Response) {
   try {
