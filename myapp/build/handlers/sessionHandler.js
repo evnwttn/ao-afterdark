@@ -28,8 +28,8 @@ function validate(body) {
 }
 function sessionHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const sessionCleared = validate(req.body);
-        if (!sessionCleared) {
+        const sessionValidated = validate(req.body);
+        if (!sessionValidated) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
         try {

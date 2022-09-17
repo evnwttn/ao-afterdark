@@ -20,8 +20,8 @@ if (body) {
 }
 
 export async function sessionHandler(req: Request, res: Response) {
-  const sessionCleared = validate(req.body as Partial<Session>);
-  if (!sessionCleared) {
+  const sessionValidated = validate(req.body as Partial<Session>);
+  if (!sessionValidated) {
     res.sendStatus(StatusCodes.BAD_REQUEST)
   } 
 

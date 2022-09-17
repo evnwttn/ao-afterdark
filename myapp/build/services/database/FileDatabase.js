@@ -42,5 +42,10 @@ class FileDatabase extends _1.Database {
             yield fs.appendFile('sessions.json', JSON.stringify(session) + os.EOL);
         });
     }
+    createSession(session) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield fs.writeFile('sessions.json', JSON.stringify(session));
+        });
+    }
 }
 exports.FileDatabase = FileDatabase;
