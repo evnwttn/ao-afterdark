@@ -24,8 +24,14 @@ function validate(body) {
 }
 function sessionHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
+        const sessionCleared = validate(req.body);
+        if (!sessionCleared) {
+            console.log(`not cleared`);
+        }
+        else {
+            console.log(`cleared`);
+        }
         try {
-            console.log(req.body.tracks.length);
             const db = new database_1.FileDatabase();
             yield db.updateSession(req.body);
             res
@@ -37,10 +43,3 @@ function sessionHandler(req, res) {
     });
 }
 exports.sessionHandler = sessionHandler;
-// function validate(body: Partial<Session>): boolean {
-//   if (typeof body.author === 'string')
-// } 
-// const myBool = validate(req.body as Partial<Session>);
-// if (!myBool) {
-//   return 4041
-// }

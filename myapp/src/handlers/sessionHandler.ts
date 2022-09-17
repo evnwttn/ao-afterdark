@@ -16,8 +16,14 @@ function validate(body: Partial<Session>): boolean {
 }
 
 export async function sessionHandler(req: Request, res: Response) {
+  const sessionCleared = validate(req.body as Partial<Session>);
+  if (!sessionCleared) {
+    console.log(`not cleared`)
+  } else {
+    console.log(`cleared`)
+  }
+
   try {
-    console.log(req.body.tracks.length)
     const db = new FileDatabase();
     await db.updateSession(req.body as Session);
     res
@@ -26,14 +32,3 @@ export async function sessionHandler(req: Request, res: Response) {
     res.sendStatus(500)
   }
 }
-
-// function validate(body: Partial<Session>): boolean {
-//   if (typeof body.author === 'string')
-// } 
-
-    // const myBool = validate(req.body as Partial<Session>);
-
-
-    // if (!myBool) {
-    //   return 4041
-    // }
