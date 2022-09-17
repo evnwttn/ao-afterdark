@@ -18,10 +18,8 @@ function validate(body: Partial<Session>): boolean {
 export async function sessionHandler(req: Request, res: Response) {
   const sessionCleared = validate(req.body as Partial<Session>);
   if (!sessionCleared) {
-    console.log(`not cleared`)
-  } else {
-    console.log(`cleared`)
-  }
+    res.sendStatus(500)
+  } 
 
   try {
     const db = new FileDatabase();

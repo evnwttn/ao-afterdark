@@ -26,10 +26,7 @@ function sessionHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const sessionCleared = validate(req.body);
         if (!sessionCleared) {
-            console.log(`not cleared`);
-        }
-        else {
-            console.log(`cleared`);
+            res.sendStatus(500);
         }
         try {
             const db = new database_1.FileDatabase();
