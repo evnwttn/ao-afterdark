@@ -9,24 +9,24 @@ import { StatusCodes } from '../types'
 
 
 export async function sessionHandler(req: Request, res: Response) {
-    try {
-      
-      const db = new FileDatabase();
+  try {
+
+    const db = new FileDatabase();
 
 
-      // const myBool = validate(req.body as Partial<Session>);
+    // const myBool = validate(req.body as Partial<Session>);
 
 
-      // if (!myBool) {
-      //   return 4041
-      // }
+    // if (!myBool) {
+    //   return 4041
+    // }
 
-      await db.updateSession(req.body as Session);
-      res
-        .json({ message: `${req.params.id}` })
-        .status(StatusCodes.OK)
-    } catch (error) {
-      res.sendStatus(500)
-    }
+    await db.updateSession(req.body as Session);
+    res
+      .json({ message: `${req.params.id}` })
+      .status(StatusCodes.OK)
+  } catch (error) {
+    res.sendStatus(500)
+  }
 
 }
