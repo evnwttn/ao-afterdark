@@ -18,7 +18,7 @@ function validate(body: Partial<Session>): boolean {
 export async function sessionHandler(req: Request, res: Response) {
   const sessionCleared = validate(req.body as Partial<Session>);
   if (!sessionCleared) {
-    res.sendStatus(500)
+    res.sendStatus(StatusCodes.BAD_REQUEST)
   } 
 
   try {
@@ -27,6 +27,6 @@ export async function sessionHandler(req: Request, res: Response) {
     res
       .status(StatusCodes.OK)
   } catch (error) {
-    res.sendStatus(500)
+    res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR)
   }
 }

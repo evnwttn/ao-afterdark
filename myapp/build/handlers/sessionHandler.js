@@ -26,7 +26,7 @@ function sessionHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const sessionCleared = validate(req.body);
         if (!sessionCleared) {
-            res.sendStatus(500);
+            res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
         try {
             const db = new database_1.FileDatabase();
@@ -35,7 +35,7 @@ function sessionHandler(req, res) {
                 .status(types_1.StatusCodes.OK);
         }
         catch (error) {
-            res.sendStatus(500);
+            res.sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR);
         }
     });
 }
