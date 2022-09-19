@@ -7,10 +7,6 @@ import * as os from 'os';
 const sessionId = {id: uuidv4()};
 
 export class FileDatabase extends Database {
-    constructor(session: Session) {
-
-    }
-
     async createSession(session: Session): Promise<void> { 
         await fs.appendFile('sessions.json', JSON.stringify(session) + os.EOL);
     }
