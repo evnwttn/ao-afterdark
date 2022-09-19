@@ -25,8 +25,6 @@ export async function sessionHandler(req: Request, res: Response) {
     res.sendStatus(StatusCodes.BAD_REQUEST)
   } 
 
-  console.log(req.method)
-
   try {
     const db = new FileDatabase();
     if (req.method === 'POST') {
