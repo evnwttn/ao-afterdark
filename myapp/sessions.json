@@ -1,2 +1,4 @@
-"[object Object]test"{"parameters":["title","Vocals"],"author":"123","sessionTitle":"2234","tracks":[{"title":"1111","parameters":[{"parameter":"Vocals","colour":"#2D2D2D","comment":""}]}]}
-{"parameters":["title","Vocals"],"author":"123","sessionTitle":"2234","tracks":[{"title":"1111","parameters":[{"parameter":"Vocals","colour":"#7284A8","comment":""}]}]}
+"[object Object]test"{"parameters":["title","west"],"author":"zest","sessionTitle":"vest","tracks":[{"title":"chest","parameters":[{"parameter":"west","colour":"#2D2D2D","comment":""}]}]}
+{"parameters":["title","west"],"author":"zest","sessionTitle":"vest","tracks":[{"title":"chest","parameters":[{"parameter":"west","colour":"#2D2D2D","comment":""}]}]}
+{"parameters":["title","west"],"author":"zest","sessionTitle":"vest","tracks":[{"title":"chest","parameters":[{"parameter":"west","colour":"#2D2D2D","comment":""}]}]}
+{"parameters":["title","west"],"author":"zest","sessionTitle":"vest","tracks":[{"title":"chest","parameters":[{"parameter":"west","colour":"#7284A8","comment":""}]}]}
