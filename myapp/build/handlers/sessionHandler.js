@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sessionHandler = void 0;
 const database_1 = require("../services/database");
 const types_1 = require("../types");
+const uuid_1 = require("uuid");
 function validate(body) {
     if (body) {
         if (body.author && body.author.length <= 14) {
@@ -28,6 +29,7 @@ function validate(body) {
 }
 function sessionHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
+        const sessionId = { id: (0, uuid_1.v4)() };
         const sessionValidated = validate(req.body);
         if (!sessionValidated) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
@@ -35,7 +37,7 @@ function sessionHandler(req, res) {
         try {
             const db = new database_1.FileDatabase();
             if (req.method === 'POST') {
-                yield db.createSession(req.body);
+                yield db.createSession(req.body, sessionId);
             }
             else {
                 yield db.updateSession(req.body);
