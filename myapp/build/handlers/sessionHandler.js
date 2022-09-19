@@ -32,9 +32,15 @@ function sessionHandler(req, res) {
         if (!sessionValidated) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
+        console.log(req.method);
         try {
             const db = new database_1.FileDatabase();
-            yield db.updateSession(req.body);
+            if (req.method === "POST") {
+                yield db.createSession(req.body);
+            }
+            else {
+                yield db.updateSession(req.body);
+            }
             res
                 .status(types_1.StatusCodes.OK)
                 .json(req.body);

@@ -25,9 +25,15 @@ export async function sessionHandler(req: Request, res: Response) {
     res.sendStatus(StatusCodes.BAD_REQUEST)
   } 
 
+  console.log(req.method)
+
   try {
     const db = new FileDatabase();
-    await db.updateSession(req.body as Session);
+    if (req.method === "POST") {
+      await db.createSession(req.body as Session);
+    } else {
+      await db.updateSession(req.body as Session)
+    }
     res
       .status(StatusCodes.OK)
       .json(req.body as Session)
