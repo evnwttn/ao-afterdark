@@ -34,12 +34,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FileDatabase = void 0;
 const _1 = require(".");
+const uuid_1 = require("uuid");
 const fs = __importStar(require("fs/promises"));
 const os = __importStar(require("os"));
+const sessionId = (0, uuid_1.v4)();
 class FileDatabase extends _1.Database {
     createSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield fs.appendFile('sessions.json', JSON.stringify(session) + os.EOL);
+            yield fs.appendFile('sessions.json', JSON.stringify(session) + sessionId + os.EOL);
         });
     }
     updateSession(session) {
