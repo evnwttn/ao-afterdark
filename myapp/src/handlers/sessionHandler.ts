@@ -29,10 +29,10 @@ export async function sessionHandler(req: Request, res: Response) {
 
   try {
     const db = new FileDatabase();
-    if (req.method === "POST") {
+    if (req.method === 'POST') {
       await db.createSession(req.body as Session);
     } else {
-      await db.updateSession(req.body as Session)
+      await db.updateSession(req.body as Session);
     }
     res
       .status(StatusCodes.OK)

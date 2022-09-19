@@ -35,7 +35,7 @@ function sessionHandler(req, res) {
         console.log(req.method);
         try {
             const db = new database_1.FileDatabase();
-            if (req.method === "POST") {
+            if (req.method === 'POST') {
                 yield db.createSession(req.body);
             }
             else {
