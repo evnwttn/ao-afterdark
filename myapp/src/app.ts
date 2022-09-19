@@ -17,6 +17,3 @@ app.put("/session/", sessionHandler);
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
 });
-
-// app.post("/session/:id", sessionHandler);
-// app.put("/session/:id", sessionHandler);
