@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import { FileDatabase } from '../services/database';
 import { Session, SessionId } from '../types';
 import { StatusCodes } from '../types'
-import { v4 as uuidv4 } from 'uuid';
 
 
 function validate(body: Partial<Session>): boolean {
@@ -23,7 +22,6 @@ if (body) {
 
 
 export async function sessionHandler(req: Request, res: Response) {
-  const sessionId = {id: uuidv4()};
   const sessionValidated = validate(req.body as Partial<Session>);
   if (!sessionValidated) {
     res.sendStatus(StatusCodes.BAD_REQUEST)
@@ -32,7 +30,7 @@ export async function sessionHandler(req: Request, res: Response) {
   try {
     const db = new FileDatabase();
     if (req.method === 'POST') {
-      await db.createSession(req.body as Session, sessionId as SessionId);
+      await db.createSession(req.body as Session);
     } else {
       await db.updateSession(req.body as Session);
     }

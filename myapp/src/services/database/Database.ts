@@ -5,7 +5,7 @@ export abstract class Database {
     constructor() {
     }
 
-    abstract createSession(session: Session, sessionId: SessionId): Promise<void>;
+    abstract createSession(session: Session): Promise<void>;
     abstract updateSession(session: Session): Promise<void>;
 
 }

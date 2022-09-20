@@ -37,7 +37,7 @@ const _1 = require(".");
 const fs = __importStar(require("fs/promises"));
 const os = __importStar(require("os"));
 class FileDatabase extends _1.Database {
-    createSession(session, sessionId) {
+    createSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
             yield fs.appendFile('sessions.json', JSON.stringify(session) + os.EOL);
         });
