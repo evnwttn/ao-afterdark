@@ -1,5 +1,5 @@
 import { Database } from '.';
-import { Session, SessionId } from '../../types';
+import { Session } from '../../types';
 import * as fs from "fs/promises";
 import * as os from 'os';
 
