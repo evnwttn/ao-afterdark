@@ -28,6 +28,7 @@ export async function sessionHandler(req: Request, res: Response) {
 
   try {
     const db = new FileDatabase();
+
     if (req.method === 'POST') {
       await db.createSession(req.body as Session);
     } else {

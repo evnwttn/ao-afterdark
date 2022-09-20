@@ -1,4 +1,4 @@
-import { Session, SessionId } from "../../types";
+import { Session, SessionFile } from "../../types";
 
 
 export abstract class Database {
