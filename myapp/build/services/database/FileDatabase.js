@@ -36,15 +36,19 @@ exports.FileDatabase = void 0;
 const _1 = require(".");
 const fs = __importStar(require("fs/promises"));
 const os = __importStar(require("os"));
+const sessionFile = [
+    session, [],
+    id, []
+];
 class FileDatabase extends _1.Database {
     createSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield fs.appendFile('sessions.json', JSON.stringify(session) + os.EOL);
+            yield fs.appendFile('sessions.json', JSON.stringify(session, null, 2) + os.EOL);
         });
     }
     updateSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield fs.writeFile('sessions.json', JSON.stringify(session) + os.EOL);
+            yield fs.writeFile('sessions.json', JSON.stringify(session, null, 2) + os.EOL);
         });
     }
 }

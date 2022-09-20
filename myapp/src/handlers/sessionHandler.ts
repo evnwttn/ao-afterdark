@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import { FileDatabase } from '../services/database';
 import { Session } from '../types';
 import { StatusCodes } from '../types'
-import { v4 as uuidv4 } from 'uuid';
 
 function validate(body: Partial<Session>): boolean {
 if (body) {
