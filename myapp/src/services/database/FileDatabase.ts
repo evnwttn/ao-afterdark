@@ -8,11 +8,10 @@ export class FileDatabase extends Database {
     async createSession(session: Omit<Session, 'id'>): Promise<void> { 
     const id = uuidv4();
 
-        // append it to session
-        // const _session: Session = {
-        //     ...session,
-        //     id
-        // }
+        const _session: Session = {
+            ...session,
+            id
+        }
 
         // pass that into db
         await fs.appendFile('sessions.json', JSON.stringify(session) + os.EOL);

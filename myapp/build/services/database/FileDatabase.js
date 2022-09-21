@@ -41,11 +41,7 @@ class FileDatabase extends _1.Database {
     createSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = (0, uuid_1.v4)();
-            // append it to session
-            // const _session: Session = {
-            //     ...session,
-            //     id
-            // }
+            const _session = Object.assign(Object.assign({}, session), { id });
             // pass that into db
             yield fs.appendFile('sessions.json', JSON.stringify(session) + os.EOL);
             // await fs.appendFile('sessions.json', JSON.stringify(_session) + os.EOL);
