@@ -39,12 +39,20 @@ const os = __importStar(require("os"));
 class FileDatabase extends _1.Database {
     createSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield fs.appendFile('sessions.json', JSON.stringify(session, null, 2) + os.EOL);
+            // generate id
+            const id = 0;
+            // append it to session
+            const _session = Object.assign(Object.assign({}, session), { id });
+            // pass that into db
+            yield fs.appendFile('sessions.json', JSON.stringify(_session) + os.EOL);
         });
     }
     updateSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield fs.writeFile('sessions.json', JSON.stringify(session, null, 2) + os.EOL);
+            // Read in sessions.json
+            // Find the proper session with id
+            // Overwrite it and save back to sessions.json
+            yield fs.writeFile('sessions.json', JSON.stringify(session) + os.EOL);
         });
     }
 }

@@ -13,6 +13,7 @@ exports.sessionHandler = void 0;
 const database_1 = require("../services/database");
 const types_1 = require("../types");
 function validate(body) {
+    var _a, _b, _c, _d;
     if (body) {
         if (body.author && body.author.length <= 14) {
             if (body.sessionTitle && body.sessionTitle.length <= 14) {
@@ -24,7 +25,14 @@ function validate(body) {
             }
         }
     }
-    return false;
+    // Fail if author length is greater than 14
+    if ((_b = (_a = body.author) === null || _a === void 0 ? void 0 : _a.length) !== null && _b !== void 0 ? _b : 0 > 14) {
+        return false;
+    }
+    if ((_d = (_c = body.sessionTitle) === null || _c === void 0 ? void 0 : _c.length) !== null && _d !== void 0 ? _d : 0 > 14) {
+        return false;
+    }
+    return true;
 }
 function sessionHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -34,15 +42,13 @@ function sessionHandler(req, res) {
         }
         try {
             const db = new database_1.FileDatabase();
-            if (req.method === 'POST') {
+            if (req.method === "POST") {
                 yield db.createSession(req.body);
             }
             else {
                 yield db.updateSession(req.body);
             }
-            res
-                .status(types_1.StatusCodes.OK)
-                .json(req.body);
+            res.status(types_1.StatusCodes.OK).json(req.body);
         }
         catch (error) {
             res.sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR);
