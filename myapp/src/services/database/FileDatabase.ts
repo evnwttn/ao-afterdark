@@ -6,8 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export class FileDatabase extends Database {
     async createSession(session: Omit<Session, 'id'>): Promise<void> { 
-        // generate id
-        // const id = 0;
+    const id = uuidv4();
 
         // append it to session
         // const _session: Session = {
