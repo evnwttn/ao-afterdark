@@ -4,18 +4,23 @@ import { Session } from "../types";
 import { StatusCodes } from "../types";
 
 function validate(body: Partial<Session>): boolean {
+
+  // validates author is less than 14 characters
   if (body.author?.length ?? 0 > 14) {
     return false
   }
 
+  // validates session title is less than 14 characters
   if (body.sessionTitle?.length ?? 0 > 14) {
     return false
   }
 
+  // validates there are less than 11 tracks
   if (body.tracks?.length ?? 0 > 11) {
     return false
   }
 
+  // validates there are less than 10 session parameters 
   if (body.parameters?.length ?? 0 > 10) {
     return false
   }
