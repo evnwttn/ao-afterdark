@@ -4,26 +4,21 @@ import { Session } from "../types";
 import { StatusCodes } from "../types";
 
 function validate(body: Partial<Session>): boolean {
-  if (body) {
-    if (body.author && body.author.length <= 14) {
-      if (body.sessionTitle && body.sessionTitle.length <= 14) {
-        if (body.tracks && body.tracks.length <= 11) {
-          if (body.parameters && body.parameters.length <= 10) {
-            return true;
-          }
-        }
-      }
-    }
+  if (body.author?.length ?? 0 > 14) {
+    return false
   }
 
-  // Fail if author length is greater than 14
-  // if (body.author?.length ?? 0 > 14) {
-  //   return false
-  // }
+  if (body.sessionTitle?.length ?? 0 > 14) {
+    return false
+  }
 
-  // if (body.sessionTitle?.length ?? 0 > 14) {
-  //   return false
-  // }
+  if (body.tracks?.length ?? 0 > 11) {
+    return false
+  }
+
+  if (body.parameters?.length ?? 0 > 10) {
+    return false
+  }
 
   return true;
 }
