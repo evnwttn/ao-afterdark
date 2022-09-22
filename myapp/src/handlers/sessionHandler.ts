@@ -29,8 +29,8 @@ function validate(body: Partial<Session>): boolean {
 }
 
 export async function sessionHandler(req: Request, res: Response) {
-  const sessionValidated = validate(req.body as Partial<Session>);
-  if (!sessionValidated) {
+  const sessionInvalid = validate(req.body as Partial<Session>);
+  if (sessionInvalid) {
     res.sendStatus(StatusCodes.BAD_REQUEST);
   }
 
