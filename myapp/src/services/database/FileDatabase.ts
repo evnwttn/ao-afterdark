@@ -6,14 +6,15 @@ import { v4 as uuidv4 } from 'uuid';
 
 export class FileDatabase extends Database {
    
-    async createSession(session: Omit<Session, 'id'>): Promise<void> { 
+    async createSession(session: Omit<Session, 'id'>): Promise<Session> { 
         const id = uuidv4();
         const _session: Session = {
-            ...session,
-            id
-        }
-
+        ...session,
+        id
+    }
         await fs.appendFile('sessions.json', JSON.stringify(_session) + os.EOL);
+        
+        return _session
     }
 
     async updateSession(session: Session): Promise<void> {

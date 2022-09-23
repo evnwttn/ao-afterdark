@@ -34,14 +34,15 @@ function validate(body) {
 }
 function sessionHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const sessionValidated = validate(req.body);
-        if (sessionValidated) {
+        const sessionInvalid = validate(req.body);
+        if (sessionInvalid) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
         try {
             const db = new database_1.FileDatabase();
             if (req.method === "POST") {
-                yield db.createSession(req.body);
+                yield db.createSession(req.body)
+                    .then((_session) => console.log(_session));
             }
             else {
                 yield db.updateSession(req.body);

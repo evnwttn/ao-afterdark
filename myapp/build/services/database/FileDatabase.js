@@ -43,6 +43,7 @@ class FileDatabase extends _1.Database {
             const id = (0, uuid_1.v4)();
             const _session = Object.assign(Object.assign({}, session), { id });
             yield fs.appendFile('sessions.json', JSON.stringify(_session) + os.EOL);
+            return _session;
         });
     }
     updateSession(session) {
