@@ -5,8 +5,6 @@ import { StatusCodes } from "../types";
 
 function validate(body: Partial<Session>): boolean {
 
-  // change validation to under 14 for length of track/para titles
-
   // validates there are less than 11 tracks
   if (body.tracks?.length ?? 0 > 11) {
     return false
@@ -31,11 +29,11 @@ export async function sessionHandler(req: Request, res: Response) {
 
     if (req.method === "POST") {
       await db.createSession(req.body as Session)
-      .then((_session) => console.log(_session))
+      .then((_session) => res.status(StatusCodes.OK).json(_session as Session))
     } else {
       await db.updateSession(req.body as Session);
     }
-    res.status(StatusCodes.OK).json(req.body as Session);
+    // res.status(StatusCodes.OK).json(req.body as Session);
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
   }

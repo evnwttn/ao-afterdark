@@ -13,7 +13,6 @@ exports.sessionHandler = void 0;
 const database_1 = require("../services/database");
 const types_1 = require("../types");
 function validate(body) {
-    // change validation to under 14 for length of track/para titles
     var _a, _b, _c, _d;
     // validates there are less than 11 tracks
     if ((_b = (_a = body.tracks) === null || _a === void 0 ? void 0 : _a.length) !== null && _b !== void 0 ? _b : 0 > 11) {
@@ -35,12 +34,12 @@ function sessionHandler(req, res) {
             const db = new database_1.FileDatabase();
             if (req.method === "POST") {
                 yield db.createSession(req.body)
-                    .then((_session) => console.log(_session));
+                    .then((_session) => res.status(types_1.StatusCodes.OK).json(_session));
             }
             else {
                 yield db.updateSession(req.body);
             }
-            res.status(types_1.StatusCodes.OK).json(req.body);
+            // res.status(StatusCodes.OK).json(req.body as Session);
         }
         catch (error) {
             res.sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR);
