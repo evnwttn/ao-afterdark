@@ -22,7 +22,9 @@ export class FileDatabase extends Database {
 
         try {
         const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
-        console.log(fileData)
+        fileData.split(/\r?\n/).forEach(session =>  {
+            console.log(`session: ${session}`);
+          });
         } catch (err) {
             console.log(err)
         }
