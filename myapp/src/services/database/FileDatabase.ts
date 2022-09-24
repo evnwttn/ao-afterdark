@@ -4,6 +4,7 @@ import * as fs from "fs/promises";
 import * as os from 'os';
 import { v4 as uuidv4 } from 'uuid';
 
+
 export class FileDatabase extends Database {
    
     async createSession(session: Omit<Session, 'id'>): Promise<Session> { 
@@ -17,13 +18,17 @@ export class FileDatabase extends Database {
         return _session
     }
 
-    async updateSession(session: Session): Promise<void> {
+    async updateSession(session: Session): Promise<Session> {
+        const fileData = fs.readFileSync('sessions.json');
+
         // Read in sessions.json
 
         // Find the proper session with id
 
         // Overwrite it and save back to sessions.json
-        await fs.writeFile('sessions.json', JSON.stringify(session) + os.EOL)
+        // await fs.writeFile('sessions.json', JSON.stringify(session) + os.EOL)
+
+        return session
     }
  }
 

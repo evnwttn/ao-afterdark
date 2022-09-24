@@ -48,10 +48,12 @@ class FileDatabase extends _1.Database {
     }
     updateSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
+            const fileData = fs.readFileSync('sessions.json');
             // Read in sessions.json
             // Find the proper session with id
             // Overwrite it and save back to sessions.json
-            yield fs.writeFile('sessions.json', JSON.stringify(session) + os.EOL);
+            // await fs.writeFile('sessions.json', JSON.stringify(session) + os.EOL)
+            return session;
         });
     }
 }
