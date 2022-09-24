@@ -19,7 +19,8 @@ export class FileDatabase extends Database {
     }
 
     async updateSession(session: Session): Promise<Session> {
-        const fileData = fs.readFileSync('sessions.json');
+        const fileData = await fs.readFile('sessions.json');
+        console.log(fileData)
 
         // Read in sessions.json
 
