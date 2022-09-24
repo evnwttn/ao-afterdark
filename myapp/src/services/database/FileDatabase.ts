@@ -20,8 +20,15 @@ export class FileDatabase extends Database {
 
     async updateSession(session: Session): Promise<Session> {
 
+        try {
+        const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
+        console.log(fileData)
+        } catch (err) {
+            console.log(err)
+        }
+
         return session
-        
+
         // Read in sessions.json
 
         // Find the proper session with id
