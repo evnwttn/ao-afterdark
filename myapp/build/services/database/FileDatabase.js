@@ -48,7 +48,7 @@ class FileDatabase extends _1.Database {
     }
     updateSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
-            const fileData = yield fs.readFile('sessions.json');
+            const fileData = yield fs.readFile('sessions.json', 'utf8');
             console.log(fileData);
             // Read in sessions.json
             // Find the proper session with id
