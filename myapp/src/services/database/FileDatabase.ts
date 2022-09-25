@@ -1,7 +1,8 @@
 import { Database } from '.';
 import { Session } from '../../types';
-import * as fs from "fs/promises";
+import * as fs from 'fs/promises';
 import * as os from 'os';
+import * as safeJsonStringify from 'safe-json-stringify';
 import { v4 as uuidv4 } from 'uuid';
 
 
