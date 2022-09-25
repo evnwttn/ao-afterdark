@@ -21,13 +21,24 @@ export class FileDatabase extends Database {
     async updateSession(session: Session): Promise<Session> {
 
         try {
-        const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
-        fileData.split(/\r?\n/).forEach(session =>  {
-            console.log(`session: ${session}`);
-          });
-        } catch (err) {
-            console.log(err)
-        }
+            const fileData = await fs.readFile('sessions.json');
+            const temp = JSON.parse(fileData.toString());
+            console.log(temp)
+
+            } catch (err) {
+                console.log(err)
+            }
+    
+
+        // try {
+        // const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
+        // fileData.split(/\r?\n/).forEach(session =>  {
+        //     const sesh = JSON.parse(session);
+        //     console.log(sesh);
+        //   });
+        // } catch (err) {
+        //     console.log(err)
+        // }
 
         return session
 
