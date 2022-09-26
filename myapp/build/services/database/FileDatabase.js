@@ -49,22 +49,14 @@ class FileDatabase extends _1.Database {
     updateSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const fileData = yield fs.readFile('sessions.json');
-                const buff = fileData.toJSON();
-                console.log(buff);
+                const fileData = yield fs.readFile('sessions.json', { encoding: 'utf-8' });
+                fileData.split(/\r?\n/).forEach(session => {
+                    console.log(session);
+                });
             }
             catch (err) {
                 console.log(err);
             }
-            // try {
-            // const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
-            // fileData.split(/\r?\n/).forEach(session =>  {
-            //     const sesh = JSON.parse(session);
-            //     console.log(sesh);
-            //   });
-            // } catch (err) {
-            //     console.log(err)
-            // }
             return session;
             // Read in sessions.json
             // Find the proper session with id
