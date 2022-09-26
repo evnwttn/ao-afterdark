@@ -19,10 +19,12 @@ export class FileDatabase extends Database {
     }
 
     async updateSession(session: Session): Promise<Session> {
+        
         try {
         const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
         fileData.split(/\r?\n/).forEach(session =>  {
-            console.log(session);
+            const seshy = JSON.parse(`${session}`)
+            console.log(seshy);
           });
         } catch (err) {
             console.log(err)
