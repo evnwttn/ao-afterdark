@@ -50,8 +50,8 @@ class FileDatabase extends _1.Database {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const fileData = yield fs.readFile('sessions.json');
-                const temp = JSON.parse(fileData.toString());
-                console.log(temp);
+                const buff = fileData.toJSON();
+                console.log(buff);
             }
             catch (err) {
                 console.log(err);

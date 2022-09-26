@@ -22,8 +22,9 @@ export class FileDatabase extends Database {
 
         try {
             const fileData = await fs.readFile('sessions.json');
-            const temp = JSON.parse(fileData.toString());
-            console.log(temp)
+            const buff = fileData.toJSON();
+            console.log(buff)
+
 
             } catch (err) {
                 console.log(err)
