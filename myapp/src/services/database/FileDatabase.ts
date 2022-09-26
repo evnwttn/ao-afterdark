@@ -20,21 +20,16 @@ export class FileDatabase extends Database {
 
     async updateSession(session: Session): Promise<Session> {
 
-        try {
         const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
-        fileData.split(/\r?\n/).forEach((session: string, index: any) =>  {
-            const sesh = JSON.parse(`${session}`)
-            console.log(sesh);
+        fileData.split(/\r?\n/).forEach((sessionFile: string, index: any) =>  {
+            const sessionFileObject = JSON.parse(`${sessionFile}`)
+            if (sessionFileObject.id === session.id) {
+                console.log(index)
+            }
           });
-        } catch (err) {
-            console.log(err)
-        }
 
         return session
 
-        // Read in sessions.json
-
-        // Find the proper session with id
 
         // Overwrite it and save back to sessions.json
 
