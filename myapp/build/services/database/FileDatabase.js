@@ -50,9 +50,9 @@ class FileDatabase extends _1.Database {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const fileData = yield fs.readFile('sessions.json', { encoding: 'utf-8' });
-                fileData.split(/\r?\n/).forEach(session => {
-                    const seshy = JSON.parse(`${session}`);
-                    console.log(seshy);
+                fileData.split(/\r?\n/).forEach((session, index) => {
+                    const sesh = JSON.parse(`${session}`);
+                    console.log(sesh);
                 });
             }
             catch (err) {
