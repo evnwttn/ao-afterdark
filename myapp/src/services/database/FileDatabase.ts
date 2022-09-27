@@ -18,7 +18,7 @@ export class FileDatabase extends Database {
         return _session
     }
 
-    async updateSession(session: Session): Promise<Session> {
+    async updateSession(session: Session): Promise<void> {
 
         const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
         fileData.split(/\r?\n/).forEach((sessionFile: string, index: any) =>  {
@@ -28,10 +28,6 @@ export class FileDatabase extends Database {
                 console.log(updatedSession)
             }
           });
-
-
-        return session
-
 
         // Overwrite it and save back to sessions.json
 

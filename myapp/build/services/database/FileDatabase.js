@@ -55,7 +55,6 @@ class FileDatabase extends _1.Database {
                     console.log(updatedSession);
                 }
             });
-            return session;
             // Overwrite it and save back to sessions.json
             // await fs.writeFile('sessions.json', JSON.stringify(session) + os.EOL)
         });
