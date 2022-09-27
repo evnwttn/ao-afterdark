@@ -31,7 +31,8 @@ export async function sessionHandler(req: Request, res: Response) {
       await db.createSession(req.body as Session)
       .then((_session) => res.status(StatusCodes.OK).json(_session as Session))
     } else {
-      await db.updateSession(req.body as Session);
+      await db.updateSession(req.body as Session)
+      .then(() => res.status(StatusCodes.OK).json(req.body as Session))
     }
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);

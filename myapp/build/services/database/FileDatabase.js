@@ -47,16 +47,16 @@ class FileDatabase extends _1.Database {
     }
     updateSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
-            const fileData = yield fs.readFile('sessions.json', { encoding: 'utf-8' });
-            fileData.split(/\r?\n/).forEach((sessionFile, index) => {
-                const sessionFileObject = JSON.parse(sessionFile);
-                if (sessionFileObject.id === session.id) {
-                    const updatedSession = fileData.replace(sessionFile, JSON.stringify(session));
-                    console.log(updatedSession);
-                }
-            });
+            // const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
+            // fileData.split(/\r?\n/).forEach((sessionFile: string, index: any) =>  {
+            //     const sessionFileObject = JSON.parse(sessionFile)
+            //     if (sessionFileObject.id === session.id) {
+            //         const updatedSession = fileData.replace(sessionFile, JSON.stringify(session))
+            //         console.log(updatedSession)
+            //     }
+            //   });
+            console.log(session);
             // Overwrite it and save back to sessions.json
-            // await fs.writeFile('sessions.json', JSON.stringify(session) + os.EOL)
         });
     }
 }
