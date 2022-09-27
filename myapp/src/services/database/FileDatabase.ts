@@ -11,7 +11,7 @@ export class FileDatabase extends Database {
         const id = 'hello';
         const _session: Session = {
         ...session,
-        id
+        id,
     }
         await fs.appendFile('sessions.json', JSON.stringify(_session) + os.EOL);
         
@@ -20,11 +20,13 @@ export class FileDatabase extends Database {
 
     async updateSession(session: Session): Promise<Session> {
 
+        const updateSession = session;
+
         const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
         fileData.split(/\r?\n/).forEach((sessionFile: string, index: any) =>  {
             const sessionFileObject = JSON.parse(`${sessionFile}`)
             if (sessionFileObject.id === session.id) {
-                const updatedSession = fileData.replace(JSON.stringify(sessionFileObject), JSON.stringify(session))
+                const updatedSession = fileData.replace(sessionFile, JSON.stringify(updateSession))
                 console.log(updatedSession)
             }
           });
