@@ -50,8 +50,10 @@ class FileDatabase extends _1.Database {
         return __awaiter(this, void 0, void 0, function* () {
             const sessionsDatabase = yield fs.readFile('sessions.json', { encoding: 'utf-8' });
             sessionsDatabase.split(/\r?\n/).forEach((sessionFile, index) => {
-                const obj = sessionFile[index];
-                console.log(obj);
+                const file = JSON.parse(sessionFile);
+                if (file.id === session.id) {
+                    console.log(file);
+                }
             });
             return session;
             // Overwrite it and save back to sessions.json

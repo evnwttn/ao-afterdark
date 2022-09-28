@@ -22,8 +22,10 @@ export class FileDatabase extends Database {
 
         const sessionsDatabase= await fs.readFile('sessions.json', { encoding: 'utf-8' });
         sessionsDatabase.split(/\r?\n/).forEach((sessionFile: string, index: any) => {
-            const obj = sessionFile[index]
-            console.log(obj)
+        const file = JSON.parse(sessionFile)
+        if (file.id === session.id) {
+            console.log(file)
+        }
         })
 
         return session
