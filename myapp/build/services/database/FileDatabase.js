@@ -36,10 +36,11 @@ exports.FileDatabase = void 0;
 const _1 = require(".");
 const fs = __importStar(require("fs/promises"));
 const os = __importStar(require("os"));
+const uuid_1 = require("uuid");
 class FileDatabase extends _1.Database {
     createSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
-            const id = 'hello';
+            const id = uuid_1.v4;
             const _session = Object.assign(Object.assign({}, session), { id });
             yield fs.appendFile('sessions.json', JSON.stringify(_session) + os.EOL);
             return _session;
@@ -47,15 +48,14 @@ class FileDatabase extends _1.Database {
     }
     updateSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
-            // const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
-            // fileData.split(/\r?\n/).forEach((sessionFile: string, index: any) =>  {
-            //     const sessionFileObject = JSON.parse(sessionFile)
-            //     if (sessionFileObject.id === session.id) {
-            //         const updatedSession = fileData.replace(sessionFile, JSON.stringify(session))
-            //         console.log(updatedSession)
-            //     }
-            //   });
-            console.log(session);
+            const fileData = yield fs.readFile('sessions.json', { encoding: 'utf-8' });
+            fileData.split(/\r?\n/).forEach((sessionFile, index) => {
+                const sessionFileObject = JSON.parse(sessionFile);
+                if (sessionFileObject.id === session.id) {
+                    // const updatedSession = fileData.replace(sessionFile, JSON.stringify(session))
+                    console.log(sessionFile[index]);
+                }
+            });
             // Overwrite it and save back to sessions.json
         });
     }
