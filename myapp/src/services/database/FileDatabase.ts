@@ -25,24 +25,11 @@ export class FileDatabase extends Database {
         const file = JSON.parse(sessionFile)
         if (file.id === session.id) {
             const updatedSessionFile = sessionsDatabase.replace(sessionFile, JSON.stringify(session))
-            console.log(updatedSessionFile)
+            updatedSessionFile && fs.writeFile('sessions.json', updatedSessionFile)
         }
         })
 
         return session
 
-        // Overwrite it and save back to sessions.json
-
     }
  }
-
-
- 
-        // const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
-        // fileData.split(/\r?\n/).forEach((sessionFile: string, index: any) =>  {
-        //     const sessionFileObject = JSON.parse(sessionFile)
-        //     if (sessionFileObject.id === session.id) {
-        //         // const updatedSession = fileData.replace(sessionFile, JSON.stringify(session))
-        //         console.log(sessionFile[index])
-        //     }
-        //   });
