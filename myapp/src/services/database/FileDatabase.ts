@@ -20,18 +20,10 @@ export class FileDatabase extends Database {
 
     async updateSession(session: Session): Promise<Session> {
 
-        // const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
-        // fileData.split(/\r?\n/).forEach((sessionFile: string, index: any) =>  {
-        //     const sessionFileObject = JSON.parse(sessionFile)
-        //     if (sessionFileObject.id === session.id) {
-        //         // const updatedSession = fileData.replace(sessionFile, JSON.stringify(session))
-        //         console.log(sessionFile[index])
-        //     }
-        //   });
-
         const sessionsDatabase= await fs.readFile('sessions.json', { encoding: 'utf-8' });
         sessionsDatabase.split(/\r?\n/).forEach((sessionFile: string, index: any) => {
-            const sessionObject = JSON.parse(sessionFile)
+            const obj = sessionFile[index]
+            console.log(obj)
         })
 
         return session
@@ -41,3 +33,13 @@ export class FileDatabase extends Database {
     }
  }
 
+
+ 
+        // const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
+        // fileData.split(/\r?\n/).forEach((sessionFile: string, index: any) =>  {
+        //     const sessionFileObject = JSON.parse(sessionFile)
+        //     if (sessionFileObject.id === session.id) {
+        //         // const updatedSession = fileData.replace(sessionFile, JSON.stringify(session))
+        //         console.log(sessionFile[index])
+        //     }
+        //   });

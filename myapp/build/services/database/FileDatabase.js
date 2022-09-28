@@ -48,17 +48,10 @@ class FileDatabase extends _1.Database {
     }
     updateSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
-            // const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
-            // fileData.split(/\r?\n/).forEach((sessionFile: string, index: any) =>  {
-            //     const sessionFileObject = JSON.parse(sessionFile)
-            //     if (sessionFileObject.id === session.id) {
-            //         // const updatedSession = fileData.replace(sessionFile, JSON.stringify(session))
-            //         console.log(sessionFile[index])
-            //     }
-            //   });
             const sessionsDatabase = yield fs.readFile('sessions.json', { encoding: 'utf-8' });
             sessionsDatabase.split(/\r?\n/).forEach((sessionFile, index) => {
-                const sessionObject = JSON.parse(sessionFile);
+                const obj = sessionFile[index];
+                console.log(obj);
             });
             return session;
             // Overwrite it and save back to sessions.json
@@ -66,3 +59,11 @@ class FileDatabase extends _1.Database {
     }
 }
 exports.FileDatabase = FileDatabase;
+// const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
+// fileData.split(/\r?\n/).forEach((sessionFile: string, index: any) =>  {
+//     const sessionFileObject = JSON.parse(sessionFile)
+//     if (sessionFileObject.id === session.id) {
+//         // const updatedSession = fileData.replace(sessionFile, JSON.stringify(session))
+//         console.log(sessionFile[index])
+//     }
+//   });
