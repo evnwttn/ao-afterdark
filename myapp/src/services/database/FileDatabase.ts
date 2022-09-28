@@ -24,7 +24,8 @@ export class FileDatabase extends Database {
         sessionsDatabase.split(/\r?\n/).forEach((sessionFile: string, index: any) => {
         const file = JSON.parse(sessionFile)
         if (file.id === session.id) {
-            console.log(file)
+            const updatedSessionFile = sessionsDatabase.replace(sessionFile, JSON.stringify(session))
+            console.log(updatedSessionFile)
         }
         })
 

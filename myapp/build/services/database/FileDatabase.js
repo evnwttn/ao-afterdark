@@ -52,7 +52,8 @@ class FileDatabase extends _1.Database {
             sessionsDatabase.split(/\r?\n/).forEach((sessionFile, index) => {
                 const file = JSON.parse(sessionFile);
                 if (file.id === session.id) {
-                    console.log(file);
+                    const updatedSessionFile = sessionsDatabase.replace(sessionFile, JSON.stringify(session));
+                    console.log(updatedSessionFile);
                 }
             });
             return session;
