@@ -40,7 +40,7 @@ const uuid_1 = require("uuid");
 class FileDatabase extends _1.Database {
     createSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
-            const id = uuid_1.v4;
+            const id = (0, uuid_1.v4)();
             const _session = Object.assign(Object.assign({}, session), { id });
             yield fs.appendFile('sessions.json', JSON.stringify(_session) + os.EOL);
             return _session;
@@ -48,14 +48,16 @@ class FileDatabase extends _1.Database {
     }
     updateSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
-            const fileData = yield fs.readFile('sessions.json', { encoding: 'utf-8' });
-            fileData.split(/\r?\n/).forEach((sessionFile, index) => {
-                const sessionFileObject = JSON.parse(sessionFile);
-                if (sessionFileObject.id === session.id) {
-                    // const updatedSession = fileData.replace(sessionFile, JSON.stringify(session))
-                    console.log(sessionFile[index]);
-                }
-            });
+            // const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
+            // fileData.split(/\r?\n/).forEach((sessionFile: string, index: any) =>  {
+            //     const sessionFileObject = JSON.parse(sessionFile)
+            //     if (sessionFileObject.id === session.id) {
+            //         // const updatedSession = fileData.replace(sessionFile, JSON.stringify(session))
+            //         console.log(sessionFile[index])
+            //     }
+            //   });
+            console.log(session);
+            return session;
             // Overwrite it and save back to sessions.json
         });
     }

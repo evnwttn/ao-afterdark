@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class FileDatabase extends Database {
    
     async createSession(session: Omit<Session, 'id'>): Promise<Session> { 
-        const id = uuidv4;
+        const id = uuidv4();
         const _session: Session = {
         ...session,
         id,
@@ -18,16 +18,20 @@ export class FileDatabase extends Database {
         return _session
     }
 
-    async updateSession(session: Session): Promise<void> {
+    async updateSession(session: Session): Promise<Session> {
 
-        const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
-        fileData.split(/\r?\n/).forEach((sessionFile: string, index: any) =>  {
-            const sessionFileObject = JSON.parse(sessionFile)
-            if (sessionFileObject.id === session.id) {
-                // const updatedSession = fileData.replace(sessionFile, JSON.stringify(session))
-                console.log(sessionFile[index])
-            }
-          });
+        // const fileData = await fs.readFile('sessions.json', { encoding: 'utf-8'});
+        // fileData.split(/\r?\n/).forEach((sessionFile: string, index: any) =>  {
+        //     const sessionFileObject = JSON.parse(sessionFile)
+        //     if (sessionFileObject.id === session.id) {
+        //         // const updatedSession = fileData.replace(sessionFile, JSON.stringify(session))
+        //         console.log(sessionFile[index])
+        //     }
+        //   });
+
+        console.log(session)
+
+        return session
 
         // Overwrite it and save back to sessions.json
 

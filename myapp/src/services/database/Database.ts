@@ -6,6 +6,6 @@ export abstract class Database {
     }
 
     abstract createSession(session: Session): Promise<Session>;
-    abstract updateSession(session: Session): Promise<void>;
+    abstract updateSession(session: Session): Promise<Session>;
 
 }
