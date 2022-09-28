@@ -42,22 +42,34 @@ class FileDatabase extends _1.Database {
         return __awaiter(this, void 0, void 0, function* () {
             const id = (0, uuid_1.v4)();
             const _session = Object.assign(Object.assign({}, session), { id });
-            yield fs.appendFile('sessions.json', JSON.stringify(_session) + os.EOL);
+            yield fs.appendFile("sessions.json", JSON.stringify(_session) + os.EOL);
             return _session;
         });
     }
     updateSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sessionsDatabase = yield fs.readFile('sessions.json', { encoding: 'utf-8' });
-            sessionsDatabase.split(/\r?\n/).forEach((sessionFile, index) => {
+            const sessionsDatabase = yield fs.readFile("sessions.json", {
+                encoding: "utf-8",
+            });
+            sessionsDatabase
+                .split(/\r?\n/)
+                .forEach((sessionFile, index) => {
                 const file = JSON.parse(sessionFile);
                 if (file.id === session.id) {
                     const updatedSessionFile = sessionsDatabase.replace(sessionFile, JSON.stringify(session));
-                    updatedSessionFile && fs.writeFile('sessions.json', updatedSessionFile);
+                    fs.writeFile("sessions.json", updatedSessionFile);
                 }
             });
+            // const arr = sessionsDatabase.split(/\r?\n/);
+            // const idx = arr.findIndex((item) => JSON.parse(item).id === session.id);
+            // if (idx === -1) {
+            //   // item doesnt exist, return early
+            // }
+            // arr[idx] = JSON.stringify(session);
+            // await fs.writeFile("session.json", arr.join("\n"));
             return session;
         });
     }
 }
 exports.FileDatabase = FileDatabase;
+//# sourceMappingURL=FileDatabase.js.map

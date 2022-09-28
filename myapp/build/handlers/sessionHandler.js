@@ -47,3 +47,4 @@ function sessionHandler(req, res) {
     });
 }
 exports.sessionHandler = sessionHandler;
+//# sourceMappingURL=sessionHandler.js.map
