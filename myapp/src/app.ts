@@ -17,6 +17,3 @@ app.put("/session/", sessionHandler);
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
 });
-
-// change validation to under 14 for length of track/para titles\
-// must be altered in react as well
