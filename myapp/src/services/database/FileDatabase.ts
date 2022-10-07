@@ -21,14 +21,16 @@ export class FileDatabase extends Database {
       encoding: "utf-8",
     });
 
-    const arr = sessionsDatabase.split(/\r?\n/);
-    const idx = arr.findIndex((item) => JSON.parse(item).id === session.id);
-    if (idx === -1) {
+    const sessionFiles = sessionsDatabase.split(/\r?\n/);
+    const index = sessionFiles.findIndex(
+      (file) => JSON.parse(file).id === session.id
+    );
+    if (index === -1) {
       return session;
     }
 
-    arr[idx] = JSON.stringify(session);
-    await fs.writeFile("sessions.json", arr.join("\n"));
+    sessionFiles[index] = JSON.stringify(session);
+    await fs.writeFile("sessions.json", sessionFiles.join("\n"));
 
     return session;
   }
