@@ -18,7 +18,7 @@ function validate(body) {
     if ((_b = (_a = body.tracks) === null || _a === void 0 ? void 0 : _a.length) !== null && _b !== void 0 ? _b : 0 > 11) {
         return false;
     }
-    // validates there are less than 10 session parameters 
+    // validates there are less than 10 session parameters
     if ((_d = (_c = body.parameters) === null || _c === void 0 ? void 0 : _c.length) !== null && _d !== void 0 ? _d : 0 > 10) {
         return false;
     }
@@ -33,11 +33,12 @@ function sessionHandler(req, res) {
         try {
             const db = new database_1.FileDatabase();
             if (req.method === "POST") {
-                yield db.createSession(req.body)
-                    .then((_session) => res.status(types_1.StatusCodes.OK).json(_session));
+                const _session = yield db.createSession(req.body);
+                res.status(types_1.StatusCodes.OK).json(_session);
             }
             else {
-                yield db.updateSession(req.body)
+                yield db
+                    .updateSession(req.body)
                     .then(() => res.status(types_1.StatusCodes.OK).json(req.body));
             }
         }
