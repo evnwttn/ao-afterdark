@@ -28,20 +28,7 @@ export class FileDatabase extends Database {
     }
 
     arr[idx] = JSON.stringify(session);
-    await fs.writeFile("session.json", arr.join("\n"));
-
-    // sessionsDatabase
-    // .split(/\r?\n/)
-    // .forEach((sessionFile: string, index: any) => {
-    //   const file = JSON.parse(sessionFile);
-    //   if (file.id === session.id) {
-    //     const updatedSessionFile = sessionsDatabase.replace(
-    //       sessionFile,
-    //       JSON.stringify(session)
-    //     );
-    //     fs.writeFile("sessions.json", updatedSessionFile);
-    //   }
-    // });
+    await fs.writeFile("sessions.json", arr.join("\n"));
 
     return session;
   }
