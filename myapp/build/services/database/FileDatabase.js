@@ -51,22 +51,25 @@ class FileDatabase extends _1.Database {
             const sessionsDatabase = yield fs.readFile("sessions.json", {
                 encoding: "utf-8",
             });
-            sessionsDatabase
-                .split(/\r?\n/)
-                .forEach((sessionFile, index) => {
-                const file = JSON.parse(sessionFile);
-                if (file.id === session.id) {
-                    const updatedSessionFile = sessionsDatabase.replace(sessionFile, JSON.stringify(session));
-                    fs.writeFile("sessions.json", updatedSessionFile);
-                }
-            });
-            // const arr = sessionsDatabase.split(/\r?\n/);
-            // const idx = arr.findIndex((item) => JSON.parse(item).id === session.id);
-            // if (idx === -1) {
-            //   // item doesnt exist, return early
-            // }
-            // arr[idx] = JSON.stringify(session);
-            // await fs.writeFile("session.json", arr.join("\n"));
+            const arr = sessionsDatabase.split(/\r?\n/);
+            const idx = arr.findIndex((item) => JSON.parse(item).id === session.id);
+            if (idx === -1) {
+                return session;
+            }
+            arr[idx] = JSON.stringify(session);
+            yield fs.writeFile("session.json", arr.join("\n"));
+            // sessionsDatabase
+            // .split(/\r?\n/)
+            // .forEach((sessionFile: string, index: any) => {
+            //   const file = JSON.parse(sessionFile);
+            //   if (file.id === session.id) {
+            //     const updatedSessionFile = sessionsDatabase.replace(
+            //       sessionFile,
+            //       JSON.stringify(session)
+            //     );
+            //     fs.writeFile("sessions.json", updatedSessionFile);
+            //   }
+            // });
             return session;
         });
     }

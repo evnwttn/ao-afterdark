@@ -29,6 +29,7 @@ function sessionHandler(req, res) {
         const sessionInvalid = validate(req.body);
         if (sessionInvalid) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
+            console.log(`24`);
         }
         try {
             const db = new database_1.FileDatabase();
@@ -44,6 +45,7 @@ function sessionHandler(req, res) {
         }
         catch (error) {
             res.sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR);
+            console.log(req.body);
         }
     });
 }

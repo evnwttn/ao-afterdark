@@ -1,22 +1,23 @@
-import { Request, Response } from 'express';
-import { StatusCodes } from '../types';
-import * as emailjs from '@emailjs/browser';
+import { Request, Response } from "express";
+import { StatusCodes } from "../types";
+import * as emailjs from "@emailjs/browser";
 
 export async function contactsHandler(req: Request, res: Response) {
   const templateParameters = {
-    user_name: req.body.name, 
-    user_email: req.body.email, 
-    message: req.body.message
-  }
+    user_name: req.body.name,
+    user_email: req.body.email,
+    message: req.body.message,
+  };
 
   try {
-    await emailjs.send("contact_service",
-    "contact_form",
-    templateParameters,
-    process.env.EMAILJS_USER_ID);
-    res
-      .status(StatusCodes.OK)
+    await emailjs.send(
+      "contact_service",
+      "contact_form",
+      templateParameters,
+      process.env.EMAILJS_USER_ID
+    );
+    res.status(StatusCodes.OK);
   } catch (error) {
-    res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR)
+    res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
   }
 }
