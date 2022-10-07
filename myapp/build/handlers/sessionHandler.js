@@ -45,7 +45,6 @@ function sessionHandler(req, res) {
         }
         catch (error) {
             res.sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR);
-            console.log(req.body);
         }
     });
 }

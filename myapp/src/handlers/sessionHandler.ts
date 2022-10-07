@@ -38,6 +38,5 @@ export async function sessionHandler(req: Request, res: Response) {
     }
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
-    console.log(req.body);
   }
 }
