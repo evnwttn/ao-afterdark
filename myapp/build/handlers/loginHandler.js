@@ -13,21 +13,20 @@ exports.loginHandler = void 0;
 const types_1 = require("../types");
 function validate(body) {
     if (!body.email) {
-        console.log("no email");
         return false;
     }
     if (!body.password) {
-        console.log("no email");
         return false;
     }
     return true;
 }
 function loginHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const sessionInvalid = validate(req.body);
-        if (sessionInvalid) {
+        const validUser = validate(req.body);
+        if (!validUser) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
+        console.log(req.body);
     });
 }
 exports.loginHandler = loginHandler;
