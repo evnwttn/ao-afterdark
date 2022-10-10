@@ -1,6 +1,6 @@
 import * as express from "express";
 import { cors } from "./middleware";
-import { contactsHandler, sessionHandler } from "./handlers";
+import { loginHandler, contactsHandler, sessionHandler } from "./handlers";
 
 require("dotenv").config();
 
@@ -10,6 +10,7 @@ const port = process.env.PORT || 5000;
 app.use(cors);
 app.use(express.json());
 
+app.post("/login", loginHandler);
 app.post("/contact", contactsHandler);
 app.post("/session/", sessionHandler);
 app.put("/session/", sessionHandler);
