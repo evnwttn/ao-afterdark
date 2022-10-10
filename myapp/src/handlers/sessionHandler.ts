@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { FileDatabase } from "../services/database";
-import { Session } from "../types";
-import { StatusCodes } from "../types";
+import { Session, StatusCodes } from "../types";
 
 function validate(body: Partial<Session>): boolean {
   // validates there are less than 11 tracks
