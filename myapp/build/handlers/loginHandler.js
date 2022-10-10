@@ -10,6 +10,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loginHandler = void 0;
+function validate(body) {
+    if (!body.email) {
+        return false;
+        console.log("no email");
+    }
+    if (!body.password) {
+        return false;
+        console.log("no email");
+    }
+    return true;
+}
 function loginHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () { });
 }
