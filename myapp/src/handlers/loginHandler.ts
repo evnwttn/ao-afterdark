@@ -3,16 +3,21 @@ import { StatusCodes, UserLoginData } from "../types";
 
 function validate(body: Partial<UserLoginData>): boolean {
   if (!body.email) {
-    return false;
     console.log("no email");
+    return false;
   }
 
   if (!body.password) {
-    return false;
     console.log("no email");
+    return false;
   }
 
   return true;
 }
 
-export async function loginHandler(req: Request, res: Response) {}
+export async function loginHandler(req: Request, res: Response) {
+  const sessionInvalid = validate(req.body as Partial<UserLoginData>);
+  if (sessionInvalid) {
+    res.sendStatus(StatusCodes.BAD_REQUEST);
+  }
+}

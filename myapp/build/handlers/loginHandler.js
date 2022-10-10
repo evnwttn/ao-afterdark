@@ -10,19 +10,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loginHandler = void 0;
+const types_1 = require("../types");
 function validate(body) {
     if (!body.email) {
-        return false;
         console.log("no email");
+        return false;
     }
     if (!body.password) {
-        return false;
         console.log("no email");
+        return false;
     }
     return true;
 }
 function loginHandler(req, res) {
-    return __awaiter(this, void 0, void 0, function* () { });
+    return __awaiter(this, void 0, void 0, function* () {
+        const sessionInvalid = validate(req.body);
+        if (sessionInvalid) {
+            res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
+        }
+    });
 }
 exports.loginHandler = loginHandler;
 //# sourceMappingURL=loginHandler.js.map

@@ -20,7 +20,6 @@ export async function sessionHandler(req: Request, res: Response) {
   const sessionInvalid = validate(req.body as Partial<Session>);
   if (sessionInvalid) {
     res.sendStatus(StatusCodes.BAD_REQUEST);
-    console.log(`24`);
   }
 
   try {
