@@ -29,11 +29,11 @@ function loginHandler(req, res) {
         try {
             if (req.method === "POST") {
                 res.status(types_1.StatusCodes.OK).json(req.body);
-                console.log("post // new user");
+                console.log("new user");
             }
             else {
                 res.status(types_1.StatusCodes.OK).json(req.body);
-                console.log("put // returning user");
+                console.log("returning user");
             }
         }
         catch (error) {

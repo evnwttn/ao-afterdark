@@ -22,10 +22,10 @@ export async function loginHandler(req: Request, res: Response) {
   try {
     if (req.method === "POST") {
       res.status(StatusCodes.OK).json(req.body as UserLoginData);
-      console.log("post // new user");
+      console.log("new user");
     } else {
       res.status(StatusCodes.OK).json(req.body as UserLoginData);
-      console.log("put // returning user");
+      console.log("returning user");
     }
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
