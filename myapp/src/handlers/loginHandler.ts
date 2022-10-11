@@ -19,5 +19,9 @@ export async function loginHandler(req: Request, res: Response) {
     res.sendStatus(StatusCodes.BAD_REQUEST);
   }
 
-  console.log(req.body);
+  if (req.method === "POST") {
+    res.status(StatusCodes.OK).json(req.body as UserLoginData);
+  } else {
+    res.status(StatusCodes.OK).json(req.body as UserLoginData);
+  }
 }

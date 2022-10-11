@@ -26,7 +26,12 @@ function loginHandler(req, res) {
         if (!validUser) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
-        console.log(req.body);
+        if (req.method === "POST") {
+            res.status(types_1.StatusCodes.OK).json(req.body);
+        }
+        else {
+            res.status(types_1.StatusCodes.OK).json(req.body);
+        }
     });
 }
 exports.loginHandler = loginHandler;
