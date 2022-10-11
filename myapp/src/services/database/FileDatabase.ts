@@ -1,10 +1,18 @@
 import { Database } from ".";
-import { Session } from "../../types";
+import { Session, UserLoginData } from "../../types";
 import * as fs from "fs/promises";
 import * as os from "os";
 import { v4 as uuidv4 } from "uuid";
 
 export class FileDatabase extends Database {
+  async signUpUser(user: UserLoginData): Promise<UserLoginData> {
+    return user;
+  }
+
+  async logInUser(user: UserLoginData): Promise<UserLoginData> {
+    return user;
+  }
+
   async createSession(session: Omit<Session, "id">): Promise<Session> {
     const id = uuidv4();
     const _session: Session = {

@@ -38,6 +38,16 @@ const fs = __importStar(require("fs/promises"));
 const os = __importStar(require("os"));
 const uuid_1 = require("uuid");
 class FileDatabase extends _1.Database {
+    signUpUser(user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return user;
+        });
+    }
+    logInUser(user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return user;
+        });
+    }
     createSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = (0, uuid_1.v4)();
