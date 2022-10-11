@@ -13,7 +13,7 @@ function validate(body: Partial<UserLoginData>): boolean {
   return true;
 }
 
-export async function loginHandler(req: Request, res: Response) {
+export async function userHandler(req: Request, res: Response) {
   const validUser = validate(req.body as Partial<UserLoginData>);
   if (!validUser) {
     res.sendStatus(StatusCodes.BAD_REQUEST);
