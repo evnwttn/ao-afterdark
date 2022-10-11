@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userHandler = void 0;
+const database_1 = require("../services/database");
 const types_1 = require("../types");
 function validate(body) {
     if (!body.email) {
@@ -27,6 +28,7 @@ function userHandler(req, res) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
         try {
+            const db = new database_1.FileDatabase();
             if (req.method === "POST") {
                 res.status(types_1.StatusCodes.OK).json(req.body);
                 console.log("new user");

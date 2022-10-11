@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { FileDatabase } from "../services/database";
 import { StatusCodes, UserLoginData } from "../types";
 
 function validate(body: Partial<UserLoginData>): boolean {
@@ -20,6 +21,8 @@ export async function userHandler(req: Request, res: Response) {
   }
 
   try {
+    const db = new FileDatabase();
+
     if (req.method === "POST") {
       res.status(StatusCodes.OK).json(req.body as UserLoginData);
       console.log("new user");
