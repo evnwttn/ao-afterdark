@@ -26,11 +26,18 @@ function loginHandler(req, res) {
         if (!validUser) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
-        if (req.method === "POST") {
-            res.status(types_1.StatusCodes.OK).json(req.body);
+        try {
+            if (req.method === "POST") {
+                res.status(types_1.StatusCodes.OK).json(req.body);
+                console.log("post // new user");
+            }
+            else {
+                res.status(types_1.StatusCodes.OK).json(req.body);
+                console.log("put // returning user");
+            }
         }
-        else {
-            res.status(types_1.StatusCodes.OK).json(req.body);
+        catch (error) {
+            res.sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR);
         }
     });
 }
