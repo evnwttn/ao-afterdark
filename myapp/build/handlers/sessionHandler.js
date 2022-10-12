@@ -37,9 +37,8 @@ function sessionHandler(req, res) {
                 res.status(types_1.StatusCodes.OK).json(_session);
             }
             else {
-                yield db
-                    .updateSession(req.body)
-                    .then(() => res.status(types_1.StatusCodes.OK).json(req.body));
+                const _session = yield db.updateSession(req.body);
+                res.status(types_1.StatusCodes.OK).json(_session);
             }
         }
         catch (error) {

@@ -30,9 +30,9 @@ export async function sessionHandler(req: Request, res: Response) {
 
       res.status(StatusCodes.OK).json(_session as Session);
     } else {
-      await db
-        .updateSession(req.body as Session)
-        .then(() => res.status(StatusCodes.OK).json(req.body as Session));
+      const _session = await db.updateSession(req.body as Session);
+
+      res.status(StatusCodes.OK).json(_session as Session);
     }
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
