@@ -6,6 +6,8 @@ import { v4 as uuidv4 } from "uuid";
 
 export class FileDatabase extends Database {
   async signUpUser(user: UserLoginData): Promise<UserLoginData> {
+    await fs.appendFile("users.json", JSON.stringify(user) + os.EOL);
+
     return user;
   }
 

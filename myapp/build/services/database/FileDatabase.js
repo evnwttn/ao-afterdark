@@ -40,6 +40,7 @@ const uuid_1 = require("uuid");
 class FileDatabase extends _1.Database {
     signUpUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
+            yield fs.appendFile("users.json", JSON.stringify(user) + os.EOL);
             return user;
         });
     }
