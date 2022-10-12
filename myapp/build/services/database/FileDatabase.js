@@ -56,12 +56,6 @@ class FileDatabase extends _1.Database {
                 return user;
             }
             console.log("user exists");
-            // const index = userFiles.findIndex((file) => JSON.parse(file) === user);
-            // if (index === -1) {
-            //   console.log("user does not exist");
-            //   return user;
-            // }
-            // console.log(userFiles[index]);
             return user;
         });
     }

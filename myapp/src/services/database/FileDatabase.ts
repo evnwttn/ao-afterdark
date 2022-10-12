@@ -15,6 +15,7 @@ export class FileDatabase extends Database {
     const userDatabase = await fs.readFile("users.json", {
       encoding: "utf-8",
     });
+
     const userFiles = userDatabase.split(/\r?\n/);
     const index = userFiles.findIndex((file) => file === JSON.stringify(user));
     if (index === -1) {
@@ -23,14 +24,6 @@ export class FileDatabase extends Database {
     }
 
     console.log("user exists");
-
-    // const index = userFiles.findIndex((file) => JSON.parse(file) === user);
-    // if (index === -1) {
-    //   console.log("user does not exist");
-    //   return user;
-    // }
-
-    // console.log(userFiles[index]);
 
     return user;
   }
