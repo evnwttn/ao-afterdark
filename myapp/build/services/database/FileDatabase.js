@@ -49,6 +49,7 @@ class FileDatabase extends _1.Database {
             const userDatabase = yield fs.readFile("users.json", {
                 encoding: "utf-8",
             });
+            const userFiles = userDatabase.split(/\r?\n/);
             return user;
         });
     }

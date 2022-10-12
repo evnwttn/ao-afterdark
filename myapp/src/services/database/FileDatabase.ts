@@ -16,6 +16,8 @@ export class FileDatabase extends Database {
       encoding: "utf-8",
     });
 
+    const userFiles = userDatabase.split(/\r?\n/);
+
     return user;
   }
 
