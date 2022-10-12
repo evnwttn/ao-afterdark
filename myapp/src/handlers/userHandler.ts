@@ -28,8 +28,9 @@ export async function userHandler(req: Request, res: Response) {
 
       res.status(StatusCodes.OK).json(newUser as UserLoginData);
     } else {
+      const existingUser = await db.logInUser(req.body as UserLoginData);
+
       res.status(StatusCodes.OK).json(req.body as UserLoginData);
-      console.log("returning user");
     }
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);

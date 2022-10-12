@@ -34,8 +34,8 @@ function userHandler(req, res) {
                 res.status(types_1.StatusCodes.OK).json(newUser);
             }
             else {
+                const existingUser = yield db.logInUser(req.body);
                 res.status(types_1.StatusCodes.OK).json(req.body);
-                console.log("returning user");
             }
         }
         catch (error) {
