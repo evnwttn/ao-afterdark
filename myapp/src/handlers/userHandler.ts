@@ -24,13 +24,13 @@ export async function userHandler(req: Request, res: Response) {
     const db = new FileDatabase();
 
     if (req.method === "POST") {
-      const newUser = await db.signUpUser(req.body as UserLoginData);
+      const _user = await db.signUpUser(req.body as UserLoginData);
 
-      res.status(StatusCodes.OK).json(newUser as UserLoginData);
+      res.status(StatusCodes.OK).json(_user as UserLoginData);
     } else {
-      const existingUser = await db.logInUser(req.body as UserLoginData);
+      const _user = await db.logInUser(req.body as UserLoginData);
 
-      res.status(StatusCodes.OK).json(req.body as UserLoginData);
+      res.status(StatusCodes.OK).json(_user as UserLoginData);
     }
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);

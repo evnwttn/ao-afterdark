@@ -30,12 +30,12 @@ function userHandler(req, res) {
         try {
             const db = new database_1.FileDatabase();
             if (req.method === "POST") {
-                const newUser = yield db.signUpUser(req.body);
-                res.status(types_1.StatusCodes.OK).json(newUser);
+                const _user = yield db.signUpUser(req.body);
+                res.status(types_1.StatusCodes.OK).json(_user);
             }
             else {
-                const existingUser = yield db.logInUser(req.body);
-                res.status(types_1.StatusCodes.OK).json(req.body);
+                const _user = yield db.logInUser(req.body);
+                res.status(types_1.StatusCodes.OK).json(_user);
             }
         }
         catch (error) {
