@@ -46,6 +46,9 @@ class FileDatabase extends _1.Database {
     }
     logInUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
+            const userDatabase = yield fs.readFile("users.json", {
+                encoding: "utf-8",
+            });
             return user;
         });
     }

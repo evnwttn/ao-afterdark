@@ -12,6 +12,10 @@ export class FileDatabase extends Database {
   }
 
   async logInUser(user: UserLoginData): Promise<UserLoginData> {
+    const userDatabase = await fs.readFile("users.json", {
+      encoding: "utf-8",
+    });
+
     return user;
   }
 
