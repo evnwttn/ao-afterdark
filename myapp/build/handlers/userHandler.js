@@ -30,8 +30,8 @@ function userHandler(req, res) {
         try {
             const db = new database_1.FileDatabase();
             if (req.method === "POST") {
-                res.status(types_1.StatusCodes.OK).json(req.body);
-                console.log("new user");
+                const newUser = yield db.signUpUser(req.body);
+                res.status(types_1.StatusCodes.OK).json(newUser);
             }
             else {
                 res.status(types_1.StatusCodes.OK).json(req.body);

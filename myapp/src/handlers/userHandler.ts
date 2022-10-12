@@ -24,8 +24,9 @@ export async function userHandler(req: Request, res: Response) {
     const db = new FileDatabase();
 
     if (req.method === "POST") {
-      res.status(StatusCodes.OK).json(req.body as UserLoginData);
-      console.log("new user");
+      const newUser = await db.signUpUser(req.body as UserLoginData);
+
+      res.status(StatusCodes.OK).json(newUser as UserLoginData);
     } else {
       res.status(StatusCodes.OK).json(req.body as UserLoginData);
       console.log("returning user");
