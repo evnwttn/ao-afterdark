@@ -50,12 +50,14 @@ class FileDatabase extends _1.Database {
                 encoding: "utf-8",
             });
             const userFiles = userDatabase.split(/\r?\n/);
-            const index = userFiles.findIndex((file) => JSON.parse(file) === user);
-            if (index === -1) {
-                console.log("user does not exist");
-                return user;
-            }
-            console.log(userFiles[index]);
+            console.log(user);
+            console.log(JSON.parse(userFiles[0]));
+            // const index = userFiles.findIndex((file) => JSON.parse(file) === user);
+            // if (index === -1) {
+            //   console.log("user does not exist");
+            //   return user;
+            // }
+            // console.log(userFiles[index]);
             return user;
         });
     }
