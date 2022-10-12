@@ -16,9 +16,13 @@ export class FileDatabase extends Database {
       encoding: "utf-8",
     });
     const userFiles = userDatabase.split(/\r?\n/);
+    const index = userFiles.findIndex((file) => file === JSON.stringify(user));
+    if (index === -1) {
+      console.log("user does not exist");
+      return user;
+    }
 
-    console.log(user);
-    console.log(JSON.parse(userFiles[0]));
+    console.log("user exists");
 
     // const index = userFiles.findIndex((file) => JSON.parse(file) === user);
     // if (index === -1) {
