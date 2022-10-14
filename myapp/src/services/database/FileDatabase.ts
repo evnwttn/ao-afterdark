@@ -5,7 +5,9 @@ import * as os from "os";
 import { v4 as uuidv4 } from "uuid";
 
 export class FileDatabase extends Database {
-  async signUpUser(user: UserLoginData): Promise<UserLoginData> {
+  async signUpUser(
+    user: Omit<UserLoginData, "id" | "sessions">
+  ): Promise<UserLoginData> {
     const id = uuidv4();
     const _user: UserLoginData = {
       ...user,
@@ -22,6 +24,8 @@ export class FileDatabase extends Database {
     const userDatabase = await fs.readFile("users.json", {
       encoding: "utf-8",
     });
+
+    // will have to omit on in && return file from db
 
     const userFiles = userDatabase.split(/\r?\n/);
     const index = userFiles.findIndex((file) => file === JSON.stringify(user));
