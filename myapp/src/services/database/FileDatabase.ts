@@ -6,7 +6,14 @@ import { v4 as uuidv4 } from "uuid";
 
 export class FileDatabase extends Database {
   async signUpUser(user: UserLoginData): Promise<UserLoginData> {
-    await fs.appendFile("users.json", JSON.stringify(user) + os.EOL);
+    const id = uuidv4();
+    const _user: UserLoginData = {
+      ...user,
+      id,
+      sessions: [],
+    };
+
+    await fs.appendFile("users.json", JSON.stringify(_user) + os.EOL);
 
     return user;
   }
