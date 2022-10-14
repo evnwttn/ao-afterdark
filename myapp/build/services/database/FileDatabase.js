@@ -57,8 +57,8 @@ class FileDatabase extends _1.Database {
             if (index === -1) {
                 return user;
             }
-            console.log(`${user.email} + ${user.password}`);
-            return user;
+            const _user = JSON.parse(userFiles[index]);
+            return _user;
         });
     }
     createSession(session) {

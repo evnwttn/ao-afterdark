@@ -35,9 +35,9 @@ export class FileDatabase extends Database {
       return user;
     }
 
-    console.log(`${user.email} + ${user.password}`);
+    const _user = JSON.parse(userFiles[index]);
 
-    return user;
+    return _user;
   }
 
   async createSession(session: Omit<Session, "id">): Promise<Session> {
