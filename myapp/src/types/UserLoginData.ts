@@ -1,7 +1,7 @@
 import { Session } from "./Session";
 
 export interface UserLoginData {
-  email: string;
+  email: `${string}@${string}.${string}`;
   password: string;
   id: any;
   sessions: Session[];

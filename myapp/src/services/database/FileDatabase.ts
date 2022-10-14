@@ -31,7 +31,6 @@ export class FileDatabase extends Database {
     }
 
     console.log("user exists");
-
     return user;
   }
 
