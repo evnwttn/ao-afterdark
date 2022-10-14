@@ -36,7 +36,6 @@ exports.FileDatabaseUsers = void 0;
 const _1 = require(".");
 const fs = __importStar(require("fs/promises"));
 const os = __importStar(require("os"));
-const uuid_1 = require("uuid");
 class FileDatabaseUsers extends _1.Database {
     signUpUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -57,29 +56,6 @@ class FileDatabaseUsers extends _1.Database {
             }
             console.log("user exists");
             return user;
-        });
-    }
-    createSession(session) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const id = (0, uuid_1.v4)();
-            const _session = Object.assign(Object.assign({}, session), { id });
-            yield fs.appendFile("sessions.json", JSON.stringify(_session) + os.EOL);
-            return _session;
-        });
-    }
-    updateSession(session) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const sessionsDatabase = yield fs.readFile("sessions.json", {
-                encoding: "utf-8",
-            });
-            const sessionFiles = sessionsDatabase.split(/\r?\n/);
-            const index = sessionFiles.findIndex((file) => JSON.parse(file).id === session.id);
-            if (index === -1) {
-                return session;
-            }
-            sessionFiles[index] = JSON.stringify(session);
-            yield fs.writeFile("sessions.json", sessionFiles.join("\n"));
-            return session;
         });
     }
 }
