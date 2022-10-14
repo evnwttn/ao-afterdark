@@ -15,7 +15,7 @@ export class FileDatabase extends Database {
 
     await fs.appendFile("users.json", JSON.stringify(_user) + os.EOL);
 
-    return user;
+    return _user;
   }
 
   async logInUser(user: UserLoginData): Promise<UserLoginData> {
