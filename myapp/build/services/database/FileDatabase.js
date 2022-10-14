@@ -43,7 +43,7 @@ class FileDatabase extends _1.Database {
             const id = (0, uuid_1.v4)();
             const _user = Object.assign(Object.assign({}, user), { id, sessions: [] });
             yield fs.appendFile("users.json", JSON.stringify(_user) + os.EOL);
-            return user;
+            return _user;
         });
     }
     logInUser(user) {
@@ -51,6 +51,7 @@ class FileDatabase extends _1.Database {
             const userDatabase = yield fs.readFile("users.json", {
                 encoding: "utf-8",
             });
+            // will have to omit on in && return file from db
             const userFiles = userDatabase.split(/\r?\n/);
             const index = userFiles.findIndex((file) => file === JSON.stringify(user));
             if (index === -1) {
