@@ -51,14 +51,13 @@ class FileDatabase extends _1.Database {
             const userDatabase = yield fs.readFile("users.json", {
                 encoding: "utf-8",
             });
-            // will have to omit on in && return file from db
             const userFiles = userDatabase.split(/\r?\n/);
-            const index = userFiles.findIndex((file) => file === JSON.stringify(user));
+            const index = userFiles.findIndex((file) => JSON.parse(file).email === user.email &&
+                JSON.parse(file).password === user.password);
             if (index === -1) {
-                console.log("user does not exist");
                 return user;
             }
-            console.log("user exists");
+            console.log(`${user.email} + ${user.password}`);
             return user;
         });
     }
