@@ -86,6 +86,11 @@ class FileDatabase extends _1.Database {
     }
     retrieveSessions(id) {
         return __awaiter(this, void 0, void 0, function* () {
+            const sessionsDatabase = yield fs.readFile("sessions.json", {
+                encoding: "utf-8",
+            });
+            const sessionFiles = sessionsDatabase.split(/\r?\n/);
+            console.log(sessionFiles);
             console.log(id);
             return;
         });

@@ -68,6 +68,13 @@ export class FileDatabase extends Database {
   }
 
   async retrieveSessions(id: string): Promise<void> {
+    const sessionsDatabase = await fs.readFile("sessions.json", {
+      encoding: "utf-8",
+    });
+
+    const sessionFiles = sessionsDatabase.split(/\r?\n/);
+
+    console.log(sessionFiles);
     console.log(id);
 
     return;
