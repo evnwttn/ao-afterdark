@@ -34,8 +34,9 @@ app.use(express.json());
 app.post("/login", handlers_1.userHandler);
 app.put("/login", handlers_1.userHandler);
 app.post("/contact", handlers_1.contactsHandler);
-app.post("/session/", handlers_1.sessionHandler);
-app.put("/session/", handlers_1.sessionHandler);
+app.post("/session", handlers_1.sessionHandler);
+app.put("/session", handlers_1.sessionHandler);
+app.get("/session", handlers_1.sessionHandler);
 app.listen(port, () => {
     console.log(`app listening on port ${port}`);
 });

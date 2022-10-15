@@ -14,11 +14,9 @@ const database_1 = require("../services/database");
 const types_1 = require("../types");
 function validate(body) {
     var _a, _b, _c, _d;
-    // validates there are less than 11 tracks
     if ((_b = (_a = body.tracks) === null || _a === void 0 ? void 0 : _a.length) !== null && _b !== void 0 ? _b : 0 > 11) {
         return false;
     }
-    // validates there are less than 10 session parameters
     if ((_d = (_c = body.parameters) === null || _c === void 0 ? void 0 : _c.length) !== null && _d !== void 0 ? _d : 0 > 10) {
         return false;
     }
@@ -32,13 +30,21 @@ function sessionHandler(req, res) {
         }
         try {
             const db = new database_1.FileDatabase();
-            if (req.method === "POST") {
-                const _session = yield db.createSession(req.body);
-                res.status(types_1.StatusCodes.OK).json(_session);
-            }
-            else {
-                const _session = yield db.updateSession(req.body);
-                res.status(types_1.StatusCodes.OK).json(_session);
+            switch (req.method) {
+                case "POST":
+                    const newSession = yield db.createSession(req.body);
+                    res.status(types_1.StatusCodes.OK).json(newSession);
+                    break;
+                case "PUT":
+                    const updatedSession = yield db.updateSession(req.body);
+                    res.status(types_1.StatusCodes.OK).json(updatedSession);
+                    break;
+                case "GET":
+                    console.log(req.body);
+                    res.status(types_1.StatusCodes.OK).json(req.body);
+                    break;
+                default:
+                    break;
             }
         }
         catch (error) {

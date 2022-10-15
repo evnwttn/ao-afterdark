@@ -3,12 +3,10 @@ import { FileDatabase } from "../services/database";
 import { Session, StatusCodes } from "../types";
 
 function validate(body: Partial<Session>): boolean {
-  // validates there are less than 11 tracks
   if (body.tracks?.length ?? 0 > 11) {
     return false;
   }
 
-  // validates there are less than 10 session parameters
   if (body.parameters?.length ?? 0 > 10) {
     return false;
   }
@@ -25,14 +23,24 @@ export async function sessionHandler(req: Request, res: Response) {
   try {
     const db = new FileDatabase();
 
-    if (req.method === "POST") {
-      const _session = await db.createSession(req.body as Session);
+    switch (req.method) {
+      case "POST":
+        const newSession = await db.createSession(req.body as Session);
+        res.status(StatusCodes.OK).json(newSession as Session);
 
-      res.status(StatusCodes.OK).json(_session as Session);
-    } else {
-      const _session = await db.updateSession(req.body as Session);
+        break;
+      case "PUT":
+        const updatedSession = await db.updateSession(req.body as Session);
+        res.status(StatusCodes.OK).json(updatedSession as Session);
 
-      res.status(StatusCodes.OK).json(_session as Session);
+        break;
+      case "GET":
+        console.log(req.body);
+        res.status(StatusCodes.OK).json(req.body);
+
+        break;
+      default:
+        break;
     }
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
