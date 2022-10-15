@@ -6,5 +6,5 @@ export interface Session {
   tracks: Track[];
   parameters: string[];
   id: string;
-  users: string;
+  users: string[];
 }
