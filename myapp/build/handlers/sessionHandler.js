@@ -24,9 +24,11 @@ function validate(body) {
 }
 function sessionHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const sessionInvalid = validate(req.body);
-        if (sessionInvalid) {
-            res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
+        if (req.method !== "GET") {
+            const sessionInvalid = validate(req.body);
+            if (sessionInvalid) {
+                res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
+            }
         }
         try {
             const db = new database_1.FileDatabase();
@@ -41,7 +43,6 @@ function sessionHandler(req, res) {
                     break;
                 case "GET":
                     console.log(req.body);
-                    res.status(types_1.StatusCodes.OK).json(req.body);
                     break;
                 default:
                     break;

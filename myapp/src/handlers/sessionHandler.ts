@@ -15,9 +15,11 @@ function validate(body: Partial<Session>): boolean {
 }
 
 export async function sessionHandler(req: Request, res: Response) {
-  const sessionInvalid = validate(req.body as Partial<Session>);
-  if (sessionInvalid) {
-    res.sendStatus(StatusCodes.BAD_REQUEST);
+  if (req.method !== "GET") {
+    const sessionInvalid = validate(req.body as Partial<Session>);
+    if (sessionInvalid) {
+      res.sendStatus(StatusCodes.BAD_REQUEST);
+    }
   }
 
   try {
@@ -36,7 +38,6 @@ export async function sessionHandler(req: Request, res: Response) {
         break;
       case "GET":
         console.log(req.body);
-        res.status(StatusCodes.OK).json(req.body);
 
         break;
       default:
