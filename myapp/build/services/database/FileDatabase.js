@@ -84,6 +84,12 @@ class FileDatabase extends _1.Database {
             return session;
         });
     }
+    retrieveSessions(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(id);
+            return;
+        });
+    }
 }
 exports.FileDatabase = FileDatabase;
 //# sourceMappingURL=FileDatabase.js.map

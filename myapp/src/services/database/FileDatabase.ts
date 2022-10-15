@@ -66,4 +66,10 @@ export class FileDatabase extends Database {
 
     return session;
   }
+
+  async retrieveSessions(id: string): Promise<void> {
+    console.log(id);
+
+    return;
+  }
 }
