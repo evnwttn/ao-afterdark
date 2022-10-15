@@ -42,7 +42,7 @@ function sessionHandler(req, res) {
                     res.status(types_1.StatusCodes.OK).json(updatedSession);
                     break;
                 case "GET":
-                    console.log(req.body);
+                    console.log(req.query.id);
                     break;
                 default:
                     break;

@@ -37,7 +37,7 @@ export async function sessionHandler(req: Request, res: Response) {
 
         break;
       case "GET":
-        console.log(req.body);
+        console.log(req.query.id);
 
         break;
       default:
