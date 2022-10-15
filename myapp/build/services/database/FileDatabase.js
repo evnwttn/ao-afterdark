@@ -41,7 +41,7 @@ class FileDatabase extends _1.Database {
     signUpUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = (0, uuid_1.v4)();
-            const _user = Object.assign(Object.assign({}, user), { id, sessions: [] });
+            const _user = Object.assign(Object.assign({}, user), { id });
             yield fs.appendFile("users.json", JSON.stringify(_user) + os.EOL);
             return _user;
         });
