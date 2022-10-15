@@ -37,7 +37,8 @@ export async function sessionHandler(req: Request, res: Response) {
 
         break;
       case "GET":
-        console.log(req.query.id);
+        const userSessions = await db.retrieveSessions(req.query.id as string);
+        res.status(StatusCodes.OK).json(req.query.id as string);
 
         break;
       default:

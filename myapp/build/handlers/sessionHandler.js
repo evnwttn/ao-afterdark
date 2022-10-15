@@ -42,7 +42,8 @@ function sessionHandler(req, res) {
                     res.status(types_1.StatusCodes.OK).json(updatedSession);
                     break;
                 case "GET":
-                    console.log(req.query.id);
+                    const userSessions = yield db.retrieveSessions(req.query.id);
+                    res.status(types_1.StatusCodes.OK).json(req.query.id);
                     break;
                 default:
                     break;
