@@ -1,10 +1,10 @@
 import { Track } from "./Track";
 
 export interface Session {
-    sessionTitle: string;
-    author: string;
-    tracks: Track[];
-    parameters: string[];
-    id: any;
+  sessionTitle: string;
+  author: string;
+  tracks: Track[];
+  parameters: string[];
+  id: string;
+  users: string;
 }
-
