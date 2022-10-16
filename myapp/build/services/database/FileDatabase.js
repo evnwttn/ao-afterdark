@@ -84,12 +84,17 @@ class FileDatabase extends _1.Database {
             return session;
         });
     }
-    retrieveSessions(id) {
+    retrieveSessions(user) {
         return __awaiter(this, void 0, void 0, function* () {
             const sessionsDatabase = yield fs.readFile("sessions.json", {
                 encoding: "utf-8",
             });
             const sessionFiles = sessionsDatabase.split(/\r?\n/);
+            const index = sessionFiles.findIndex((file) => JSON.parse(file).user === user);
+            if (index === -1) {
+                return;
+            }
+            console.log(index);
             return;
         });
     }

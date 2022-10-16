@@ -67,12 +67,20 @@ export class FileDatabase extends Database {
     return session;
   }
 
-  async retrieveSessions(id: string): Promise<void> {
+  async retrieveSessions(user: string): Promise<void> {
     const sessionsDatabase = await fs.readFile("sessions.json", {
       encoding: "utf-8",
     });
 
     const sessionFiles = sessionsDatabase.split(/\r?\n/);
+    const index = sessionFiles.findIndex(
+      (file) => JSON.parse(file).user === user
+    );
+    if (index === -1) {
+      return;
+    }
+
+    console.log(index);
 
     return;
   }
