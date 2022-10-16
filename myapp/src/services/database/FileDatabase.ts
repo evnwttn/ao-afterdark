@@ -74,15 +74,6 @@ export class FileDatabase extends Database {
 
     const sessionFiles = sessionsDatabase.split(/\r?\n/);
 
-    sessionFiles.map((file) => {
-      try {
-        const filez = JSON.parse(file);
-        console.log(filez);
-      } catch (error) {
-        console.log(error);
-      }
-    });
-
     return;
   }
 }
