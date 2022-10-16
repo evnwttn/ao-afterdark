@@ -91,7 +91,13 @@ class FileDatabase extends _1.Database {
             });
             const sessionFiles = sessionsDatabase.split(/\r?\n/);
             sessionFiles.map((file) => {
-                console.log(JSON.parse(file).users);
+                try {
+                    const filez = JSON.parse(file);
+                    console.log(filez);
+                }
+                catch (error) {
+                    console.log(error);
+                }
             });
             return;
         });
