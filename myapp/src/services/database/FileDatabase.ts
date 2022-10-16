@@ -73,9 +73,9 @@ export class FileDatabase extends Database {
     });
 
     const sessionFiles = sessionsDatabase.split(/\r?\n/);
-
-    console.log(sessionFiles);
-    console.log(id);
+    sessionFiles.map((file) => {
+      console.log(JSON.parse(file).users);
+    });
 
     return;
   }

@@ -90,8 +90,9 @@ class FileDatabase extends _1.Database {
                 encoding: "utf-8",
             });
             const sessionFiles = sessionsDatabase.split(/\r?\n/);
-            console.log(sessionFiles);
-            console.log(id);
+            sessionFiles.map((file) => {
+                console.log(JSON.parse(file).users);
+            });
             return;
         });
     }
