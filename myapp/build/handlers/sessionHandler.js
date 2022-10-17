@@ -43,7 +43,7 @@ function sessionHandler(req, res) {
                     break;
                 case "GET":
                     const userSessions = yield db.retrieveSessions(req.query.id);
-                    res.status(types_1.StatusCodes.OK).json(req.query.id);
+                    res.status(types_1.StatusCodes.OK).json(userSessions);
                     break;
                 default:
                     break;
