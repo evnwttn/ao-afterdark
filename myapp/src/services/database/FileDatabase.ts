@@ -73,20 +73,13 @@ export class FileDatabase extends Database {
     });
 
     const sessionFiles = sessionsDatabase.split(/\r?\n/);
-    let invalid = 0;
 
-    const filterByUser = (session: string) => {
-      if (JSON.parse(session).user === user) {
-        return true;
-      }
-      invalid++;
-      return false;
-    };
+    function filterItems(arr: string[]) {
+      return arr.filter((file: string) => JSON.parse(file).user === user);
+    }
 
-    const filteredSessions = sessionFiles.filter(filterByUser);
-
-    console.log(filteredSessions);
-    console.log(invalid);
+    const arrayz = filterItems(sessionFiles);
+    console.log(arrayz);
 
     return;
   }
