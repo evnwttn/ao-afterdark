@@ -74,7 +74,7 @@ export class FileDatabase extends Database {
 
     const sessionFiles = sessionsDatabase.split(/\r?\n/);
 
-    const arr: any[] = [];
+    const arr: Session[] = [];
 
     try {
       sessionFiles.map((file) => {
