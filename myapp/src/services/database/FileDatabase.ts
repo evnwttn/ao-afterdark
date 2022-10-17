@@ -67,7 +67,7 @@ export class FileDatabase extends Database {
     return session;
   }
 
-  async retrieveSessions(user: string): Promise<void> {
+  async retrieveSessions(user: string): Promise<Session[]> {
     const sessionsDatabase = await fs.readFile("sessions.json", {
       encoding: "utf-8",
     });
@@ -85,6 +85,6 @@ export class FileDatabase extends Database {
       // leaving blank until adequate time to troubleshoot JSON error
     }
 
-    return;
+    return userSessions;
   }
 }

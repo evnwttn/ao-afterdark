@@ -101,7 +101,7 @@ class FileDatabase extends _1.Database {
             catch (error) {
                 // leaving blank until adequate time to troubleshoot JSON error
             }
-            return;
+            return userSessions;
         });
     }
 }

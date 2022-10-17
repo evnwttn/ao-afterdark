@@ -8,5 +8,5 @@ export abstract class Database {
 
   abstract createSession(session: Session): Promise<Session>;
   abstract updateSession(session: Session): Promise<Session>;
-  abstract retrieveSessions(user: string): Promise<void>;
+  abstract retrieveSessions(user: string): Promise<Session[]>;
 }
