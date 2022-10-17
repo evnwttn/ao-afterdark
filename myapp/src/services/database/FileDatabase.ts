@@ -74,13 +74,6 @@ export class FileDatabase extends Database {
 
     const sessionFiles = sessionsDatabase.split(/\r?\n/);
 
-    function filterItems(arr: string[]) {
-      return arr.filter((file: string) => JSON.parse(file).user === user);
-    }
-
-    const arrayz = filterItems(sessionFiles);
-    console.log(arrayz);
-
     return;
   }
 }
