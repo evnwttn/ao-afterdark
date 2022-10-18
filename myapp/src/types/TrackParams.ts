@@ -1,4 +1,5 @@
 export interface TrackParams {
-    parameter: string;
-    comment: string;
+  parameter: string;
+  colour: any;
+  comment: string;
 }
