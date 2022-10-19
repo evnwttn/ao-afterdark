@@ -90,16 +90,14 @@ class FileDatabase extends _1.Database {
                 encoding: "utf-8",
             });
             const sessionFiles = sessionsDatabase.split(/\r?\n/);
-            const userSessions = [];
+            let userSessions = [];
             try {
-                sessionFiles.map((file) => {
-                    if (JSON.parse(file).user === user) {
-                        userSessions.push(JSON.parse(file));
-                    }
-                });
+                userSessions = sessionFiles
+                    .map((file) => JSON.parse(file))
+                    .filter((file) => file.user === user);
             }
             catch (error) {
-                // leaving blank until adequate time to troubleshoot JSON error
+                console.log(error);
             }
             return userSessions;
         });

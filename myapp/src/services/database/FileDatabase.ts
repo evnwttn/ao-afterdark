@@ -3,6 +3,7 @@ import { Session, UserLoginData } from "../../types";
 import * as fs from "fs/promises";
 import * as os from "os";
 import { v4 as uuidv4 } from "uuid";
+import { json } from "stream/consumers";
 
 export class FileDatabase extends Database {
   async signUpUser(user: Omit<UserLoginData, "id">): Promise<UserLoginData> {
@@ -73,16 +74,14 @@ export class FileDatabase extends Database {
     });
 
     const sessionFiles = sessionsDatabase.split(/\r?\n/);
-    const userSessions: Session[] = [];
+    let userSessions: Session[] = [];
 
     try {
-      sessionFiles.map((file) => {
-        if (JSON.parse(file).user === user) {
-          userSessions.push(JSON.parse(file));
-        }
-      });
+      userSessions = sessionFiles
+        .map((file) => JSON.parse(file))
+        .filter((file) => file.user === user);
     } catch (error) {
-      // leaving blank until adequate time to troubleshoot JSON error
+      console.log(error);
     }
 
     return userSessions;
