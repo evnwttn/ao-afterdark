@@ -83,7 +83,7 @@ export class FileDatabase extends Database {
         }
       });
     } catch (error) {
-      console.log(error);
+      //
     }
 
     let testSessions: Session[] = [];
@@ -93,7 +93,7 @@ export class FileDatabase extends Database {
         .map((file) => JSON.parse(file))
         .filter((file) => file.users === user);
     } catch (error) {
-      //
+      console.log(error);
     }
 
     console.log(testSessions);

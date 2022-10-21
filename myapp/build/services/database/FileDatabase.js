@@ -99,7 +99,7 @@ class FileDatabase extends _1.Database {
                 });
             }
             catch (error) {
-                console.log(error);
+                //
             }
             let testSessions = [];
             try {
@@ -108,7 +108,7 @@ class FileDatabase extends _1.Database {
                     .filter((file) => file.users === user);
             }
             catch (error) {
-                //
+                console.log(error);
             }
             console.log(testSessions);
             return userSessions;
