@@ -3,7 +3,6 @@ import { Session, UserLoginData } from "../../types";
 import * as fs from "fs/promises";
 import * as os from "os";
 import { v4 as uuidv4 } from "uuid";
-import { json } from "stream/consumers";
 
 export class FileDatabase extends Database {
   async signUpUser(user: Omit<UserLoginData, "id">): Promise<UserLoginData> {
