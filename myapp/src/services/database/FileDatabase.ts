@@ -77,12 +77,24 @@ export class FileDatabase extends Database {
     let userSessions: Session[] = [];
 
     try {
-      userSessions = sessionFiles
-        .map((file) => JSON.parse(file))
-        .filter((file) => file.user === user);
+      sessionFiles.map((file) => {
+        if (JSON.parse(file).user === user) {
+          userSessions.push(JSON.parse(file));
+        }
+      });
     } catch (error) {
       console.log(error);
     }
+
+    // try {
+    //   userSessions = sessionFiles
+    //     .map((file) => JSON.parse(file))
+    //     .filter((file) => file.users === user);
+    // } catch (error) {
+    //   //
+    // }
+
+    console.log(userSessions);
 
     return userSessions;
   }
