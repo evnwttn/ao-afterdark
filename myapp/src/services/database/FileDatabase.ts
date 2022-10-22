@@ -85,17 +85,15 @@ export class FileDatabase extends Database {
       //
     }
 
-    let testSessions: Session[] = [];
+    // let testSessions: Session[] = [];
 
-    try {
-      testSessions = sessionFiles
-        .map((file) => JSON.parse(file))
-        .filter((file) => file.users === user);
-    } catch (error) {
-      console.log(error);
-    }
-
-    console.log(testSessions);
+    // try {
+    //   testSessions = sessionFiles
+    //     .map((file) => JSON.parse(file))
+    //     .filter((file) => file.users === user);
+    // } catch (error) {
+    //   console.log(error);
+    // }
 
     return userSessions;
   }
