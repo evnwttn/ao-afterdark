@@ -23,8 +23,7 @@ function validate(body) {
 }
 function setCookie() {
     let baseDate = new Date();
-    let expirationDate = baseDate.setDate(baseDate.getDate());
-    console.log(new Date(expirationDate));
+    let expirationDate = baseDate.setDate(baseDate.getDate() + 7);
 }
 function userHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {

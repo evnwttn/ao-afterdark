@@ -16,8 +16,7 @@ function validate(body: Partial<UserLoginData>): boolean {
 
 function setCookie() {
   let baseDate = new Date();
-  let expirationDate = baseDate.setDate(baseDate.getDate());
-  console.log(new Date(expirationDate));
+  let expirationDate = baseDate.setDate(baseDate.getDate() + 7);
 }
 
 export async function userHandler(req: Request, res: Response) {
