@@ -21,13 +21,18 @@ function validate(body) {
     }
     return true;
 }
-function setCookie(name, value) { }
+function setCookie() {
+    let baseDate = new Date();
+    let expirationDate = baseDate.setDate(baseDate.getDate());
+    console.log(new Date(expirationDate));
+}
 function userHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const validUser = validate(req.body);
         if (!validUser) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
+        setCookie();
         try {
             const db = new database_1.FileDatabase();
             if (req.method === "POST") {

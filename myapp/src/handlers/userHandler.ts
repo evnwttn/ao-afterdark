@@ -14,13 +14,19 @@ function validate(body: Partial<UserLoginData>): boolean {
   return true;
 }
 
-function setCookie(name: string, value: string) {}
+function setCookie() {
+  let baseDate = new Date();
+  let expirationDate = baseDate.setDate(baseDate.getDate());
+  console.log(new Date(expirationDate));
+}
 
 export async function userHandler(req: Request, res: Response) {
   const validUser = validate(req.body as Partial<UserLoginData>);
   if (!validUser) {
     res.sendStatus(StatusCodes.BAD_REQUEST);
   }
+
+  setCookie();
 
   try {
     const db = new FileDatabase();
