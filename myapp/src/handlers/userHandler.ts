@@ -14,11 +14,11 @@ function validate(body: Partial<UserLoginData>): boolean {
   return true;
 }
 
-function setCookie() {
+function setExpirationDate(): string {
   let date = new Date();
   date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000);
 
-  console.log(date.toUTCString());
+  return date.toUTCString();
 }
 
 export async function userHandler(req: Request, res: Response) {
@@ -27,9 +27,7 @@ export async function userHandler(req: Request, res: Response) {
     res.sendStatus(StatusCodes.BAD_REQUEST);
   }
 
-  setCookie();
-
-  res.setHeader("Set-Cookie", ["foo=bar", "bar=baz"]);
+  // res.setHeader("Set-Cookie", ["id=testy", setExpirationDate()]);
 
   try {
     const db = new FileDatabase();

@@ -21,10 +21,10 @@ function validate(body) {
     }
     return true;
 }
-function setCookie() {
+function setExpirationDate() {
     let date = new Date();
     date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000);
-    console.log(date.toUTCString());
+    return date.toUTCString();
 }
 function userHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -32,8 +32,7 @@ function userHandler(req, res) {
         if (!validUser) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
-        setCookie();
-        res.setHeader("Set-Cookie", ["foo=bar", "bar=baz"]);
+        // res.setHeader("Set-Cookie", ["id=testy", setExpirationDate()]);
         try {
             const db = new database_1.FileDatabase();
             if (req.method === "POST") {
