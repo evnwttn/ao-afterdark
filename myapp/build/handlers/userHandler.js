@@ -22,8 +22,9 @@ function validate(body) {
     return true;
 }
 function setCookie() {
-    let baseDate = new Date();
-    let expirationDate = baseDate.setDate(baseDate.getDate() + 7);
+    let date = new Date();
+    date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000);
+    console.log(date.toUTCString());
 }
 function userHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -32,6 +33,7 @@ function userHandler(req, res) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
         setCookie();
+        res.setHeader("Set-Cookie", ["foo=bar", "bar=baz"]);
         try {
             const db = new database_1.FileDatabase();
             if (req.method === "POST") {

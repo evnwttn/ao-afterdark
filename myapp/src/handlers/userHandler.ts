@@ -15,8 +15,10 @@ function validate(body: Partial<UserLoginData>): boolean {
 }
 
 function setCookie() {
-  let baseDate = new Date();
-  let expirationDate = baseDate.setDate(baseDate.getDate() + 7);
+  let date = new Date();
+  date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000);
+
+  console.log(date.toUTCString());
 }
 
 export async function userHandler(req: Request, res: Response) {
@@ -26,6 +28,8 @@ export async function userHandler(req: Request, res: Response) {
   }
 
   setCookie();
+
+  res.setHeader("Set-Cookie", ["foo=bar", "bar=baz"]);
 
   try {
     const db = new FileDatabase();
