@@ -101,16 +101,14 @@ class FileDatabase extends _1.Database {
             catch (error) {
                 //
             }
-            let testSessions = [];
-            try {
-                testSessions = sessionFiles
-                    .map((file) => JSON.parse(file))
-                    .filter((file) => file.users === user);
-            }
-            catch (error) {
-                console.log(error);
-            }
-            console.log(testSessions);
+            // let testSessions: Session[] = [];
+            // try {
+            //   testSessions = sessionFiles
+            //     .map((file) => JSON.parse(file))
+            //     .filter((file) => file.users === user);
+            // } catch (error) {
+            //   console.log(error);
+            // }
             return userSessions;
         });
     }

@@ -21,6 +21,7 @@ function validate(body) {
     }
     return true;
 }
+function setCookie(name, value) { }
 function userHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const validUser = validate(req.body);
