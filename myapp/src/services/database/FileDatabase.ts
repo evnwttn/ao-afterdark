@@ -85,7 +85,14 @@ export class FileDatabase extends Database {
       //
     }
 
-    let testSessions: Session[] = [];
+    // let testSessions: Session[] = [];
+
+    try {
+      let filez = sessionFiles.map((file) => JSON.parse(file));
+      console.log(filez);
+    } catch (error) {
+      console.log(error);
+    }
 
     // try {
     //   testSessions = sessionFiles
