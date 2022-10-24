@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from "express";
 
 //@ts-ignore
 export function cors(req: Request, res: Response, next: NextFunction) {

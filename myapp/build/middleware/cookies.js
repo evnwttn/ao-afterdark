@@ -9,8 +9,11 @@ function setExpirationDate() {
 }
 //@ts-ignore
 function cookies(req, res, next) {
+    const id = (0, uuid_1.v4)();
+    const date = setExpirationDate();
     res.set({
-        "Set-Cookie": `id=${(0, uuid_1.v4)()}; expires=${setExpirationDate()}`,
+        "Access-Control-Allow-Credentials": "true",
+        "Set-Cookie": `id=${id}; expires=${date}`,
     });
     next();
 }
