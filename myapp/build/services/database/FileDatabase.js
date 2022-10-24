@@ -101,7 +101,7 @@ class FileDatabase extends _1.Database {
             catch (error) {
                 //
             }
-            // let testSessions: Session[] = [];
+            let testSessions = [];
             // try {
             //   testSessions = sessionFiles
             //     .map((file) => JSON.parse(file))

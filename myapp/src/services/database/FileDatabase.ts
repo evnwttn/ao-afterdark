@@ -85,7 +85,7 @@ export class FileDatabase extends Database {
       //
     }
 
-    // let testSessions: Session[] = [];
+    let testSessions: Session[] = [];
 
     // try {
     //   testSessions = sessionFiles

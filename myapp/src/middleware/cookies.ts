@@ -8,17 +8,11 @@ function setExpirationDate(): string {
   return date.toUTCString();
 }
 
-function setId(): string {
-  const id = uuidv4();
-
-  return id;
-}
-
 //@ts-ignore
 export function cookies(req: Request, res: Response, next: NextFunction) {
-  //   res.setHeader("Set-Cookie", [setId(), setExpirationDate()]);
-
-  console.log(`Set-Cookie, [${setId()}, ${setExpirationDate()}]`);
+  res.set({
+    "Set-Cookie": `id=${uuidv4()}; expires=${setExpirationDate()}`,
+  });
 
   next();
 }

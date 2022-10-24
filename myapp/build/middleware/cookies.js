@@ -7,14 +7,11 @@ function setExpirationDate() {
     date.setTime(date.getTime() + 2 * 24 * 60 * 60 * 1000);
     return date.toUTCString();
 }
-function setId() {
-    const id = (0, uuid_1.v4)();
-    return id;
-}
 //@ts-ignore
 function cookies(req, res, next) {
-    //   res.setHeader("Set-Cookie", [setId(), setExpirationDate()]);
-    console.log(`Set-Cookie, [${setId()}, ${setExpirationDate()}]`);
+    res.set({
+        "Set-Cookie": `id=${(0, uuid_1.v4)()}; expires=${setExpirationDate()}`,
+    });
     next();
 }
 exports.cookies = cookies;
