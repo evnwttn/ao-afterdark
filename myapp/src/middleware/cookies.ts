@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { v4 as uuidv4 } from "uuid";
 
 function setExpirationDate(): string {
   let date = new Date();
@@ -8,5 +9,7 @@ function setExpirationDate(): string {
 }
 
 export function cookies(req: Request, res: Response) {
-  res.setHeader("Set-Cookie", ["id=testy", setExpirationDate()]);
+  const id = uuidv4();
+
+  res.setHeader("Set-Cookie", [`id=${id}`, setExpirationDate()]);
 }
