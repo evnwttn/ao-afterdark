@@ -13,10 +13,10 @@ export function cookies(req: Request, res: Response, next: NextFunction) {
   const id = uuidv4();
   const date = setExpirationDate();
 
-  res.set({
-    "Access-Control-Allow-Credentials": "true",
-    "Set-Cookie": `id=${id}; expires=${date}`,
-  });
+  // res.set({
+  //   "Access-Control-Allow-Credentials": "true",
+  //   "Set-Cookie": `id=${id}; expires=${date}`,
+  // });
 
   next();
 }
