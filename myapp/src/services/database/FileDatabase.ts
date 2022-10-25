@@ -73,16 +73,9 @@ export class FileDatabase extends Database {
     });
 
     const sessionFiles = sessionsDatabase.split(/\r?\n/);
-    const userSessions: Session[] = [];
-
-    try {
-      const userSessions = sessionFiles
-        .map((file) => JSON.parse(file))
-        .filter((file) => file.user === user);
-      console.log(userSessions);
-    } catch (error) {
-      console.log(error);
-    }
+    const userSessions = sessionFiles
+      .map((file) => JSON.parse(file))
+      .filter((file) => file.user === user);
 
     return userSessions;
   }
