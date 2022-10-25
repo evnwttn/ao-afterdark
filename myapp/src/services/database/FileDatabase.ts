@@ -43,7 +43,7 @@ export class FileDatabase extends Database {
       ...session,
       id,
     };
-    await fs.appendFile("sessions.json", JSON.stringify(_session) + os.EOL);
+    await fs.appendFile("sessions.json", JSON.stringify(_session) + "\n");
 
     return _session;
   }
