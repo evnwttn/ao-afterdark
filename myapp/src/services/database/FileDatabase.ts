@@ -73,31 +73,16 @@ export class FileDatabase extends Database {
     });
 
     const sessionFiles = sessionsDatabase.split(/\r?\n/);
-    let userSessions: Session[] = [];
+    const userSessions: Session[] = [];
 
     try {
-      sessionFiles.map((file) => console.log(JSON.parse(file)));
+      const userSessions = sessionFiles
+        .map((file) => JSON.parse(file))
+        .filter((file) => file.user === user);
+      console.log(userSessions);
     } catch (error) {
       console.log(error);
     }
-
-    // try {
-    //   userSessions = sessionFiles
-    //     .map((file) => JSON.parse(file))
-    //     .filter((file) => file.users === user);
-    // } catch (error) {
-    //   console.log(error);
-    // }
-
-    // try {
-    //   sessionFiles.map((file) => {
-    //     if (JSON.parse(file).user === user) {
-    //       userSessions.push(JSON.parse(file));
-    //     }
-    //   });
-    // } catch (error) {
-    //   //
-    // }
 
     return userSessions;
   }

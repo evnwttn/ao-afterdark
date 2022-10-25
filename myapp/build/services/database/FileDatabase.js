@@ -90,29 +90,16 @@ class FileDatabase extends _1.Database {
                 encoding: "utf-8",
             });
             const sessionFiles = sessionsDatabase.split(/\r?\n/);
-            let userSessions = [];
+            const userSessions = [];
             try {
-                sessionFiles.map((file) => console.log(JSON.parse(file)));
+                const userSessions = sessionFiles
+                    .map((file) => JSON.parse(file))
+                    .filter((file) => file.user === user);
+                console.log(userSessions);
             }
             catch (error) {
                 console.log(error);
             }
-            // try {
-            //   userSessions = sessionFiles
-            //     .map((file) => JSON.parse(file))
-            //     .filter((file) => file.users === user);
-            // } catch (error) {
-            //   console.log(error);
-            // }
-            // try {
-            //   sessionFiles.map((file) => {
-            //     if (JSON.parse(file).user === user) {
-            //       userSessions.push(JSON.parse(file));
-            //     }
-            //   });
-            // } catch (error) {
-            //   //
-            // }
             return userSessions;
         });
     }
