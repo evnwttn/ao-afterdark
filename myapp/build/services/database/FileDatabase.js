@@ -80,7 +80,7 @@ class FileDatabase extends _1.Database {
                 return session;
             }
             sessionFiles[index] = JSON.stringify(session);
-            yield fs.writeFile("sessions.json", sessionFiles.join("\n"));
+            yield fs.writeFile("sessions.json", sessionFiles.join("\n") + os.EOL);
             return session;
         });
     }

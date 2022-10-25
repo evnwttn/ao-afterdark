@@ -62,7 +62,7 @@ export class FileDatabase extends Database {
     }
 
     sessionFiles[index] = JSON.stringify(session);
-    await fs.writeFile("sessions.json", sessionFiles.join("\n"));
+    await fs.writeFile("sessions.json", sessionFiles.join("\n") + os.EOL);
 
     return session;
   }
