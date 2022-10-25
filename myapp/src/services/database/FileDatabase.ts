@@ -43,7 +43,7 @@ export class FileDatabase extends Database {
       ...session,
       id,
     };
-    await fs.appendFile("sessions.json", JSON.stringify(_session) + "\n");
+    await fs.appendFile("sessions.json", JSON.stringify(_session) + os.EOL);
 
     return _session;
   }
@@ -83,6 +83,8 @@ export class FileDatabase extends Database {
       console.log(error);
     }
 
+    console.log(userSessions);
+
     // try {
     //   sessionFiles.map((file) => {
     //     if (JSON.parse(file).user === user) {
@@ -92,8 +94,6 @@ export class FileDatabase extends Database {
     // } catch (error) {
     //   //
     // }
-
-    // let testSessions: Session[] = [];
 
     return userSessions;
   }
