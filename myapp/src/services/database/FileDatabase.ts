@@ -43,7 +43,7 @@ export class FileDatabase extends Database {
       ...session,
       id,
     };
-    await fs.appendFile("sessions.json", JSON.stringify(_session) + os.EOL);
+    await fs.appendFile("sessions.json", os.EOL + JSON.stringify(_session));
 
     return _session;
   }
@@ -73,6 +73,7 @@ export class FileDatabase extends Database {
     });
 
     const sessionFiles = sessionsDatabase.split(/\r?\n/);
+
     const userSessions = sessionFiles
       .map((file) => JSON.parse(file))
       .filter((file) => file.user === user);
