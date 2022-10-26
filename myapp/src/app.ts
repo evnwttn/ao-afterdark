@@ -8,7 +8,7 @@ const app = express.default();
 const port = process.env.PORT || 5000;
 
 app.use(cors);
-app.use(cookies);
+// app.use(cookies);
 app.use(express.json());
 
 app.post("/login", userHandler);

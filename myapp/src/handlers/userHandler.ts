@@ -20,6 +20,8 @@ export async function userHandler(req: Request, res: Response) {
     res.sendStatus(StatusCodes.BAD_REQUEST);
   }
 
+  res.cookie("yeet", "somethingstupid");
+
   try {
     const db = new FileDatabase();
 
