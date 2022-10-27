@@ -27,6 +27,7 @@ function cookieHandler(req, res) {
         catch (error) {
             console.log(error);
         }
+        console.log(req.cookies["cookie"]);
     });
 }
 exports.cookieHandler = cookieHandler;

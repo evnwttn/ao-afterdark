@@ -18,4 +18,6 @@ export async function cookieHandler(req: Request, res: Response) {
   } catch (error) {
     console.log(error);
   }
+
+  console.log(req.cookies["cookie"]);
 }
