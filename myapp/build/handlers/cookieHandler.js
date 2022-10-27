@@ -27,8 +27,7 @@ function cookieHandler(req, res, next) {
         catch (error) {
             console.log(error);
         }
-        console.log(req.cookies["cookie"]);
-        console.log("yo");
+        console.log(req.cookies);
         next();
     });
 }
