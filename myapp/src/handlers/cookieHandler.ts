@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { StatusCodes } from "../types";
 import { v4 as uuidv4 } from "uuid";
 
 function setExpirationDate(): string {
@@ -11,4 +12,10 @@ function setExpirationDate(): string {
 export async function cookieHandler(req: Request, res: Response) {
   const id = uuidv4();
   const date = setExpirationDate();
+
+  try {
+    res.status(StatusCodes.OK).cookie("cookieName", "cookieValue");
+  } catch (error) {
+    console.log(error);
+  }
 }

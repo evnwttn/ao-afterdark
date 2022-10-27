@@ -27,7 +27,6 @@ function userHandler(req, res) {
         if (!validUser) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
-        res.cookie("yeet", "somethingstupid");
         try {
             const db = new database_1.FileDatabase();
             if (req.method === "POST") {
