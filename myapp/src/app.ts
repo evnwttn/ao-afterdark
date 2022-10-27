@@ -1,7 +1,12 @@
 import * as express from "express";
 import cookieParser from "cookie-parser";
 import { cors } from "./middleware";
-import { userHandler, contactsHandler, sessionHandler } from "./handlers";
+import {
+  userHandler,
+  contactsHandler,
+  sessionHandler,
+  cookieHandler,
+} from "./handlers";
 
 require("dotenv").config();
 
@@ -11,6 +16,7 @@ const port = process.env.PORT || 5000;
 app.use(cors);
 app.use(express.json());
 app.use(cookieParser());
+app.use(cookieHandler);
 
 app.post("/login", userHandler);
 app.put("/login", userHandler);

@@ -17,7 +17,7 @@ function setExpirationDate() {
     date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
     return date.toUTCString();
 }
-function cookieHandler(req, res) {
+function cookieHandler(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         const id = (0, uuid_1.v4)();
         const date = setExpirationDate();
@@ -28,6 +28,8 @@ function cookieHandler(req, res) {
             console.log(error);
         }
         console.log(req.cookies["cookie"]);
+        console.log("yo");
+        next();
     });
 }
 exports.cookieHandler = cookieHandler;
