@@ -1,5 +1,5 @@
 import * as express from "express";
-import { cors, cookies } from "./middleware";
+import { cors } from "./middleware";
 import { userHandler, contactsHandler, sessionHandler } from "./handlers";
 
 require("dotenv").config();
@@ -8,7 +8,6 @@ const app = express.default();
 const port = process.env.PORT || 5000;
 
 app.use(cors);
-// app.use(cookies);
 app.use(express.json());
 
 app.post("/login", userHandler);
