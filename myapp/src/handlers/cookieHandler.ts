@@ -8,4 +8,4 @@ function setExpirationDate(): string {
   return date.toUTCString();
 }
 
-export async function cookieHandler() {}
+export async function cookieHandler(req: Request, res: Response) {}
