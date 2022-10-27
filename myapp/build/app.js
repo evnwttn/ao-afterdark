@@ -22,8 +22,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const middleware_1 = require("./middleware");
 const handlers_1 = require("./handlers");
 require("dotenv").config();
@@ -31,6 +35,7 @@ const app = express.default();
 const port = process.env.PORT || 5000;
 app.use(middleware_1.cors);
 app.use(express.json());
+app.use((0, cookie_parser_1.default)());
 app.post("/login", handlers_1.userHandler);
 app.put("/login", handlers_1.userHandler);
 app.post("/contact", handlers_1.contactsHandler);

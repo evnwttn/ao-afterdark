@@ -10,6 +10,7 @@ const port = process.env.PORT || 5000;
 
 app.use(cors);
 app.use(express.json());
+app.use(cookieParser());
 
 app.post("/login", userHandler);
 app.put("/login", userHandler);
