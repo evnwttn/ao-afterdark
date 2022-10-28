@@ -1,8 +1,6 @@
 import * as express from "express";
 import cors from "cors";
 import session from "express-session";
-// import cookieParser from "cookie-parser";
-// import { cors } from "./middleware";
 import {
   userHandler,
   contactsHandler,
@@ -15,7 +13,7 @@ require("dotenv").config();
 const app = express.default();
 const port = process.env.PORT || 5000;
 
-app.use(cors({ origin: "http://localhost:3000/ao", credentials: true }));
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 app.use(
   session({
