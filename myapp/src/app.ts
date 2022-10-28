@@ -27,8 +27,6 @@ app.use(
 // save name as cookies
 app.post("/login", async (req, res) => {
   try {
-    const name = req.body.email;
-    req.session.id = name;
     res.send({ message: "saved" }).status(201);
   } catch (error) {
     console.log(error);

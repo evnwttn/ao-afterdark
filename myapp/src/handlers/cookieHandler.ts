@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { StatusCodes } from "../types";
 import { v4 as uuidv4 } from "uuid";
-import { nextTick } from "process";
 
 function setExpirationDate(): string {
   let date = new Date();
@@ -10,20 +9,7 @@ function setExpirationDate(): string {
   return date.toUTCString();
 }
 
-export async function cookieHandler(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export async function cookieHandler(req: Request, res: Response) {
   const id = uuidv4();
   const date = setExpirationDate();
-
-  try {
-    res.status(StatusCodes.OK).cookie("cookieName", "cookieValue");
-    console.log(req.cookies);
-  } catch (error) {
-    console.log(error);
-  }
-
-  next();
 }

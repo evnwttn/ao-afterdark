@@ -58,8 +58,6 @@ app.use((0, express_session_1.default)({
 // save name as cookies
 app.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const name = req.body.email;
-        req.session.id = name;
         res.send({ message: "saved" }).status(201);
     }
     catch (error) {
