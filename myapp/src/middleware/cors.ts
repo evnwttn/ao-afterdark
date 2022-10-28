@@ -6,6 +6,7 @@ export function cors(req: Request, res: Response, next: NextFunction) {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "*",
     "Access-Control-Allow-Headers": "*",
+    "Access-Control-Allow-Credentials": "*",
   });
 
   next();
