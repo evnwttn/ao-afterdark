@@ -55,15 +55,18 @@ app.use((0, express_session_1.default)({
         secure: true,
     },
 }));
-// app.use(cookieParser());
+// save name as cookies
 app.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const name = req.body.email;
+        req.session.id = name;
+        res.send({ message: "saved" }).status(201);
     }
     catch (error) {
         console.log(error);
     }
 }));
+//decode cookie
 // app.post("/login", userHandler);
 app.put("/login", handlers_1.userHandler);
 app.post("/contact", handlers_1.contactsHandler);
