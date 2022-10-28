@@ -23,6 +23,7 @@ function cookieHandler(req, res) {
         const date = setExpirationDate();
         if (req.method === "POST") {
             try {
+                req.sessionID = id;
                 res.send({ message: "saved" }).status(types_1.StatusCodes.OK);
             }
             catch (error) {

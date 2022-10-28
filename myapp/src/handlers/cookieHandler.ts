@@ -15,6 +15,7 @@ export async function cookieHandler(req: Request, res: Response) {
 
   if (req.method === "POST") {
     try {
+      req.sessionID = id;
       res.send({ message: "saved" }).status(StatusCodes.OK);
     } catch (error) {
       console.log(error);

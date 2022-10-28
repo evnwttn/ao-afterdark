@@ -17,13 +17,12 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 app.use(
   session({
+    secret: "testing123",
     resave: false,
-    saveUninitialized: false,
-    secret: "session",
+    saveUninitialized: true,
     cookie: {
-      maxAge: 1000 * 60 * 60,
-      sameSite: "none",
-      secure: true,
+      maxAge: Date.now() + 1000 * 60 * 60 * 24 * 7,
+      httpOnly: true,
     },
   })
 );
