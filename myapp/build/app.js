@@ -22,8 +22,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
+const express_session_1 = __importDefault(require("express-session"));
 // import cookieParser from "cookie-parser";
 const middleware_1 = require("./middleware");
 const handlers_1 = require("./handlers");
@@ -32,6 +36,16 @@ const app = express.default();
 const port = process.env.PORT || 5000;
 app.use(middleware_1.cors);
 app.use(express.json());
+app.use((0, express_session_1.default)({
+    resave: false,
+    saveUninitialized: false,
+    secret: "session",
+    cookie: {
+        maxAge: 1000 * 60 * 60,
+        sameSite: "none",
+        secure: true,
+    },
+}));
 // app.use(cookieParser());
 app.post("/login", handlers_1.userHandler);
 app.put("/login", handlers_1.userHandler);

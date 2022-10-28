@@ -11,6 +11,19 @@ const port = process.env.PORT || 5000;
 
 app.use(cors);
 app.use(express.json());
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: false,
+    secret: "session",
+    cookie: {
+      maxAge: 1000 * 60 * 60,
+      sameSite: "none",
+      secure: true,
+    },
+  })
+);
+
 // app.use(cookieParser());
 
 app.post("/login", userHandler);
