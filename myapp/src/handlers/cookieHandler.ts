@@ -12,4 +12,19 @@ function setExpirationDate(): string {
 export async function cookieHandler(req: Request, res: Response) {
   const id = uuidv4();
   const date = setExpirationDate();
+
+  if (req.method === "POST") {
+    try {
+      res.send({ message: "saved" }).status(StatusCodes.OK);
+    } catch (error) {
+      console.log(error);
+    }
+  } else {
+    try {
+      console.log(req.session);
+      res.send({ message: "retrieved" }).status(StatusCodes.OK);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

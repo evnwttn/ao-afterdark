@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cookieHandler = void 0;
+const types_1 = require("../types");
 const uuid_1 = require("uuid");
 function setExpirationDate() {
     let date = new Date();
@@ -20,6 +21,23 @@ function cookieHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const id = (0, uuid_1.v4)();
         const date = setExpirationDate();
+        if (req.method === "POST") {
+            try {
+                res.send({ message: "saved" }).status(types_1.StatusCodes.OK);
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
+        else {
+            try {
+                console.log(req.session);
+                res.send({ message: "retrieved" }).status(types_1.StatusCodes.OK);
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
     });
 }
 exports.cookieHandler = cookieHandler;
