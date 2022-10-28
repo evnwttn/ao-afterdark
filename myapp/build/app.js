@@ -22,15 +22,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -55,25 +46,8 @@ app.use((0, express_session_1.default)({
         secure: true,
     },
 }));
-// save name as cookies
-app.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        res.send({ message: "saved" }).status(201);
-    }
-    catch (error) {
-        console.log(error);
-    }
-}));
-//decode cookie
-app.put("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        console.log(req.session.id);
-        res.send({ message: req.session.id });
-    }
-    catch (error) {
-        console.log(error);
-    }
-}));
+app.post("/login", handlers_1.cookieHandler);
+app.put("/login", handlers_1.cookieHandler);
 // app.post("/login", userHandler);
 // app.put("/login", userHandler);
 app.post("/contact", handlers_1.contactsHandler);

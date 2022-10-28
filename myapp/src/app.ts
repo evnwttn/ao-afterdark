@@ -2,7 +2,12 @@ import * as express from "express";
 import session from "express-session";
 // import cookieParser from "cookie-parser";
 import { cors } from "./middleware";
-import { userHandler, contactsHandler, sessionHandler } from "./handlers";
+import {
+  userHandler,
+  contactsHandler,
+  sessionHandler,
+  cookieHandler,
+} from "./handlers";
 
 require("dotenv").config();
 
@@ -24,24 +29,8 @@ app.use(
   })
 );
 
-// save name as cookies
-app.post("/login", async (req, res) => {
-  try {
-    res.send({ message: "saved" }).status(201);
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-//decode cookie
-app.put("/login", async (req, res) => {
-  try {
-    console.log(req.session.id);
-    res.send({ message: req.session.id });
-  } catch (error) {
-    console.log(error);
-  }
-});
+app.post("/login", cookieHandler);
+app.put("/login", cookieHandler);
 
 // app.post("/login", userHandler);
 // app.put("/login", userHandler);
