@@ -36,9 +36,17 @@ app.post("/login", async (req, res) => {
 });
 
 //decode cookie
+app.put("/login", async (req, res) => {
+  try {
+    console.log(req.session.id);
+    res.send({ message: req.session.id });
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 // app.post("/login", userHandler);
-app.put("/login", userHandler);
+// app.put("/login", userHandler);
 app.post("/contact", contactsHandler);
 app.post("/session", sessionHandler);
 app.put("/session", sessionHandler);

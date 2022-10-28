@@ -67,8 +67,17 @@ app.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 }));
 //decode cookie
+app.put("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        console.log(req.session.id);
+        res.send({ message: req.session.id });
+    }
+    catch (error) {
+        console.log(error);
+    }
+}));
 // app.post("/login", userHandler);
-app.put("/login", handlers_1.userHandler);
+// app.put("/login", userHandler);
 app.post("/contact", handlers_1.contactsHandler);
 app.post("/session", handlers_1.sessionHandler);
 app.put("/session", handlers_1.sessionHandler);
