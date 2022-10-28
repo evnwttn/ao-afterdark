@@ -1,7 +1,8 @@
 import * as express from "express";
+import cors from "cors";
 import session from "express-session";
 // import cookieParser from "cookie-parser";
-import { cors } from "./middleware";
+// import { cors } from "./middleware";
 import {
   userHandler,
   contactsHandler,
