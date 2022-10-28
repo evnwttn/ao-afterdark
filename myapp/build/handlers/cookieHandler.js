@@ -22,7 +22,10 @@ function cookieHandler(req, res, next) {
         const id = (0, uuid_1.v4)();
         const date = setExpirationDate();
         try {
-            res.status(types_1.StatusCodes.OK).cookie("cookieName", "cookieValue");
+            res
+                .header("Access-Control-Allow-Credentials", "true")
+                .status(types_1.StatusCodes.OK)
+                .cookie("cookieName", "cookieValue");
         }
         catch (error) {
             console.log(error);

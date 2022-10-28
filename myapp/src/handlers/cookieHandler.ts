@@ -19,7 +19,10 @@ export async function cookieHandler(
   const date = setExpirationDate();
 
   try {
-    res.status(StatusCodes.OK).cookie("cookieName", "cookieValue");
+    res
+      .header("Access-Control-Allow-Credentials", "true")
+      .status(StatusCodes.OK)
+      .cookie("cookieName", "cookieValue");
   } catch (error) {
     console.log(error);
   }
