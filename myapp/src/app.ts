@@ -1,6 +1,6 @@
 import * as express from "express";
 import session from "express-session";
-import cookieParser from "cookie-parser";
+// import cookieParser from "cookie-parser";
 import { cors } from "./middleware";
 import { userHandler, contactsHandler, sessionHandler } from "./handlers";
 
@@ -11,7 +11,7 @@ const port = process.env.PORT || 5000;
 
 app.use(cors);
 app.use(express.json());
-app.use(cookieParser());
+// app.use(cookieParser());
 
 app.post("/login", userHandler);
 app.put("/login", userHandler);
