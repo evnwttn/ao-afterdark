@@ -35,7 +35,7 @@ const handlers_1 = require("./handlers");
 require("dotenv").config();
 const app = express.default();
 const port = process.env.PORT || 5000;
-app.use(cors_1.default);
+app.use((0, cors_1.default)({ origin: "http://localhost:3000/ao", credentials: true }));
 app.use(express.json());
 app.use((0, express_session_1.default)({
     resave: false,
