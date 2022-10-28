@@ -26,7 +26,15 @@ app.use(
 
 // app.use(cookieParser());
 
-app.post("/login", userHandler);
+app.post("/login", async (req, res) => {
+  try {
+    const name = req.body.email;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// app.post("/login", userHandler);
 app.put("/login", userHandler);
 app.post("/contact", contactsHandler);
 app.post("/session", sessionHandler);
