@@ -16,18 +16,7 @@ const port = process.env.PORT || 5000;
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
-app.use(
-  session({
-    name: "test123",
-    secret: "test321",
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      maxAge: Date.now() + 1000 * 60 * 60 * 24 * 7,
-      httpOnly: true,
-    },
-  })
-);
+app.use(session(sessionOptions));
 
 app.post("/login", cookieHandler);
 app.put("/login", cookieHandler);

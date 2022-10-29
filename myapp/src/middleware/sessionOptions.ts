@@ -1,5 +1,4 @@
 export const sessionOptions = {
-  name: "test123",
   secret: "test321",
   resave: false,
   saveUninitialized: true,

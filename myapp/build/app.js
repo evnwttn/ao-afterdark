@@ -29,22 +29,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const express_session_1 = __importDefault(require("express-session"));
+const middleware_1 = require("./middleware");
 const handlers_1 = require("./handlers");
 require("dotenv").config();
 const app = express.default();
 const port = process.env.PORT || 5000;
 app.use((0, cors_1.default)({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
-app.use((0, express_session_1.default)({
-    name: "test123",
-    secret: "test321",
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        maxAge: Date.now() + 1000 * 60 * 60 * 24 * 7,
-        httpOnly: true,
-    },
-}));
+app.use((0, express_session_1.default)(middleware_1.sessionOptions));
 app.post("/login", handlers_1.cookieHandler);
 app.put("/login", handlers_1.cookieHandler);
 // app.post("/login", userHandler);

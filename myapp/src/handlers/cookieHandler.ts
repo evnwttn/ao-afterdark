@@ -15,15 +15,15 @@ export async function cookieHandler(req: Request, res: Response) {
 
   if (req.method === "POST") {
     try {
-      req.sessionID = id;
-      res.send({ message: "saved" }).status(StatusCodes.OK);
+      console.log(req.sessionID);
+      res.send({ message: "yo" }).status(StatusCodes.OK);
     } catch (error) {
       console.log(error);
     }
   } else {
     try {
-      console.log(req.session);
-      res.send({ message: "retrieved" }).status(StatusCodes.OK);
+      console.log(req.sessionID);
+      res.send({ message: "ye" }).status(StatusCodes.OK);
     } catch (error) {
       console.log(error);
     }

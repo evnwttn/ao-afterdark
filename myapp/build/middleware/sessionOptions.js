@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sessionOptions = void 0;
 exports.sessionOptions = {
-    name: "test123",
     secret: "test321",
     resave: false,
     saveUninitialized: true,

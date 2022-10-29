@@ -23,8 +23,8 @@ function cookieHandler(req, res) {
         const date = setExpirationDate();
         if (req.method === "POST") {
             try {
-                req.sessionID = id;
-                res.send({ message: "saved" }).status(types_1.StatusCodes.OK);
+                console.log(req.sessionID);
+                res.send({ message: "yo" }).status(types_1.StatusCodes.OK);
             }
             catch (error) {
                 console.log(error);
@@ -32,8 +32,8 @@ function cookieHandler(req, res) {
         }
         else {
             try {
-                console.log(req.session);
-                res.send({ message: "retrieved" }).status(types_1.StatusCodes.OK);
+                console.log(req.sessionID);
+                res.send({ message: "ye" }).status(types_1.StatusCodes.OK);
             }
             catch (error) {
                 console.log(error);
