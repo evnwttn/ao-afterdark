@@ -1,2 +1,2 @@
 export * from "./cors";
-export * from "./session";
+export * from "./sessionOptions";

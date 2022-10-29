@@ -1,6 +1,7 @@
 import * as express from "express";
 import cors from "cors";
 import session from "express-session";
+import { sessionOptions } from "./middleware";
 import {
   userHandler,
   contactsHandler,
