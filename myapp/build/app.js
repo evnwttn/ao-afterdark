@@ -36,7 +36,8 @@ const port = process.env.PORT || 5000;
 app.use((0, cors_1.default)({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 app.use((0, express_session_1.default)({
-    secret: "testing123",
+    name: "test123",
+    secret: "test321",
     resave: false,
     saveUninitialized: true,
     cookie: {
