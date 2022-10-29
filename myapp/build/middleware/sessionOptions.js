@@ -6,7 +6,7 @@ exports.sessionOptions = {
     resave: false,
     saveUninitialized: true,
     cookie: {
-        maxAge: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: Date.now() + 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
     },
 };
