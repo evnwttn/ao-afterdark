@@ -2,12 +2,7 @@ import * as express from "express";
 import cors from "cors";
 import session from "express-session";
 import { sessionOptions } from "./middleware";
-import {
-  userHandler,
-  contactsHandler,
-  sessionHandler,
-  cookieHandler,
-} from "./handlers";
+import { userHandler, contactsHandler, sessionHandler } from "./handlers";
 
 require("dotenv").config();
 
@@ -18,11 +13,8 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 app.use(session(sessionOptions));
 
-app.post("/login", cookieHandler);
-app.put("/login", cookieHandler);
-
-// app.post("/login", userHandler);
-// app.put("/login", userHandler);
+app.post("/login", userHandler);
+app.put("/login", userHandler);
 app.post("/contact", contactsHandler);
 app.post("/session", sessionHandler);
 app.put("/session", sessionHandler);
