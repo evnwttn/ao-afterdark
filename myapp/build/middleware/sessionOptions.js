@@ -4,11 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sessionOptions = void 0;
-const uuid_1 = require("uuid");
 const express_session_1 = __importDefault(require("express-session"));
 const FileStore = require("session-file-store")(express_session_1.default);
+const uuid_1 = require("uuid");
 const secret = (0, uuid_1.v4)();
+const filestoreOptions = {};
 exports.sessionOptions = {
+    store: new FileStore(filestoreOptions),
     secret: secret,
     resave: false,
     saveUninitialized: true,
