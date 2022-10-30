@@ -31,7 +31,6 @@ export async function userHandler(req: Request, res: Response) {
       const _user = await db.logInUser(req.body as UserLoginData);
 
       res.status(StatusCodes.OK).json(_user as UserLoginData);
-      console.log(req.sessionID);
     }
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);

@@ -36,7 +36,6 @@ function userHandler(req, res) {
             else {
                 const _user = yield db.logInUser(req.body);
                 res.status(types_1.StatusCodes.OK).json(_user);
-                console.log(req.sessionID);
             }
         }
         catch (error) {
