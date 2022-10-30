@@ -7,7 +7,6 @@ import { userHandler, contactsHandler, sessionHandler } from "./handlers";
 require("dotenv").config();
 const app = express.default();
 const port = process.env.PORT || 5000;
-const FileStore = require("session-file-store")(session);
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
