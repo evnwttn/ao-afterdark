@@ -1,7 +1,7 @@
 import session from "express-session";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
-const secret = uuidv4();
+const secret = "test";
 const FileStore = require("session-file-store")(session);
 const filestoreOptions = {};
 

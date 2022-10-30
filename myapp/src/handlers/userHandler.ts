@@ -32,7 +32,6 @@ export async function userHandler(req: Request, res: Response) {
 
       res.status(StatusCodes.OK).json(_user as UserLoginData);
       console.log(req.sessionID);
-      console.log(req.session);
     }
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
