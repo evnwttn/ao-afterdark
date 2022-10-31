@@ -12,12 +12,12 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 app.use(session(sessionOptions));
 
-app.post("/login", userHandler);
-app.put("/login", userHandler);
-app.post("/contact", contactsHandler);
-app.post("/session", sessionHandler);
-app.put("/session", sessionHandler);
-app.get("/session", sessionHandler);
+app.post("/login", userHandler); // sign up
+app.put("/login", userHandler); // login
+app.post("/contact", contactsHandler); // contact email
+app.post("/session", sessionHandler); // create sessions
+app.put("/session", sessionHandler); // update sessions
+app.get("/session", sessionHandler); // load sessions
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
