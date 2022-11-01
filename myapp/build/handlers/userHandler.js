@@ -39,7 +39,7 @@ function userHandler(req, res) {
             switch (req.method) {
                 case "GET":
                     const retrieveUser = yield db.retrieveUser(req.session.userId);
-                    res.status(types_1.StatusCodes.OK);
+                    res.status(types_1.StatusCodes.OK).json(retrieveUser);
                     break;
                 case "POST":
                     const signUpUser = yield db.signUpUser(req.body);

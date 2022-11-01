@@ -35,7 +35,7 @@ export async function userHandler(req: Request, res: Response) {
       case "GET":
         const retrieveUser = await db.retrieveUser(req.session.userId);
 
-        res.status(StatusCodes.OK);
+        res.status(StatusCodes.OK).json(retrieveUser as UserLoginData);
 
         break;
       case "POST":

@@ -5,8 +5,8 @@ import * as os from "os";
 import { v4 as uuidv4 } from "uuid";
 
 export class FileDatabase extends Database {
-  async retrieveUser(user: string): Promise<string> {
-    const _user = "user123";
+  async retrieveUser(user: string): Promise<UserLoginData> {
+    const _user = { email: "123", password: "123", id: "123" };
 
     return _user;
   }
