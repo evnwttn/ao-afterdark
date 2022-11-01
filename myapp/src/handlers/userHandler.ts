@@ -17,36 +17,25 @@ function validate(body: Partial<UserLoginData>): boolean {
 }
 
 export async function userHandler(req: Request, res: Response) {
-  if (req.method !== "GET") {
-    const validUser = validate(req.body as Partial<UserLoginData>);
-    if (!validUser) {
-      res.sendStatus(StatusCodes.BAD_REQUEST);
-    }
-  }
-
-  function setSessionId(userId: UserLoginData) {
-    if (!req.session.userId) {
-      req.session.userId = userId;
-    }
+  const validUser = validate(req.body as Partial<UserLoginData>);
+  if (!validUser) {
+    res.sendStatus(StatusCodes.BAD_REQUEST);
   }
 
   try {
     const db = new FileDatabase();
 
     if (req.method === "POST") {
-      const signUpUser = await db.signUpUser(req.body as UserLoginData);
-      setSessionId(signUpUser.id);
+      const _user = await db.signUpUser(req.body as UserLoginData);
 
-      console.log(req.session.userId);
-
-      res.status(StatusCodes.OK).json(signUpUser as UserLoginData);
+      res.status(StatusCodes.OK).json(_user as UserLoginData);
     } else {
-      const logInUser = await db.logInUser(req.body as UserLoginData);
-      setSessionId(logInUser.id);
+      const _user = await db.logInUser(req.body as UserLoginData);
 
-      console.log(req.session.userId);
-
-      res.status(StatusCodes.OK).json(logInUser as UserLoginData);
+      if (!req.session.userId) {
+        req.session.userId = _user.id;
+      }
+      res.status(StatusCodes.OK).json(_user as UserLoginData);
     }
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);

@@ -10,9 +10,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userHandler = void 0;
+const types_1 = require("../types");
 // NEED TO REMOVE ALL INFO FROM RETURNS THAT IS NOT SESSION ID!!!!!!
 function userHandler(req, res) {
-    return __awaiter(this, void 0, void 0, function* () { });
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            console.log(req.sessionID);
+            console.log(req.session.userId);
+        }
+        catch (error) {
+            res.status(types_1.StatusCodes.INTERNAL_SERVER_ERROR);
+        }
+    });
 }
 exports.userHandler = userHandler;
 //# sourceMappingURL=cookieHandler.js.map
