@@ -1,14 +1,12 @@
 import session from "express-session";
-import { v4 as uuidv4 } from "uuid";
 
-const secret = uuidv4();
 const FileStore = require("session-file-store")(session);
 const filestoreOptions = {};
 
 export const sessionOptions = {
   store: new FileStore(filestoreOptions),
-  secret: secret,
-  resave: false,
+  secret: "shhh",
+  resave: true,
   saveUninitialized: true,
   cookie: {
     httpOnly: true,
