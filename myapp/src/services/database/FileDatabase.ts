@@ -37,6 +37,20 @@ export class FileDatabase extends Database {
     return _user;
   }
 
+  async retrieveSessions(user: string): Promise<Session[]> {
+    const sessionsDatabase = await fs.readFile("sessions.json", {
+      encoding: "utf-8",
+    });
+
+    const sessionFiles = sessionsDatabase.split(/\r?\n/);
+
+    const userSessions = sessionFiles
+      .map((file) => JSON.parse(file))
+      .filter((file) => file.user === user);
+
+    return userSessions;
+  }
+
   async createSession(session: Omit<Session, "id">): Promise<Session> {
     const id = uuidv4();
     const _session: Session = {
@@ -65,19 +79,5 @@ export class FileDatabase extends Database {
     await fs.writeFile("sessions.json", sessionFiles.join("\n") + os.EOL);
 
     return session;
-  }
-
-  async retrieveSessions(user: string): Promise<Session[]> {
-    const sessionsDatabase = await fs.readFile("sessions.json", {
-      encoding: "utf-8",
-    });
-
-    const sessionFiles = sessionsDatabase.split(/\r?\n/);
-
-    const userSessions = sessionFiles
-      .map((file) => JSON.parse(file))
-      .filter((file) => file.user === user);
-
-    return userSessions;
   }
 }

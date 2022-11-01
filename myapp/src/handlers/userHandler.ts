@@ -56,7 +56,7 @@ export async function userHandler(req: Request, res: Response) {
 
         break;
       default:
-        res.sendStatus(StatusCodes.BAD_REQUEST);
+        console.log("woops");
     }
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);

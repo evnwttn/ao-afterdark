@@ -55,7 +55,7 @@ function userHandler(req, res) {
                     res.status(types_1.StatusCodes.OK).json(logInUser);
                     break;
                 default:
-                    res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
+                    console.log("woops");
             }
         }
         catch (error) {

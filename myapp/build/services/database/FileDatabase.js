@@ -61,6 +61,18 @@ class FileDatabase extends _1.Database {
             return _user;
         });
     }
+    retrieveSessions(user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const sessionsDatabase = yield fs.readFile("sessions.json", {
+                encoding: "utf-8",
+            });
+            const sessionFiles = sessionsDatabase.split(/\r?\n/);
+            const userSessions = sessionFiles
+                .map((file) => JSON.parse(file))
+                .filter((file) => file.user === user);
+            return userSessions;
+        });
+    }
     createSession(session) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = (0, uuid_1.v4)();
@@ -82,18 +94,6 @@ class FileDatabase extends _1.Database {
             sessionFiles[index] = JSON.stringify(session);
             yield fs.writeFile("sessions.json", sessionFiles.join("\n") + os.EOL);
             return session;
-        });
-    }
-    retrieveSessions(user) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const sessionsDatabase = yield fs.readFile("sessions.json", {
-                encoding: "utf-8",
-            });
-            const sessionFiles = sessionsDatabase.split(/\r?\n/);
-            const userSessions = sessionFiles
-                .map((file) => JSON.parse(file))
-                .filter((file) => file.user === user);
-            return userSessions;
         });
     }
 }
