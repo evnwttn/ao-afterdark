@@ -37,13 +37,12 @@ function userHandler(req, res) {
             switch (req.method) {
                 case "GET":
                     if (req.session.userId) {
-                        res
-                            .status(types_1.StatusCodes.OK)
-                            .json({ message: `welcome back ${req.session.userId}` });
+                        console.log(`welcome back ${req.session.userId}`);
                     }
                     else {
-                        res.status(types_1.StatusCodes.OK).json({ message: `no user active` });
+                        console.log(`no active user`);
                     }
+                    res.status(types_1.StatusCodes.OK);
                     break;
                 case "POST":
                     const signUpUser = yield db.signUpUser(req.body);
