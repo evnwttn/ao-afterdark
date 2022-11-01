@@ -21,10 +21,6 @@ export async function userHandler(req: Request, res: Response) {
     res.sendStatus(StatusCodes.BAD_REQUEST);
   }
 
-  if (req.session.userId) {
-    console.log("yo");
-  }
-
   try {
     const db = new FileDatabase();
 
@@ -34,6 +30,12 @@ export async function userHandler(req: Request, res: Response) {
       res.status(StatusCodes.OK).json(_user as UserLoginData);
     } else {
       const _user = await db.logInUser(req.body as UserLoginData);
+
+      if (req.session.userId) {
+        console.log(`welcome back ${req.session.userId}`);
+      } else {
+        req.session.userId = _user.id;
+      }
 
       res.status(StatusCodes.OK).json(_user as UserLoginData);
     }

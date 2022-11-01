@@ -27,9 +27,6 @@ function userHandler(req, res) {
         if (!validUser) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
-        if (req.session.userId) {
-            console.log("yo");
-        }
         try {
             const db = new database_1.FileDatabase();
             if (req.method === "POST") {
@@ -38,6 +35,12 @@ function userHandler(req, res) {
             }
             else {
                 const _user = yield db.logInUser(req.body);
+                if (req.session.userId) {
+                    console.log(`welcome back ${req.session.userId}`);
+                }
+                else {
+                    req.session.userId = _user.id;
+                }
                 res.status(types_1.StatusCodes.OK).json(_user);
             }
         }
