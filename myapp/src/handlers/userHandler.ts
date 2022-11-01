@@ -33,7 +33,11 @@ export async function userHandler(req: Request, res: Response) {
     switch (req.method) {
       case "GET":
         if (req.session.userId) {
-          console.log(`welcome back ${req.session.userId}`);
+          res
+            .status(StatusCodes.OK)
+            .json({ message: `welcome back ${req.session.userId}` });
+        } else {
+          res.status(StatusCodes.OK).json({ message: `no user active` });
         }
 
         break;
