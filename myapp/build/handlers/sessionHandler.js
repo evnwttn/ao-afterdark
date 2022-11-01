@@ -33,6 +33,10 @@ function sessionHandler(req, res) {
         try {
             const db = new database_1.FileDatabase();
             switch (req.method) {
+                case "GET":
+                    const userSessions = yield db.retrieveSessions(req.query.id);
+                    res.status(types_1.StatusCodes.OK).json(userSessions);
+                    break;
                 case "POST":
                     const newSession = yield db.createSession(req.body);
                     res.status(types_1.StatusCodes.OK).json(newSession);
@@ -40,10 +44,6 @@ function sessionHandler(req, res) {
                 case "PUT":
                     const updatedSession = yield db.updateSession(req.body);
                     res.status(types_1.StatusCodes.OK).json(updatedSession);
-                    break;
-                case "GET":
-                    const userSessions = yield db.retrieveSessions(req.query.id);
-                    res.status(types_1.StatusCodes.OK).json(userSessions);
                     break;
                 default:
                     break;

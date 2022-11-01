@@ -26,6 +26,11 @@ export async function sessionHandler(req: Request, res: Response) {
     const db = new FileDatabase();
 
     switch (req.method) {
+      case "GET":
+        const userSessions = await db.retrieveSessions(req.query.id as string);
+        res.status(StatusCodes.OK).json(userSessions as Session[]);
+
+        break;
       case "POST":
         const newSession = await db.createSession(req.body as Session);
         res.status(StatusCodes.OK).json(newSession as Session);
@@ -34,11 +39,6 @@ export async function sessionHandler(req: Request, res: Response) {
       case "PUT":
         const updatedSession = await db.updateSession(req.body as Session);
         res.status(StatusCodes.OK).json(updatedSession as Session);
-
-        break;
-      case "GET":
-        const userSessions = await db.retrieveSessions(req.query.id as string);
-        res.status(StatusCodes.OK).json(userSessions as Session[]);
 
         break;
       default:

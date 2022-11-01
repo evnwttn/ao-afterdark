@@ -36,12 +36,7 @@ function userHandler(req, res) {
             const db = new database_1.FileDatabase();
             switch (req.method) {
                 case "GET":
-                    if (req.session.userId) {
-                        console.log(`welcome back ${req.session.userId}`);
-                    }
-                    else {
-                        console.log(`no active user`);
-                    }
+                    const retrieveUser = yield db.retrieveUser(req.session.userId);
                     res.status(types_1.StatusCodes.OK);
                     break;
                 case "POST":
@@ -55,7 +50,7 @@ function userHandler(req, res) {
                     res.status(types_1.StatusCodes.OK).json(logInUser);
                     break;
                 default:
-                    console.log("woops");
+                    break;
             }
         }
         catch (error) {

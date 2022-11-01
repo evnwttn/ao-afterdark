@@ -32,11 +32,7 @@ export async function userHandler(req: Request, res: Response) {
 
     switch (req.method) {
       case "GET":
-        if (req.session.userId) {
-          console.log(`welcome back ${req.session.userId}`);
-        } else {
-          console.log(`no active user`);
-        }
+        const retrieveUser = await db.retrieveUser(req.session.userId);
 
         res.status(StatusCodes.OK);
 
@@ -56,7 +52,7 @@ export async function userHandler(req: Request, res: Response) {
 
         break;
       default:
-        console.log("woops");
+        break;
     }
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);

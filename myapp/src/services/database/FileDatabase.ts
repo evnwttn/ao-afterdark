@@ -5,6 +5,12 @@ import * as os from "os";
 import { v4 as uuidv4 } from "uuid";
 
 export class FileDatabase extends Database {
+  async retrieveUser(user: string): Promise<string> {
+    const _user = "user123";
+
+    return _user;
+  }
+
   async signUpUser(user: Omit<UserLoginData, "id">): Promise<UserLoginData> {
     const id = uuidv4();
     const _user: UserLoginData = {
