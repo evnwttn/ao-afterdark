@@ -52,24 +52,9 @@ export async function userHandler(req: Request, res: Response) {
 
         break;
       default:
-        console.log("yo");
+        res.sendStatus(StatusCodes.BAD_REQUEST);
     }
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
   }
 }
-
-//   if (req.method === "POST") {
-//     const _user = await db.signUpUser(req.body as UserLoginData);
-//     setSessionId(_user.id);
-
-//     res.status(StatusCodes.OK).json(_user as UserLoginData);
-//   } else {
-//     const _user = await db.logInUser(req.body as UserLoginData);
-//     setSessionId(_user.id);
-
-//     res.status(StatusCodes.OK).json(_user as UserLoginData);
-//   }
-// } catch (error) {
-//   res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
-// }

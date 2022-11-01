@@ -51,7 +51,7 @@ function userHandler(req, res) {
                     res.status(types_1.StatusCodes.OK).json(logInUser);
                     break;
                 default:
-                    console.log("yo");
+                    res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
             }
         }
         catch (error) {
@@ -60,16 +60,4 @@ function userHandler(req, res) {
     });
 }
 exports.userHandler = userHandler;
-//   if (req.method === "POST") {
-//     const _user = await db.signUpUser(req.body as UserLoginData);
-//     setSessionId(_user.id);
-//     res.status(StatusCodes.OK).json(_user as UserLoginData);
-//   } else {
-//     const _user = await db.logInUser(req.body as UserLoginData);
-//     setSessionId(_user.id);
-//     res.status(StatusCodes.OK).json(_user as UserLoginData);
-//   }
-// } catch (error) {
-//   res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
-// }
 //# sourceMappingURL=userHandler.js.map
