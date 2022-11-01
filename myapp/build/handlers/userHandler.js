@@ -38,13 +38,11 @@ function userHandler(req, res) {
                 const _user = yield db.signUpUser(req.body);
                 setSessionId(_user.id);
                 res.status(types_1.StatusCodes.OK).json(_user);
-                console.log(req.session.userId);
             }
             else {
                 const _user = yield db.logInUser(req.body);
                 setSessionId(_user.id);
                 res.status(types_1.StatusCodes.OK).json(_user);
-                console.log(req.session.userId);
             }
         }
         catch (error) {
