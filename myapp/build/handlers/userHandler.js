@@ -23,6 +23,11 @@ function validate(body) {
 }
 function userHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
+        function setSessionId(userId) {
+            if (!req.session.userId) {
+                req.session.userId = userId;
+            }
+        }
         const validUser = validate(req.body);
         if (!validUser) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
@@ -31,17 +36,15 @@ function userHandler(req, res) {
             const db = new database_1.FileDatabase();
             if (req.method === "POST") {
                 const _user = yield db.signUpUser(req.body);
+                setSessionId(_user.id);
                 res.status(types_1.StatusCodes.OK).json(_user);
+                console.log(req.session.userId);
             }
             else {
                 const _user = yield db.logInUser(req.body);
-                if (req.session.userId) {
-                    console.log(`welcome back ${req.session.userId}`);
-                }
-                else {
-                    req.session.userId = _user.id;
-                }
+                setSessionId(_user.id);
                 res.status(types_1.StatusCodes.OK).json(_user);
+                console.log(req.session.userId);
             }
         }
         catch (error) {

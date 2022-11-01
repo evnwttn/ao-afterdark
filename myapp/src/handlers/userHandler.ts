@@ -15,6 +15,12 @@ function validate(body: Partial<UserLoginData>): boolean {
 }
 
 export async function userHandler(req: Request, res: Response) {
+  function setSessionId(userId: UserLoginData) {
+    if (!req.session.userId) {
+      req.session.userId = userId;
+    }
+  }
+
   const validUser = validate(req.body as Partial<UserLoginData>);
 
   if (!validUser) {
@@ -26,18 +32,16 @@ export async function userHandler(req: Request, res: Response) {
 
     if (req.method === "POST") {
       const _user = await db.signUpUser(req.body as UserLoginData);
+      setSessionId(_user.id);
 
       res.status(StatusCodes.OK).json(_user as UserLoginData);
+      console.log(req.session.userId);
     } else {
       const _user = await db.logInUser(req.body as UserLoginData);
-
-      if (req.session.userId) {
-        console.log(`welcome back ${req.session.userId}`);
-      } else {
-        req.session.userId = _user.id;
-      }
+      setSessionId(_user.id);
 
       res.status(StatusCodes.OK).json(_user as UserLoginData);
+      console.log(req.session.userId);
     }
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
