@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.userHandler = void 0;
 const database_1 = require("../services/database");
 const types_1 = require("../types");
+// NEED TO REMOVE ALL INFO FROM RETURNS THAT IS NOT SESSION ID!!!!!!
 function validate(body) {
     if (!body.email) {
         return false;

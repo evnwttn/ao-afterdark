@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import { FileDatabase } from "../services/database";
 import { StatusCodes, UserLoginData } from "../types";
 
+// NEED TO REMOVE ALL INFO FROM RETURNS THAT IS NOT SESSION ID!!!!!!
+
 function validate(body: Partial<UserLoginData>): boolean {
   if (!body.email) {
     return false;
