@@ -24,10 +24,11 @@ function validate(body) {
 function userHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const validUser = validate(req.body);
-        const sessId = req.sessionID;
-        console.log(sessId);
         if (!validUser) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
+        }
+        if (req.session.userId) {
+            console.log("yo");
         }
         try {
             const db = new database_1.FileDatabase();
