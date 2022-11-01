@@ -34,15 +34,24 @@ function userHandler(req, res) {
         }
         try {
             const db = new database_1.FileDatabase();
-            if (req.method === "POST") {
-                const _user = yield db.signUpUser(req.body);
-                setSessionId(_user.id);
-                res.status(types_1.StatusCodes.OK).json(_user);
-            }
-            else {
-                const _user = yield db.logInUser(req.body);
-                setSessionId(_user.id);
-                res.status(types_1.StatusCodes.OK).json(_user);
+            switch (req.method) {
+                case "GET":
+                    if (req.session.userId) {
+                        console.log(`welcome back ${req.session.userId}`);
+                    }
+                    break;
+                case "POST":
+                    const signUpUser = yield db.signUpUser(req.body);
+                    setSessionId(signUpUser.id);
+                    res.status(types_1.StatusCodes.OK).json(signUpUser);
+                    break;
+                case "PUT":
+                    const logInUser = yield db.logInUser(req.body);
+                    setSessionId(logInUser.id);
+                    res.status(types_1.StatusCodes.OK).json(logInUser);
+                    break;
+                default:
+                    console.log("yo");
             }
         }
         catch (error) {
@@ -51,4 +60,16 @@ function userHandler(req, res) {
     });
 }
 exports.userHandler = userHandler;
+//   if (req.method === "POST") {
+//     const _user = await db.signUpUser(req.body as UserLoginData);
+//     setSessionId(_user.id);
+//     res.status(StatusCodes.OK).json(_user as UserLoginData);
+//   } else {
+//     const _user = await db.logInUser(req.body as UserLoginData);
+//     setSessionId(_user.id);
+//     res.status(StatusCodes.OK).json(_user as UserLoginData);
+//   }
+// } catch (error) {
+//   res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
+// }
 //# sourceMappingURL=userHandler.js.map
