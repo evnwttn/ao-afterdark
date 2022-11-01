@@ -37,23 +37,17 @@ function userHandler(req, res) {
         }
         try {
             const db = new database_1.FileDatabase();
-            switch (req.method) {
-                case "GET":
-                    const retrieveUser = yield db.retrieveUser(req.session.userId);
-                    res.status(types_1.StatusCodes.OK).json(retrieveUser);
-                    break;
-                case "POST":
-                    const signUpUser = yield db.signUpUser(req.body);
-                    setSessionId(signUpUser.id);
-                    res.status(types_1.StatusCodes.OK).json(signUpUser);
-                    break;
-                case "PUT":
-                    const logInUser = yield db.logInUser(req.body);
-                    setSessionId(logInUser.id);
-                    res.status(types_1.StatusCodes.OK).json(logInUser);
-                    break;
-                default:
-                    break;
+            if (req.method === "POST") {
+                const signUpUser = yield db.signUpUser(req.body);
+                setSessionId(signUpUser.id);
+                console.log(req.session.userId);
+                res.status(types_1.StatusCodes.OK).json(signUpUser);
+            }
+            else {
+                const logInUser = yield db.logInUser(req.body);
+                setSessionId(logInUser.id);
+                console.log(req.session.userId);
+                res.status(types_1.StatusCodes.OK).json(logInUser);
             }
         }
         catch (error) {

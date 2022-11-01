@@ -33,29 +33,20 @@ export async function userHandler(req: Request, res: Response) {
   try {
     const db = new FileDatabase();
 
-    switch (req.method) {
-      case "GET":
-        const retrieveUser = await db.retrieveUser(req.session.userId);
+    if (req.method === "POST") {
+      const signUpUser = await db.signUpUser(req.body as UserLoginData);
+      setSessionId(signUpUser.id);
 
-        res.status(StatusCodes.OK).json(retrieveUser as UserLoginData);
+      console.log(req.session.userId);
 
-        break;
-      case "POST":
-        const signUpUser = await db.signUpUser(req.body as UserLoginData);
-        setSessionId(signUpUser.id);
+      res.status(StatusCodes.OK).json(signUpUser as UserLoginData);
+    } else {
+      const logInUser = await db.logInUser(req.body as UserLoginData);
+      setSessionId(logInUser.id);
 
-        res.status(StatusCodes.OK).json(signUpUser as UserLoginData);
+      console.log(req.session.userId);
 
-        break;
-      case "PUT":
-        const logInUser = await db.logInUser(req.body as UserLoginData);
-        setSessionId(logInUser.id);
-
-        res.status(StatusCodes.OK).json(logInUser as UserLoginData);
-
-        break;
-      default:
-        break;
+      res.status(StatusCodes.OK).json(logInUser as UserLoginData);
     }
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
