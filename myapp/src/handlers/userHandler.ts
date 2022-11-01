@@ -15,16 +15,17 @@ function validate(body: Partial<UserLoginData>): boolean {
 }
 
 export async function userHandler(req: Request, res: Response) {
+  if (req.method !== "GET") {
+    const validUser = validate(req.body as Partial<UserLoginData>);
+    if (!validUser) {
+      res.sendStatus(StatusCodes.BAD_REQUEST);
+    }
+  }
+
   function setSessionId(userId: UserLoginData) {
     if (!req.session.userId) {
       req.session.userId = userId;
     }
-  }
-
-  const validUser = validate(req.body as Partial<UserLoginData>);
-
-  if (!validUser) {
-    res.sendStatus(StatusCodes.BAD_REQUEST);
   }
 
   try {

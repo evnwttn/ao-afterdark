@@ -23,14 +23,16 @@ function validate(body) {
 }
 function userHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
+        if (req.method !== "GET") {
+            const validUser = validate(req.body);
+            if (!validUser) {
+                res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
+            }
+        }
         function setSessionId(userId) {
             if (!req.session.userId) {
                 req.session.userId = userId;
             }
-        }
-        const validUser = validate(req.body);
-        if (!validUser) {
-            res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
         try {
             const db = new database_1.FileDatabase();
