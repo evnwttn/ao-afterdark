@@ -24,6 +24,10 @@ function validate(body) {
 function userHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const validUser = validate(req.body);
+        const sess = req.session;
+        const sessId = req.sessionID;
+        console.log(sess);
+        console.log(sessId);
         if (!validUser) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
