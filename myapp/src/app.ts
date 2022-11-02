@@ -9,6 +9,8 @@ import {
   sessionHandler,
 } from "./handlers";
 
+// need to start from the base with this sessions shit gfd
+
 require("dotenv").config();
 const app = express.default();
 const port = process.env.PORT || 5000;
@@ -17,7 +19,7 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 app.use(session(sessionOptions));
 
-app.get("/login", cookieHandler); // cookies
+// app.get("/login", cookieHandler); // cookies
 app.post("/login", userHandler); // sign up
 app.put("/login", userHandler); // login
 app.post("/contact", contactsHandler); // contact email

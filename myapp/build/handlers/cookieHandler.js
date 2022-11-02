@@ -15,7 +15,6 @@ const types_1 = require("../types");
 function cookieHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            console.log(req.sessionID);
             console.log(req.session.userId);
         }
         catch (error) {

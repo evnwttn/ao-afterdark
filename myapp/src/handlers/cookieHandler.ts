@@ -5,7 +5,6 @@ import { StatusCodes } from "../types";
 
 export async function cookieHandler(req: Request, res: Response) {
   try {
-    console.log(req.sessionID);
     console.log(req.session.userId);
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR);
