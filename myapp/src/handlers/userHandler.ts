@@ -2,8 +2,6 @@ import { Request, Response } from "express";
 import { FileDatabase } from "../services/database";
 import { StatusCodes, UserLoginData } from "../types";
 
-// NEED TO REMOVE ALL INFO FROM RETURNS THAT IS NOT SESSION ID!!!!!!
-
 function validate(body: Partial<UserLoginData>): boolean {
   if (!body.email) {
     return false;
@@ -25,17 +23,27 @@ export async function userHandler(req: Request, res: Response) {
   try {
     const db = new FileDatabase();
 
-    if (req.method === "POST") {
-      const _user = await db.signUpUser(req.body as UserLoginData);
+    switch (req.method) {
+      case "GET":
+        res.status(StatusCodes.OK).json({ data: "hello" });
 
-      res.status(StatusCodes.OK).json(_user as UserLoginData);
-    } else {
-      const _user = await db.logInUser(req.body as UserLoginData);
+        break;
+      case "POST":
+        const signUpUser = await db.signUpUser(req.body as UserLoginData);
+        res.status(StatusCodes.OK).json(signUpUser as UserLoginData);
 
-      if (!req.session.userId) {
-        req.session.userId = _user.id;
-      }
-      res.status(StatusCodes.OK).json(_user as UserLoginData);
+        break;
+      case "PUT":
+        const logInUser = await db.logInUser(req.body as UserLoginData);
+
+        if (!req.session.userId) {
+          req.session.userId = logInUser.id;
+        }
+
+        res.status(StatusCodes.OK).json(logInUser as UserLoginData);
+        break;
+      default:
+        break;
     }
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);

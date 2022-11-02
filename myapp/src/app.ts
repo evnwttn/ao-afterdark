@@ -2,14 +2,7 @@ import * as express from "express";
 import cors from "cors";
 import session from "express-session";
 import { sessionOptions } from "./middleware";
-import {
-  cookieHandler,
-  userHandler,
-  contactsHandler,
-  sessionHandler,
-} from "./handlers";
-
-// front end is now only concerned with req.session.userId
+import { userHandler, contactsHandler, sessionHandler } from "./handlers";
 
 require("dotenv").config();
 const app = express.default();
@@ -19,7 +12,7 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 app.use(session(sessionOptions));
 
-app.get("/login", cookieHandler); // cookies
+app.get("/login", userHandler); // cookies
 app.post("/login", userHandler); // sign up
 app.put("/login", userHandler); // login
 app.post("/contact", contactsHandler); // contact email
