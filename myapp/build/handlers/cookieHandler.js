@@ -13,6 +13,7 @@ exports.cookieHandler = void 0;
 const types_1 = require("../types");
 function cookieHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
+        console.log("sup fam");
         try {
             const _id = req.session.userId;
             console.log(_id);
