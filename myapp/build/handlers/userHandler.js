@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.userHandler = void 0;
 const database_1 = require("../services/database");
 const types_1 = require("../types");
-// NEED TO REMOVE ALL INFO FROM RETURNS THAT IS NOT SESSION ID!!!!!!
 function validate(body) {
     if (!body.email) {
         return false;
@@ -30,16 +29,23 @@ function userHandler(req, res) {
         }
         try {
             const db = new database_1.FileDatabase();
-            if (req.method === "POST") {
-                const _user = yield db.signUpUser(req.body);
-                res.status(types_1.StatusCodes.OK).json(_user);
-            }
-            else {
-                const _user = yield db.logInUser(req.body);
-                if (!req.session.userId) {
-                    req.session.userId = _user.id;
-                }
-                res.status(types_1.StatusCodes.OK).json(_user);
+            switch (req.method) {
+                case "GET":
+                    res.status(types_1.StatusCodes.OK).json({ data: "hello" });
+                    break;
+                case "POST":
+                    const signUpUser = yield db.signUpUser(req.body);
+                    res.status(types_1.StatusCodes.OK).json(signUpUser);
+                    break;
+                case "PUT":
+                    const logInUser = yield db.logInUser(req.body);
+                    if (!req.session.userId) {
+                        req.session.userId = logInUser.id;
+                    }
+                    res.status(types_1.StatusCodes.OK).json(logInUser);
+                    break;
+                default:
+                    break;
             }
         }
         catch (error) {
