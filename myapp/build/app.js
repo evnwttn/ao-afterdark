@@ -31,7 +31,7 @@ const cors_1 = __importDefault(require("cors"));
 const express_session_1 = __importDefault(require("express-session"));
 const middleware_1 = require("./middleware");
 const handlers_1 = require("./handlers");
-// need to start from the base with this sessions shit gfd
+// front end is now only concerned with req.session.userId
 require("dotenv").config();
 const app = express.default();
 const port = process.env.PORT || 5000;

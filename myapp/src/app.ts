@@ -9,7 +9,7 @@ import {
   sessionHandler,
 } from "./handlers";
 
-// need to start from the base with this sessions shit gfd
+// front end is now only concerned with req.session.userId
 
 require("dotenv").config();
 const app = express.default();
