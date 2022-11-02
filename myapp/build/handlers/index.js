@@ -17,4 +17,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./userHandler"), exports);
 __exportStar(require("./sessionHandler"), exports);
 __exportStar(require("./contactHandler"), exports);
+__exportStar(require("./cookieHandler"), exports);
 //# sourceMappingURL=index.js.map
