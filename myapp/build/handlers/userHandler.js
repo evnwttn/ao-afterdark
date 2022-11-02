@@ -39,6 +39,7 @@ function userHandler(req, res) {
                     break;
                 case "PUT":
                     const logInUser = yield db.logInUser(req.body);
+                    console.log(req.sessionID);
                     if (!req.session.userId) {
                         req.session.userId = logInUser.id;
                     }

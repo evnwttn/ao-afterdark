@@ -7,7 +7,7 @@ export const sessionOptions = {
   store: new FileStore(filestoreOptions),
   secret: "shhh",
   resave: true,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: {
     httpOnly: true,
     maxAge: 2592000000,
