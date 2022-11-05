@@ -10,11 +10,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cookieHandler = void 0;
+const database_1 = require("../services/database");
 const types_1 = require("../types");
 function cookieHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const db = new database_1.FileDatabase();
+            const retrieveUser = yield db.retrieveUser(req.session.userId);
+            res.status(types_1.StatusCodes.OK).json({ data: retrieveUser });
+        }
+        catch (error) {
+            res.sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR);
+        }
         const _retrieveUser = "hello";
-        res.status(types_1.StatusCodes.OK).json({ data: _retrieveUser });
     });
 }
 exports.cookieHandler = cookieHandler;
