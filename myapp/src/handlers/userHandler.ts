@@ -24,10 +24,10 @@ export async function userHandler(req: Request, res: Response) {
     const db = new FileDatabase();
 
     switch (req.method) {
-      case "GET":
-        res.status(StatusCodes.OK).json({ data: "hello" });
+      // case "GET":
+      //   res.status(StatusCodes.OK).json({ data: "hello" });
 
-        break;
+      //   break;
       case "POST":
         const signUpUser = await db.signUpUser(req.body as UserLoginData);
         res.status(StatusCodes.OK).json(signUpUser as UserLoginData);
@@ -36,11 +36,11 @@ export async function userHandler(req: Request, res: Response) {
       case "PUT":
         const logInUser = await db.logInUser(req.body as UserLoginData);
 
-        console.log(req.sessionID);
+        // console.log(req.sessionID);
 
-        if (!req.session.userId) {
-          req.session.userId = logInUser.id;
-        }
+        // if (!req.session.userId) {
+        //   req.session.userId = logInUser.id;
+        // }
 
         res.status(StatusCodes.OK).json(logInUser as UserLoginData);
         break;
