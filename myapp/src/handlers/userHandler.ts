@@ -15,17 +15,23 @@ function validate(body: Partial<UserLoginData>): boolean {
 }
 
 export async function userHandler(req: Request, res: Response) {
-  const validUser = validate(req.body as Partial<UserLoginData>);
-  if (!validUser) {
-    res.sendStatus(StatusCodes.BAD_REQUEST);
-  }
+  // if (req.method !== "GET") {
+  //   const validUser = validate(req.body as Partial<UserLoginData>);
+  //   if (!validUser) {
+  //     res.sendStatus(StatusCodes.BAD_REQUEST);
+  //   }
+  // }
 
   try {
     const db = new FileDatabase();
 
     switch (req.method) {
       case "GET":
-        res.status(StatusCodes.OK).json({ data: "hello" });
+        const retrieveUser = await db.retrieveUser(
+          req.session.userId as string
+        );
+
+        console.log(retrieveUser);
 
         break;
       case "POST":

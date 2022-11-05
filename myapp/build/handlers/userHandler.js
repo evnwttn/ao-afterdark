@@ -23,15 +23,18 @@ function validate(body) {
 }
 function userHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const validUser = validate(req.body);
-        if (!validUser) {
-            res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
-        }
+        // if (req.method !== "GET") {
+        //   const validUser = validate(req.body as Partial<UserLoginData>);
+        //   if (!validUser) {
+        //     res.sendStatus(StatusCodes.BAD_REQUEST);
+        //   }
+        // }
         try {
             const db = new database_1.FileDatabase();
             switch (req.method) {
                 case "GET":
-                    res.status(types_1.StatusCodes.OK).json({ data: "hello" });
+                    const retrieveUser = yield db.retrieveUser(req.session.userId);
+                    console.log(retrieveUser);
                     break;
                 case "POST":
                     const signUpUser = yield db.signUpUser(req.body);
