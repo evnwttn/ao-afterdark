@@ -5,13 +5,8 @@ import * as os from "os";
 import { v4 as uuidv4 } from "uuid";
 
 export class FileDatabase extends Database {
-  async retrieveUser(user: string): Promise<string> {
-    console.log(`fd: ${user}`);
-    if (user) {
-      return user;
-    } else {
-      return "n/a";
-    }
+  async retrieveUser(user: string): Promise<void> {
+    console.log(user);
   }
 
   async signUpUser(user: Omit<UserLoginData, "id">): Promise<UserLoginData> {

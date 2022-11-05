@@ -40,13 +40,7 @@ const uuid_1 = require("uuid");
 class FileDatabase extends _1.Database {
     retrieveUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(`fd: ${user}`);
-            if (user) {
-                return user;
-            }
-            else {
-                return "n/a";
-            }
+            console.log(user);
         });
     }
     signUpUser(user) {

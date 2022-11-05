@@ -33,8 +33,7 @@ function userHandler(req, res) {
             const db = new database_1.FileDatabase();
             switch (req.method) {
                 case "GET":
-                    const retrieveUser = yield db.retrieveUser(req.session.userId);
-                    console.log(retrieveUser);
+                    yield db.retrieveUser("hello");
                     break;
                 case "POST":
                     const signUpUser = yield db.signUpUser(req.body);

@@ -27,11 +27,7 @@ export async function userHandler(req: Request, res: Response) {
 
     switch (req.method) {
       case "GET":
-        const retrieveUser = await db.retrieveUser(
-          req.session.userId as string
-        );
-
-        console.log(retrieveUser);
+        await db.retrieveUser("hello" as string);
 
         break;
       case "POST":
