@@ -30,19 +30,18 @@ function userHandler(req, res) {
         try {
             const db = new database_1.FileDatabase();
             switch (req.method) {
-                // case "GET":
-                //   res.status(StatusCodes.OK).json({ data: "hello" });
-                //   break;
+                case "GET":
+                    res.status(types_1.StatusCodes.OK).json({ data: "hello" });
+                    break;
                 case "POST":
                     const signUpUser = yield db.signUpUser(req.body);
                     res.status(types_1.StatusCodes.OK).json(signUpUser);
                     break;
                 case "PUT":
                     const logInUser = yield db.logInUser(req.body);
-                    // console.log(req.sessionID);
-                    // if (!req.session.userId) {
-                    //   req.session.userId = logInUser.id;
-                    // }
+                    if (!req.session.userId) {
+                        req.session.userId = logInUser.id;
+                    }
                     res.status(types_1.StatusCodes.OK).json(logInUser);
                     break;
                 default:
