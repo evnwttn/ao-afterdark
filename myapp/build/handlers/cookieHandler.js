@@ -13,15 +13,8 @@ exports.cookieHandler = void 0;
 const types_1 = require("../types");
 function cookieHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log("sup fam");
-        try {
-            const _id = req.session.userId;
-            console.log(_id);
-            res.status(types_1.StatusCodes.OK).json(_id);
-        }
-        catch (error) {
-            res.status(types_1.StatusCodes.INTERNAL_SERVER_ERROR);
-        }
+        const _retrieveUser = "hello";
+        res.status(types_1.StatusCodes.OK).json({ data: _retrieveUser });
     });
 }
 exports.cookieHandler = cookieHandler;
