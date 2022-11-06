@@ -2,15 +2,16 @@ import { Database } from ".";
 import { Session, UserLoginData } from "../../types";
 import * as fs from "fs/promises";
 import * as os from "os";
-import * as path from "path";
 import { v4 as uuidv4 } from "uuid";
 
 export class FileDatabase extends Database {
   async retrieveUser(user: string): Promise<string> {
     const _user = "test";
+    const _dir = `./sessions`;
 
     try {
-      const files = await fs.readdir("/sessions");
+      const files = await fs.readdir(_dir);
+      console.log(files);
     } catch (err) {
       console.log(err);
     }
