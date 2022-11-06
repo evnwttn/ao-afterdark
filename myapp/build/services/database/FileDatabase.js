@@ -40,16 +40,9 @@ const uuid_1 = require("uuid");
 class FileDatabase extends _1.Database {
     retrieveUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _user = "test";
-            const _dir = `./sessions`;
-            try {
-                const files = yield fs.readdir(_dir);
-                console.log(files);
-            }
-            catch (err) {
-                console.log(err);
-            }
-            return _user;
+            const sessionDirectory = `./sessions`;
+            const sessionFiles = yield fs.readdir(sessionDirectory);
+            return sessionDirectory;
         });
     }
     signUpUser(user) {
