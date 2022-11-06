@@ -41,6 +41,12 @@ class FileDatabase extends _1.Database {
     retrieveUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
             const _user = "test";
+            try {
+                const files = yield fs.readdir("/sessions");
+            }
+            catch (err) {
+                console.log(err);
+            }
             return _user;
         });
     }
