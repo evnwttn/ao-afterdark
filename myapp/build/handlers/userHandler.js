@@ -39,7 +39,6 @@ function userHandler(req, res) {
                     if (!req.session.userId) {
                         req.session.userId = logInUser.id;
                     }
-                    console.log(req.session.userId);
                     res.status(types_1.StatusCodes.OK).json(logInUser);
                     break;
                 default:

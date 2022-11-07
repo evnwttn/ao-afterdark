@@ -36,8 +36,6 @@ export async function userHandler(req: Request, res: Response) {
           req.session.userId = logInUser.id;
         }
 
-        console.log(req.session.userId);
-
         res.status(StatusCodes.OK).json(logInUser as UserLoginData);
         break;
       default:
