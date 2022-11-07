@@ -9,13 +9,13 @@ export class FileDatabase extends Database {
     const sessionDirectory = `./sessions`;
     const sessionFiles = await fs.readdir(sessionDirectory);
 
-    sessionFiles.forEach(async (fileName) => {
-      await fs
-        .readFile(`${sessionDirectory}/${fileName}`, {
-          encoding: "utf-8",
-        })
-        .then((data) => console.log(data));
-    });
+    // sessionFiles.forEach(async (fileName) => {
+    //   await fs
+    //     .readFile(`${sessionDirectory}/${fileName}`, {
+    //       encoding: "utf-8",
+    //     })
+    //     .then((data) => console.log(data));
+    // });
 
     return sessionDirectory;
   }
