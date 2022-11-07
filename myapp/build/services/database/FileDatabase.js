@@ -42,14 +42,14 @@ class FileDatabase extends _1.Database {
         return __awaiter(this, void 0, void 0, function* () {
             const sessionDirectory = `./sessions`;
             const sessionFiles = yield fs.readdir(sessionDirectory);
-            sessionFiles.forEach((fileName) => __awaiter(this, void 0, void 0, function* () {
-                yield fs
-                    .readFile(`${sessionDirectory}/${fileName}`, {
-                    encoding: "utf-8",
-                })
-                    .then((data) => console.log(data));
-            }));
-            return sessionDirectory;
+            // sessionFiles.forEach(async (fileName) => {
+            //   await fs
+            //     .readFile(`${sessionDirectory}/${fileName}`, {
+            //       encoding: "utf-8",
+            //     })
+            //     .then((data) => console.log(data));
+            // });
+            return user;
         });
     }
     signUpUser(user) {
