@@ -17,7 +17,7 @@ export class FileDatabase extends Database {
     //     .then((data) => console.log(data));
     // });
 
-    return sessionDirectory;
+    return user;
   }
 
   async signUpUser(user: Omit<UserLoginData, "id">): Promise<UserLoginData> {

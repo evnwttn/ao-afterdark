@@ -16,13 +16,12 @@ function cookieHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const db = new database_1.FileDatabase();
-            const retrieveUser = yield db.retrieveUser(req.session.userId);
+            const retrieveUser = yield db.retrieveUser("hello");
             res.status(types_1.StatusCodes.OK).json({ data: retrieveUser });
         }
         catch (error) {
             res.sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR);
         }
-        const _retrieveUser = "hello";
     });
 }
 exports.cookieHandler = cookieHandler;
