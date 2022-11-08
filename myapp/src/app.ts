@@ -1,6 +1,5 @@
 import * as express from "express";
 import cors from "cors";
-import cookieParser from "cookie-parser";
 import session from "express-session";
 import { sessionOptions } from "./middleware";
 import {
@@ -16,7 +15,6 @@ const port = process.env.PORT || 5000;
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
-app.use(cookieParser());
 app.use(session(sessionOptions));
 
 app.post("/cookies", cookieHandler); // cookies
