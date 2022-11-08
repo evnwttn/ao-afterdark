@@ -1,7 +1,7 @@
 import * as express from "express";
 import cors from "cors";
 import session from "express-session";
-import { sessionOptions } from "./middleware";
+import { sessionOptions, additionalCors } from "./middleware";
 import {
   cookieHandler,
   userHandler,
@@ -14,6 +14,7 @@ const app = express.default();
 const port = process.env.PORT || 5000;
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(additionalCors);
 app.use(express.json());
 app.use(session(sessionOptions));
 
