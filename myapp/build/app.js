@@ -28,6 +28,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
 const cors_1 = __importDefault(require("cors"));
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const express_session_1 = __importDefault(require("express-session"));
 const middleware_1 = require("./middleware");
 const handlers_1 = require("./handlers");
@@ -36,6 +37,7 @@ const app = express.default();
 const port = process.env.PORT || 5000;
 app.use((0, cors_1.default)({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
+app.use((0, cookie_parser_1.default)());
 app.use((0, express_session_1.default)(middleware_1.sessionOptions));
 app.post("/cookies", handlers_1.cookieHandler); // cookies
 app.post("/login", handlers_1.userHandler); // sign up
