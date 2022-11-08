@@ -16,6 +16,10 @@ function cookieHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const db = new database_1.FileDatabase();
+            console.log(req.headers.cookie);
+            // s:RchNIcwGwAH5YOEmbJD4BRd2vdVbH2NZ.XRrKZ9SBhSRsIiqZQvsLJ8k5WiGuBQfCmzlomCIpCII
+            // s:RchNIcwGwAH5YOEmbJD4BRd2vdVbH2NZ.XRrKZ9SBhSRsIiqZQvsLJ8k5WiGuBQfCmzlomCIpCII
+            // s:RchNIcwGwAH5YOEmbJD4BRd2vdVbH2NZ.XRrKZ9SBhSRsIiqZQvsLJ8k5WiGuBQfCmzlomCIpCII
             const retrieveUser = yield db.retrieveUser("hello");
             res.status(types_1.StatusCodes.OK).json({ data: retrieveUser });
         }
