@@ -1,7 +1,7 @@
 import * as express from "express";
 import cors from "cors";
 import session from "express-session";
-import { sessionOptions, additionalCors } from "./middleware";
+import { sessionOptions, corsOptions } from "./middleware";
 import {
   cookieHandler,
   userHandler,
@@ -13,9 +13,8 @@ require("dotenv").config();
 const app = express.default();
 const port = process.env.PORT || 5000;
 
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
-app.use(additionalCors);
 app.use(express.json());
+app.use(cors(corsOptions));
 app.use(session(sessionOptions));
 
 app.post("/cookies", cookieHandler); // cookies

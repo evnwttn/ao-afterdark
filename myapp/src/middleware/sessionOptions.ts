@@ -10,5 +10,6 @@ export const sessionOptions = {
   saveUninitialized: false,
   cookie: {
     maxAge: 2592000000,
+    secure: false,
   },
 };

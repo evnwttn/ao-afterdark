@@ -17,8 +17,8 @@ function cookieHandler(req, res) {
         try {
             const db = new database_1.FileDatabase();
             console.log(req.signedCookies);
-            const retrieveUser = yield db.retrieveUser("hello");
-            res.status(types_1.StatusCodes.OK).json({ data: retrieveUser });
+            const retrieveUser = yield db.retrieveUser(req.signedCookies);
+            res.status(types_1.StatusCodes.OK).json(retrieveUser);
         }
         catch (error) {
             res.sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR);

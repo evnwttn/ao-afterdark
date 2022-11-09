@@ -8,9 +8,9 @@ export async function cookieHandler(req: Request, res: Response) {
 
     console.log(req.signedCookies);
 
-    const retrieveUser = await db.retrieveUser("hello" as string);
+    const retrieveUser = await db.retrieveUser(req.signedCookies as object);
 
-    res.status(StatusCodes.OK).json({ data: retrieveUser });
+    res.status(StatusCodes.OK).json(retrieveUser);
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
   }
