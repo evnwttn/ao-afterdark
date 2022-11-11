@@ -46,7 +46,10 @@ class FileDatabase extends _1.Database {
                 encoding: "utf-8",
             });
             const userFiles = userDatabase.split(/\r?\n/);
-            console.log(userFiles);
+            const index = userFiles.findIndex((file) => JSON.parse(file).id === userId);
+            if (index === -1) {
+                return {};
+            }
             return temp;
         });
     }

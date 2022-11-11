@@ -13,9 +13,12 @@ export class FileDatabase extends Database {
     const userDatabase = await fs.readFile("users.json", {
       encoding: "utf-8",
     });
-    const userFiles = userDatabase.split(/\r?\n/);
 
-    console.log(userFiles);
+    const userFiles = userDatabase.split(/\r?\n/);
+    const index = userFiles.findIndex((file) => JSON.parse(file).id === userId);
+    if (index === -1) {
+      return {};
+    }
 
     return temp;
   }
