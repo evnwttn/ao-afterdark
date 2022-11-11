@@ -5,19 +5,10 @@ import * as os from "os";
 import { v4 as uuidv4 } from "uuid";
 
 export class FileDatabase extends Database {
-  async retrieveUser(cookie: object): Promise<object> {
-    // const sessionDirectory = `./sessions`;
-    // const sessionFiles = await fs.readdir(sessionDirectory);
+  async retrieveUser(userId: string): Promise<object> {
+    const temp = { id: userId };
 
-    // sessionFiles.forEach(async (fileName) => {
-    //   await fs
-    //     .readFile(`${sessionDirectory}/${fileName}`, {
-    //       encoding: "utf-8",
-    //     })
-    //     .then((data) => console.log(data));
-    // });
-
-    return cookie;
+    return temp;
   }
 
   async signUpUser(user: Omit<UserLoginData, "id">): Promise<UserLoginData> {

@@ -19,8 +19,7 @@ function cookieHandler(req, res) {
         }
         try {
             const db = new database_1.FileDatabase();
-            console.log(req.session);
-            const retrieveUser = yield db.retrieveUser(req.body);
+            const retrieveUser = yield db.retrieveUser(req.session.userId);
             res.status(types_1.StatusCodes.OK).json(retrieveUser);
         }
         catch (error) {

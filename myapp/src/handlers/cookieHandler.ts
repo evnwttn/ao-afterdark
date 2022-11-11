@@ -10,9 +10,7 @@ export async function cookieHandler(req: Request, res: Response) {
   try {
     const db = new FileDatabase();
 
-    console.log(req.session);
-
-    const retrieveUser = await db.retrieveUser(req.body as object);
+    const retrieveUser = await db.retrieveUser(req.session.userId as string);
 
     res.status(StatusCodes.OK).json(retrieveUser);
   } catch (error) {
