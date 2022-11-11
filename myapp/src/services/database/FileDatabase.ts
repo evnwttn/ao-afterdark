@@ -9,7 +9,7 @@ export class FileDatabase extends Database {
     const voidUser: UserLoginData = {
       email: "void",
       password: "void",
-      id: undefined,
+      id: "void",
     };
     const userDatabase = await fs.readFile("users.json", {
       encoding: "utf-8",
