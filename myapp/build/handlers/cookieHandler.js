@@ -16,7 +16,7 @@ function cookieHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const db = new database_1.FileDatabase();
-            console.log(req.session.userId);
+            console.log(req.session);
             const retrieveUser = yield db.retrieveUser(req.body);
             res.status(types_1.StatusCodes.OK).json(retrieveUser);
         }
