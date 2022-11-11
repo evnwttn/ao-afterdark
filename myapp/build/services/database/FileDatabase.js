@@ -38,18 +38,18 @@ const fs = __importStar(require("fs/promises"));
 const os = __importStar(require("os"));
 const uuid_1 = require("uuid");
 class FileDatabase extends _1.Database {
-    retrieveUser(id) {
+    retrieveUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
             const userDatabase = yield fs.readFile("users.json", {
                 encoding: "utf-8",
             });
             const userFiles = userDatabase.split(/\r?\n/);
-            const index = userFiles.findIndex((file) => JSON.parse(file).id === id);
+            const index = userFiles.findIndex((file) => JSON.parse(file).id === user);
             if (index === -1) {
                 return;
             }
-            const _user = JSON.parse(userFiles[index]);
-            console.log(_user);
+            // const _user = JSON.parse(userFiles[index]);
+            console.log(`userid: ${user}`);
             return;
         });
     }
