@@ -37,13 +37,13 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use((0, cors_1.default)(middleware_1.corsOptions));
 app.use((0, express_session_1.default)(middleware_1.sessionOptions));
-app.post("/cookies", handlers_1.cookieHandler); // cookies
-app.post("/login", handlers_1.userHandler); // sign up
-app.put("/login", handlers_1.userHandler); // login
-app.post("/contact", handlers_1.contactsHandler); // contact email
-app.get("/session", handlers_1.sessionHandler); // load sessions
-app.post("/session", handlers_1.sessionHandler); // create sessions
-app.put("/session", handlers_1.sessionHandler); // update sessions
+app.post("/cookies", handlers_1.cookieHandler);
+app.post("/login", handlers_1.userHandler);
+app.put("/login", handlers_1.userHandler);
+app.post("/contact", handlers_1.contactsHandler);
+app.get("/session", handlers_1.sessionHandler);
+app.post("/session", handlers_1.sessionHandler);
+app.put("/session", handlers_1.sessionHandler);
 app.listen(port, () => {
     console.log(`app listening on port ${port}`);
 });

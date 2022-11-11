@@ -17,13 +17,13 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(session(sessionOptions));
 
-app.post("/cookies", cookieHandler); // cookies
-app.post("/login", userHandler); // sign up
-app.put("/login", userHandler); // login
-app.post("/contact", contactsHandler); // contact email
-app.get("/session", sessionHandler); // load sessions
-app.post("/session", sessionHandler); // create sessions
-app.put("/session", sessionHandler); // update sessions
+app.post("/cookies", cookieHandler);
+app.post("/login", userHandler);
+app.put("/login", userHandler);
+app.post("/contact", contactsHandler);
+app.get("/session", sessionHandler);
+app.post("/session", sessionHandler);
+app.put("/session", sessionHandler);
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
