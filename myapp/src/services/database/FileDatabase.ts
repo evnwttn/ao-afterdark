@@ -5,7 +5,12 @@ import * as os from "os";
 import { v4 as uuidv4 } from "uuid";
 
 export class FileDatabase extends Database {
-  async retrieveUser(id: string): Promise<void> {
+  async retrieveUser(id: string): Promise<UserLoginData> {
+    const voidUser: UserLoginData = {
+      email: "void",
+      password: "void",
+      id: undefined,
+    };
     const userDatabase = await fs.readFile("users.json", {
       encoding: "utf-8",
     });
@@ -13,14 +18,12 @@ export class FileDatabase extends Database {
     const userFiles = userDatabase.split(/\r?\n/);
     const index = userFiles.findIndex((file) => JSON.parse(file).id === id);
     if (index === -1) {
-      return;
+      return voidUser;
     }
 
     const _user = JSON.parse(userFiles[index]);
 
-    console.log(_user);
-
-    return;
+    return _user;
   }
 
   async signUpUser(user: Omit<UserLoginData, "id">): Promise<UserLoginData> {

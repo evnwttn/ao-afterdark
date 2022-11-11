@@ -3,7 +3,7 @@ import { Session, UserLoginData } from "../../types";
 export abstract class Database {
   constructor() {}
 
-  abstract retrieveUser(id: string): Promise<void>;
+  abstract retrieveUser(id: string): Promise<UserLoginData>;
   abstract signUpUser(user: UserLoginData): Promise<UserLoginData>;
   abstract logInUser(user: UserLoginData): Promise<UserLoginData>;
 
