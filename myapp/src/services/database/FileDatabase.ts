@@ -8,6 +8,15 @@ export class FileDatabase extends Database {
   async retrieveUser(userId: string): Promise<object> {
     const temp = { id: userId };
 
+    //
+
+    const userDatabase = await fs.readFile("users.json", {
+      encoding: "utf-8",
+    });
+    const userFiles = userDatabase.split(/\r?\n/);
+
+    console.log(userFiles);
+
     return temp;
   }
 

@@ -41,6 +41,12 @@ class FileDatabase extends _1.Database {
     retrieveUser(userId) {
         return __awaiter(this, void 0, void 0, function* () {
             const temp = { id: userId };
+            //
+            const userDatabase = yield fs.readFile("users.json", {
+                encoding: "utf-8",
+            });
+            const userFiles = userDatabase.split(/\r?\n/);
+            console.log(userFiles);
             return temp;
         });
     }
