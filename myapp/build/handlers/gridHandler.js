@@ -34,16 +34,16 @@ function gridHandler(req, res) {
             const db = new database_1.FileDatabase();
             switch (req.method) {
                 case "GET":
-                    const userSessions = yield db.retrieveSessions(req.query.id);
-                    res.status(types_1.StatusCodes.OK).json(userSessions);
+                    const retrievedGrids = yield db.retrieveGrids(req.query.id);
+                    res.status(types_1.StatusCodes.OK).json(retrievedGrids);
                     break;
                 case "POST":
-                    const newSession = yield db.createSession(req.body);
-                    res.status(types_1.StatusCodes.OK).json(newSession);
+                    const newGrid = yield db.createGrid(req.body);
+                    res.status(types_1.StatusCodes.OK).json(newGrid);
                     break;
                 case "PUT":
-                    const updatedSession = yield db.updateSession(req.body);
-                    res.status(types_1.StatusCodes.OK).json(updatedSession);
+                    const updatedGrid = yield db.updateGrid(req.body);
+                    res.status(types_1.StatusCodes.OK).json(updatedGrid);
                     break;
                 default:
                     break;

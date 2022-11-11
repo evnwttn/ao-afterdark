@@ -27,18 +27,18 @@ export async function gridHandler(req: Request, res: Response) {
 
     switch (req.method) {
       case "GET":
-        const userSessions = await db.retrieveSessions(req.query.id as string);
-        res.status(StatusCodes.OK).json(userSessions as Grid[]);
+        const retrievedGrids = await db.retrieveGrids(req.query.id as string);
+        res.status(StatusCodes.OK).json(retrievedGrids as Grid[]);
 
         break;
       case "POST":
-        const newSession = await db.createSession(req.body as Grid);
-        res.status(StatusCodes.OK).json(newSession as Grid);
+        const newGrid = await db.createGrid(req.body as Grid);
+        res.status(StatusCodes.OK).json(newGrid as Grid);
 
         break;
       case "PUT":
-        const updatedSession = await db.updateSession(req.body as Grid);
-        res.status(StatusCodes.OK).json(updatedSession as Grid);
+        const updatedGrid = await db.updateGrid(req.body as Grid);
+        res.status(StatusCodes.OK).json(updatedGrid as Grid);
 
         break;
       default:
