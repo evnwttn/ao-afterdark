@@ -4,19 +4,22 @@ import * as fs from "fs/promises";
 import * as os from "os";
 import { v4 as uuidv4 } from "uuid";
 
+// const sessionDirectory = `./sessions`;
+// const sessionFiles = await fs.readdir(sessionDirectory);
+
+// sessionFiles.forEach(async (fileName) => {
+//   await fs
+//     .readFile(`${sessionDirectory}/${fileName}`, {
+//       encoding: "utf-8",
+//     })
+//     .then((data) => console.log(data));
+// });
+
 export class FileDatabase extends Database {
   async retrieveUser(user: string): Promise<void> {
     const userDatabase = await fs.readFile("users.json", {
       encoding: "utf-8",
     });
-
-    const userFiles = userDatabase.split(/\r?\n/);
-    const index = userFiles.findIndex((file) => JSON.parse(file).id === user);
-    if (index === -1) {
-      return;
-    }
-
-    // const _user = JSON.parse(userFiles[index]);
 
     console.log(`userid: ${user}`);
 

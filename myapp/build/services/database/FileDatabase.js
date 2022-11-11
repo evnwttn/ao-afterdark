@@ -37,18 +37,21 @@ const _1 = require(".");
 const fs = __importStar(require("fs/promises"));
 const os = __importStar(require("os"));
 const uuid_1 = require("uuid");
+// const sessionDirectory = `./sessions`;
+// const sessionFiles = await fs.readdir(sessionDirectory);
+// sessionFiles.forEach(async (fileName) => {
+//   await fs
+//     .readFile(`${sessionDirectory}/${fileName}`, {
+//       encoding: "utf-8",
+//     })
+//     .then((data) => console.log(data));
+// });
 class FileDatabase extends _1.Database {
     retrieveUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
             const userDatabase = yield fs.readFile("users.json", {
                 encoding: "utf-8",
             });
-            const userFiles = userDatabase.split(/\r?\n/);
-            const index = userFiles.findIndex((file) => JSON.parse(file).id === user);
-            if (index === -1) {
-                return;
-            }
-            // const _user = JSON.parse(userFiles[index]);
             console.log(`userid: ${user}`);
             return;
         });
