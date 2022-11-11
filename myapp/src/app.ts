@@ -6,7 +6,7 @@ import {
   cookieHandler,
   userHandler,
   contactsHandler,
-  sessionHandler,
+  gridHandler,
 } from "./handlers";
 
 require("dotenv").config();
@@ -21,9 +21,9 @@ app.post("/cookies", cookieHandler);
 app.post("/login", userHandler);
 app.put("/login", userHandler);
 app.post("/contact", contactsHandler);
-app.get("/session", sessionHandler);
-app.post("/session", sessionHandler);
-app.put("/session", sessionHandler);
+app.get("/grid", gridHandler);
+app.post("/grid", gridHandler);
+app.put("/grid", gridHandler);
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);

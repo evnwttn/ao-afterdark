@@ -41,9 +41,9 @@ app.post("/cookies", handlers_1.cookieHandler);
 app.post("/login", handlers_1.userHandler);
 app.put("/login", handlers_1.userHandler);
 app.post("/contact", handlers_1.contactsHandler);
-app.get("/session", handlers_1.sessionHandler);
-app.post("/session", handlers_1.sessionHandler);
-app.put("/session", handlers_1.sessionHandler);
+app.get("/grid", handlers_1.gridHandler);
+app.post("/grid", handlers_1.gridHandler);
+app.put("/grid", handlers_1.gridHandler);
 app.listen(port, () => {
     console.log(`app listening on port ${port}`);
 });
