@@ -49,7 +49,7 @@ class FileDatabase extends _1.Database {
             //     })
             //     .then((data) => console.log(data));
             // });
-            return;
+            return cookie;
         });
     }
     signUpUser(user) {
