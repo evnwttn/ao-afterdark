@@ -43,7 +43,7 @@ class FileDatabase extends _1.Database {
             const voidUser = {
                 email: "void",
                 password: "void",
-                id: "void",
+                id: undefined,
             };
             const userDatabase = yield fs.readFile("users.json", {
                 encoding: "utf-8",
