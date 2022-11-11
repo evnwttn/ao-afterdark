@@ -1,4 +1,4 @@
-import { Session, UserLoginData } from "../../types";
+import { Grid, UserLoginData } from "../../types";
 
 export abstract class Database {
   constructor() {}
@@ -7,7 +7,7 @@ export abstract class Database {
   abstract signUpUser(user: UserLoginData): Promise<UserLoginData>;
   abstract logInUser(user: UserLoginData): Promise<UserLoginData>;
 
-  abstract retrieveSessions(user: string): Promise<Session[]>;
-  abstract createSession(session: Session): Promise<Session>;
-  abstract updateSession(session: Session): Promise<Session>;
+  abstract retrieveSessions(user: string): Promise<Grid[]>;
+  abstract createSession(session: Grid): Promise<Grid>;
+  abstract updateSession(session: Grid): Promise<Grid>;
 }

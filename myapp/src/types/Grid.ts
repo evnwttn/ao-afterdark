@@ -1,6 +1,6 @@
 import { Track } from "./Track";
 
-export interface Session {
+export interface Grid {
   sessionTitle: string;
   author: string;
   tracks: Track[];

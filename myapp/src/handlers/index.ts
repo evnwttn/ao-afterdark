@@ -1,4 +1,4 @@
 export * from "./userHandler";
-export * from "./sessionHandler";
+export * from "./gridHandler";
 export * from "./contactHandler";
 export * from "./cookieHandler";

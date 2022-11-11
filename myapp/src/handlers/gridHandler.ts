@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { FileDatabase } from "../services/database";
-import { Session, StatusCodes } from "../types";
+import { Grid, StatusCodes } from "../types";
 
-function validate(body: Partial<Session>): boolean {
+function validate(body: Partial<Grid>): boolean {
   if (body.tracks?.length ?? 0 > 11) {
     return false;
   }
@@ -14,10 +14,10 @@ function validate(body: Partial<Session>): boolean {
   return true;
 }
 
-export async function sessionHandler(req: Request, res: Response) {
+export async function gridHandler(req: Request, res: Response) {
   if (req.method !== "GET") {
-    const sessionInvalid = validate(req.body as Partial<Session>);
-    if (sessionInvalid) {
+    const invalid = validate(req.body as Partial<Grid>);
+    if (invalid) {
       res.sendStatus(StatusCodes.BAD_REQUEST);
     }
   }
@@ -28,17 +28,17 @@ export async function sessionHandler(req: Request, res: Response) {
     switch (req.method) {
       case "GET":
         const userSessions = await db.retrieveSessions(req.query.id as string);
-        res.status(StatusCodes.OK).json(userSessions as Session[]);
+        res.status(StatusCodes.OK).json(userSessions as Grid[]);
 
         break;
       case "POST":
-        const newSession = await db.createSession(req.body as Session);
-        res.status(StatusCodes.OK).json(newSession as Session);
+        const newSession = await db.createSession(req.body as Grid);
+        res.status(StatusCodes.OK).json(newSession as Grid);
 
         break;
       case "PUT":
-        const updatedSession = await db.updateSession(req.body as Session);
-        res.status(StatusCodes.OK).json(updatedSession as Session);
+        const updatedSession = await db.updateSession(req.body as Grid);
+        res.status(StatusCodes.OK).json(updatedSession as Grid);
 
         break;
       default:

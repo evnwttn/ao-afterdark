@@ -1,5 +1,5 @@
 import { Database } from ".";
-import { Session, UserLoginData } from "../../types";
+import { Grid, UserLoginData } from "../../types";
 import * as fs from "fs/promises";
 import * as os from "os";
 import { v4 as uuidv4 } from "uuid";
@@ -53,7 +53,7 @@ export class FileDatabase extends Database {
     return _user;
   }
 
-  async retrieveSessions(user: string): Promise<Session[]> {
+  async retrieveSessions(user: string): Promise<Grid[]> {
     const sessionsDatabase = await fs.readFile("sessions.json", {
       encoding: "utf-8",
     });
@@ -67,9 +67,9 @@ export class FileDatabase extends Database {
     return userSessions;
   }
 
-  async createSession(session: Omit<Session, "id">): Promise<Session> {
+  async createSession(session: Omit<Grid, "id">): Promise<Grid> {
     const id = uuidv4();
-    const _session: Session = {
+    const _session: Grid = {
       ...session,
       id,
     };
@@ -78,7 +78,7 @@ export class FileDatabase extends Database {
     return _session;
   }
 
-  async updateSession(session: Session): Promise<Session> {
+  async updateSession(session: Grid): Promise<Grid> {
     const sessionsDatabase = await fs.readFile("sessions.json", {
       encoding: "utf-8",
     });
