@@ -5,7 +5,7 @@ import * as os from "os";
 import { v4 as uuidv4 } from "uuid";
 
 export class FileDatabase extends Database {
-  async retrieveUser(cookie: object): Promise<object> {
+  async retrieveUser(user: string): Promise<object> {
     // const sessionDirectory = `./sessions`;
     // const sessionFiles = await fs.readdir(sessionDirectory);
 
