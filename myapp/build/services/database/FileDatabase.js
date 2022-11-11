@@ -38,7 +38,7 @@ const fs = __importStar(require("fs/promises"));
 const os = __importStar(require("os"));
 const uuid_1 = require("uuid");
 class FileDatabase extends _1.Database {
-    retrieveUser(user) {
+    retrieveUser(cookie) {
         return __awaiter(this, void 0, void 0, function* () {
             // const sessionDirectory = `./sessions`;
             // const sessionFiles = await fs.readdir(sessionDirectory);
