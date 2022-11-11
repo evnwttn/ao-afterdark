@@ -6,10 +6,6 @@ import { v4 as uuidv4 } from "uuid";
 
 export class FileDatabase extends Database {
   async retrieveUser(userId: string): Promise<object> {
-    const temp = { id: userId };
-
-    //
-
     const userDatabase = await fs.readFile("users.json", {
       encoding: "utf-8",
     });
@@ -20,7 +16,9 @@ export class FileDatabase extends Database {
       return {};
     }
 
-    return temp;
+    const userData = JSON.parse(userFiles[index]);
+
+    return userData;
   }
 
   async signUpUser(user: Omit<UserLoginData, "id">): Promise<UserLoginData> {

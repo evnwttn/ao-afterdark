@@ -40,8 +40,6 @@ const uuid_1 = require("uuid");
 class FileDatabase extends _1.Database {
     retrieveUser(userId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const temp = { id: userId };
-            //
             const userDatabase = yield fs.readFile("users.json", {
                 encoding: "utf-8",
             });
@@ -50,7 +48,8 @@ class FileDatabase extends _1.Database {
             if (index === -1) {
                 return {};
             }
-            return temp;
+            const userData = JSON.parse(userFiles[index]);
+            return userData;
         });
     }
     signUpUser(user) {
