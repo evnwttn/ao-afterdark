@@ -53,7 +53,7 @@ export class FileDatabase extends Database {
     return _user;
   }
 
-  async retrieveSessions(user: string): Promise<Grid[]> {
+  async retrieveGrids(user: string): Promise<Grid[]> {
     const sessionsDatabase = await fs.readFile("sessions.json", {
       encoding: "utf-8",
     });
@@ -67,7 +67,7 @@ export class FileDatabase extends Database {
     return userSessions;
   }
 
-  async createSession(session: Omit<Grid, "id">): Promise<Grid> {
+  async createGrid(session: Omit<Grid, "id">): Promise<Grid> {
     const id = uuidv4();
     const _session: Grid = {
       ...session,
@@ -78,7 +78,7 @@ export class FileDatabase extends Database {
     return _session;
   }
 
-  async updateSession(session: Grid): Promise<Grid> {
+  async updateGrid(session: Grid): Promise<Grid> {
     const sessionsDatabase = await fs.readFile("sessions.json", {
       encoding: "utf-8",
     });
