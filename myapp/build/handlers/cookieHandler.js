@@ -14,6 +14,9 @@ const database_1 = require("../services/database");
 const types_1 = require("../types");
 function cookieHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
+        if (!req.session.userId) {
+            return;
+        }
         try {
             const db = new database_1.FileDatabase();
             console.log(req.session);

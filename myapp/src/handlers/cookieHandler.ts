@@ -3,6 +3,10 @@ import { FileDatabase } from "../services/database";
 import { StatusCodes } from "../types";
 
 export async function cookieHandler(req: Request, res: Response) {
+  if (!req.session.userId) {
+    return;
+  }
+
   try {
     const db = new FileDatabase();
 
