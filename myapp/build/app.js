@@ -37,7 +37,7 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use((0, cors_1.default)(middleware_1.corsOptions));
 app.use((0, express_session_1.default)(middleware_1.sessionOptions));
-app.post("/session", handlers_1.sessionHandler);
+app.put("/session", handlers_1.sessionHandler);
 app.post("/user", handlers_1.userHandler);
 app.put("/user", handlers_1.userHandler);
 app.post("/contact", handlers_1.contactsHandler);

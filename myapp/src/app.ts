@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(session(sessionOptions));
 
-app.post("/session", sessionHandler);
+app.put("/session", sessionHandler);
 app.post("/user", userHandler);
 app.put("/user", userHandler);
 app.post("/contact", contactsHandler);
