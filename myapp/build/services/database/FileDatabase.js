@@ -40,7 +40,7 @@ const uuid_1 = require("uuid");
 class FileDatabase extends _1.Database {
     retrieveUser(userId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userDatabase = yield fs.readFile("users.json", {
+            const userDatabase = yield fs.readFile("userStore.json", {
                 encoding: "utf-8",
             });
             const userFiles = userDatabase.split(/\r?\n/);
@@ -56,13 +56,13 @@ class FileDatabase extends _1.Database {
         return __awaiter(this, void 0, void 0, function* () {
             const id = (0, uuid_1.v4)();
             const _user = Object.assign(Object.assign({}, user), { id });
-            yield fs.appendFile("users.json", JSON.stringify(_user) + os.EOL);
+            yield fs.appendFile("userStore.json", JSON.stringify(_user) + os.EOL);
             return _user;
         });
     }
     logInUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userDatabase = yield fs.readFile("users.json", {
+            const userDatabase = yield fs.readFile("userStore.json", {
                 encoding: "utf-8",
             });
             const userFiles = userDatabase.split(/\r?\n/);
@@ -77,7 +77,7 @@ class FileDatabase extends _1.Database {
     }
     retrieveGrids(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sessionsDatabase = yield fs.readFile("sessions.json", {
+            const sessionsDatabase = yield fs.readFile("gridStore.json", {
                 encoding: "utf-8",
             });
             const sessionFiles = sessionsDatabase.split(/\r?\n/);
@@ -91,13 +91,13 @@ class FileDatabase extends _1.Database {
         return __awaiter(this, void 0, void 0, function* () {
             const id = (0, uuid_1.v4)();
             const _session = Object.assign(Object.assign({}, session), { id });
-            yield fs.appendFile("sessions.json", os.EOL + JSON.stringify(_session));
+            yield fs.appendFile("gridStore.json", os.EOL + JSON.stringify(_session));
             return _session;
         });
     }
     updateGrid(session) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sessionsDatabase = yield fs.readFile("sessions.json", {
+            const sessionsDatabase = yield fs.readFile("gridStore.json", {
                 encoding: "utf-8",
             });
             const sessionFiles = sessionsDatabase.split(/\r?\n/);
@@ -106,7 +106,7 @@ class FileDatabase extends _1.Database {
                 return session;
             }
             sessionFiles[index] = JSON.stringify(session);
-            yield fs.writeFile("sessions.json", sessionFiles.join("\n") + os.EOL);
+            yield fs.writeFile("gridStore.json", sessionFiles.join("\n") + os.EOL);
             return session;
         });
     }

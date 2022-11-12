@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export class FileDatabase extends Database {
   async retrieveUser(userId: string): Promise<object> {
-    const userDatabase = await fs.readFile("users.json", {
+    const userDatabase = await fs.readFile("userStore.json", {
       encoding: "utf-8",
     });
 
@@ -28,13 +28,13 @@ export class FileDatabase extends Database {
       id,
     };
 
-    await fs.appendFile("users.json", JSON.stringify(_user) + os.EOL);
+    await fs.appendFile("userStore.json", JSON.stringify(_user) + os.EOL);
 
     return _user;
   }
 
   async logInUser(user: UserLoginData): Promise<UserLoginData> {
-    const userDatabase = await fs.readFile("users.json", {
+    const userDatabase = await fs.readFile("userStore.json", {
       encoding: "utf-8",
     });
 
@@ -54,7 +54,7 @@ export class FileDatabase extends Database {
   }
 
   async retrieveGrids(user: string): Promise<Grid[]> {
-    const sessionsDatabase = await fs.readFile("sessions.json", {
+    const sessionsDatabase = await fs.readFile("gridStore.json", {
       encoding: "utf-8",
     });
 
@@ -73,13 +73,13 @@ export class FileDatabase extends Database {
       ...session,
       id,
     };
-    await fs.appendFile("sessions.json", os.EOL + JSON.stringify(_session));
+    await fs.appendFile("gridStore.json", os.EOL + JSON.stringify(_session));
 
     return _session;
   }
 
   async updateGrid(session: Grid): Promise<Grid> {
-    const sessionsDatabase = await fs.readFile("sessions.json", {
+    const sessionsDatabase = await fs.readFile("gridStore.json", {
       encoding: "utf-8",
     });
 
@@ -92,7 +92,7 @@ export class FileDatabase extends Database {
     }
 
     sessionFiles[index] = JSON.stringify(session);
-    await fs.writeFile("sessions.json", sessionFiles.join("\n") + os.EOL);
+    await fs.writeFile("gridStore.json", sessionFiles.join("\n") + os.EOL);
 
     return session;
   }
