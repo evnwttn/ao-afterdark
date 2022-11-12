@@ -71,27 +71,28 @@ export class FileDatabase extends Database {
       ...grid,
       id,
     };
+
     await fs.appendFile("gridStore.json", os.EOL + JSON.stringify(_grid));
 
     return _grid;
   }
 
-  async updateGrid(session: Grid): Promise<Grid> {
+  async updateGrid(grid: Grid): Promise<Grid> {
     const sessionsDatabase = await fs.readFile("gridStore.json", {
       encoding: "utf-8",
     });
 
     const sessionFiles = sessionsDatabase.split(/\r?\n/);
     const index = sessionFiles.findIndex(
-      (file) => JSON.parse(file).id === session.id
+      (file) => JSON.parse(file).id === grid.id
     );
     if (index === -1) {
-      return session;
+      return grid;
     }
 
-    sessionFiles[index] = JSON.stringify(session);
+    sessionFiles[index] = JSON.stringify(grid);
     await fs.writeFile("gridStore.json", sessionFiles.join("\n") + os.EOL);
 
-    return session;
+    return grid;
   }
 }

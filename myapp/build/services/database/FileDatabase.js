@@ -94,19 +94,19 @@ class FileDatabase extends _1.Database {
             return _grid;
         });
     }
-    updateGrid(session) {
+    updateGrid(grid) {
         return __awaiter(this, void 0, void 0, function* () {
             const sessionsDatabase = yield fs.readFile("gridStore.json", {
                 encoding: "utf-8",
             });
             const sessionFiles = sessionsDatabase.split(/\r?\n/);
-            const index = sessionFiles.findIndex((file) => JSON.parse(file).id === session.id);
+            const index = sessionFiles.findIndex((file) => JSON.parse(file).id === grid.id);
             if (index === -1) {
-                return session;
+                return grid;
             }
-            sessionFiles[index] = JSON.stringify(session);
+            sessionFiles[index] = JSON.stringify(grid);
             yield fs.writeFile("gridStore.json", sessionFiles.join("\n") + os.EOL);
-            return session;
+            return grid;
         });
     }
 }

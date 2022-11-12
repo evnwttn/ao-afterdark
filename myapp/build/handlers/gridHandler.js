@@ -30,12 +30,13 @@ function gridHandler(req, res) {
         }
         try {
             const db = new database_1.FileDatabase();
+            const user = req.session.userId;
+            const _newGrid = Object.assign(Object.assign({}, req.body), { user });
             switch (req.method) {
                 case "POST":
-                    const newGrid = yield db.createGrid(req.body);
+                    const newGrid = yield db.createGrid(_newGrid);
+                    // all good, just need to ensure userid not being passed to client
                     res.status(types_1.StatusCodes.OK).json(newGrid);
-                    console.log(req.body);
-                    console.log(newGrid);
                     break;
                 case "PUT":
                     const updatedGrid = yield db.updateGrid(req.body);

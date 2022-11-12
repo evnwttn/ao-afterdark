@@ -23,13 +23,19 @@ export async function gridHandler(req: Request, res: Response) {
   try {
     const db = new FileDatabase();
 
+    const user = req.session.userId;
+    const _newGrid: Grid = {
+      ...req.body,
+      user,
+    };
+
     switch (req.method) {
       case "POST":
-        const newGrid = await db.createGrid(req.body as Grid);
-        res.status(StatusCodes.OK).json(newGrid as Grid);
+        const newGrid = await db.createGrid(_newGrid as Grid);
 
-        console.log(req.body);
-        console.log(newGrid);
+        // all good, just need to ensure userid not being passed to client
+
+        res.status(StatusCodes.OK).json(newGrid as Grid);
 
         break;
       case "PUT":
