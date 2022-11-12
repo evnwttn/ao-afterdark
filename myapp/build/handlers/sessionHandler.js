@@ -19,8 +19,17 @@ function sessionHandler(req, res) {
         }
         try {
             const db = new database_1.FileDatabase();
-            const retrieveUser = yield db.retrieveUser(req.session.userId);
-            res.status(types_1.StatusCodes.OK).json(retrieveUser);
+            switch (req.method) {
+                case "POST":
+                    console.log("allo");
+                    break;
+                case "PUT":
+                    const retrieveUser = yield db.retrieveUser(req.session.userId);
+                    res.status(types_1.StatusCodes.OK).json(retrieveUser);
+                    break;
+                default:
+                    break;
+            }
         }
         catch (error) {
             res.sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR);

@@ -10,9 +10,22 @@ export async function sessionHandler(req: Request, res: Response) {
   try {
     const db = new FileDatabase();
 
-    const retrieveUser = await db.retrieveUser(req.session.userId as string);
+    switch (req.method) {
+      case "POST":
+        console.log("allo");
 
-    res.status(StatusCodes.OK).json(retrieveUser);
+        break;
+
+      case "PUT":
+        const retrieveUser = await db.retrieveUser(
+          req.session.userId as string
+        );
+        res.status(StatusCodes.OK).json(retrieveUser);
+
+        break;
+      default:
+        break;
+    }
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
   }

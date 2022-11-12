@@ -18,9 +18,13 @@ app.use(cors(corsOptions));
 app.use(session(sessionOptions));
 
 app.put("/session", sessionHandler);
+app.post("/session", sessionHandler);
+
 app.post("/user", userHandler);
 app.put("/user", userHandler);
+
 app.post("/contact", contactsHandler);
+
 app.get("/grid", gridHandler);
 app.post("/grid", gridHandler);
 app.put("/grid", gridHandler);
