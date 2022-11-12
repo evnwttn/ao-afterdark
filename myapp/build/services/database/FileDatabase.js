@@ -52,11 +52,6 @@ class FileDatabase extends _1.Database {
             return userData;
         });
     }
-    deleteSession(sessionId) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log(`session: ${sessionId}`);
-        });
-    }
     signUpUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = (0, uuid_1.v4)();

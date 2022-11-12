@@ -21,10 +21,6 @@ export class FileDatabase extends Database {
     return userData;
   }
 
-  async deleteSession(sessionId: string): Promise<void> {
-    console.log(`session: ${sessionId}`);
-  }
-
   async signUpUser(user: Omit<UserLoginData, "id">): Promise<UserLoginData> {
     const id = uuidv4();
     const _user: UserLoginData = {

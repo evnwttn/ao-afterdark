@@ -4,7 +4,6 @@ export abstract class Database {
   constructor() {}
 
   abstract retrieveUser(userId: string): Promise<object>;
-  abstract deleteSession(sessionId: string): Promise<void>;
 
   abstract signUpUser(user: UserLoginData): Promise<UserLoginData>;
   abstract logInUser(user: UserLoginData): Promise<UserLoginData>;

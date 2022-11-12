@@ -12,8 +12,9 @@ export async function sessionHandler(req: Request, res: Response) {
 
     switch (req.method) {
       case "POST":
-        await db.deleteSession(req.sessionID as string);
-        res.status(StatusCodes.OK);
+        req.session.destroy((err) => {
+          res.status(StatusCodes.OK);
+        });
 
         break;
 
