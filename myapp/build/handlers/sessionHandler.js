@@ -9,10 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.cookieHandler = void 0;
+exports.sessionHandler = void 0;
 const database_1 = require("../services/database");
 const types_1 = require("../types");
-function cookieHandler(req, res) {
+function sessionHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         if (!req.session.userId) {
             return;
@@ -27,5 +27,5 @@ function cookieHandler(req, res) {
         }
     });
 }
-exports.cookieHandler = cookieHandler;
-//# sourceMappingURL=cookieHandler.js.map
+exports.sessionHandler = sessionHandler;
+//# sourceMappingURL=sessionHandler.js.map
