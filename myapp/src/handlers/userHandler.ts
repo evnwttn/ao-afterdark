@@ -26,17 +26,18 @@ export async function userHandler(req: Request, res: Response) {
     switch (req.method) {
       case "POST":
         const signUpUser = await db.signUpUser(req.body as UserLoginData);
-        res.status(StatusCodes.OK).json(signUpUser as UserLoginData);
+
+        res.status(StatusCodes.OK).send(signUpUser);
 
         break;
       case "PUT":
-        const logInUser = await db.logInUser(req.body as UserLoginData);
+        const loginUserId = await db.logInUser(req.body as UserLoginData);
 
         if (!req.session.userId) {
-          req.session.userId = logInUser.id;
+          req.session.userId = loginUserId;
         }
 
-        res.status(StatusCodes.OK).json(logInUser as UserLoginData);
+        res.status(StatusCodes.OK).send(true);
         break;
       default:
         break;

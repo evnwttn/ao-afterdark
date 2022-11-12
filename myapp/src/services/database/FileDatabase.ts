@@ -5,7 +5,7 @@ import * as os from "os";
 import { v4 as uuidv4 } from "uuid";
 
 export class FileDatabase extends Database {
-  async retrieveUser(userId: string): Promise<object> {
+  async retrieveUser(userId: string): Promise<Boolean> {
     const userDatabase = await fs.readFile("userStore.json", {
       encoding: "utf-8",
     });
@@ -13,15 +13,13 @@ export class FileDatabase extends Database {
     const userFiles = userDatabase.split(/\r?\n/);
     const index = userFiles.findIndex((file) => JSON.parse(file).id === userId);
     if (index === -1) {
-      return {};
+      return false;
     }
 
-    const userData = JSON.parse(userFiles[index]);
-
-    return userData;
+    return true;
   }
 
-  async signUpUser(user: Omit<UserLoginData, "id">): Promise<UserLoginData> {
+  async signUpUser(user: Omit<UserLoginData, "id">): Promise<Boolean> {
     const id = uuidv4();
     const _user: UserLoginData = {
       ...user,
@@ -30,10 +28,10 @@ export class FileDatabase extends Database {
 
     await fs.appendFile("userStore.json", JSON.stringify(_user) + os.EOL);
 
-    return _user;
+    return true;
   }
 
-  async logInUser(user: UserLoginData): Promise<UserLoginData> {
+  async logInUser(user: UserLoginData): Promise<string> {
     const userDatabase = await fs.readFile("userStore.json", {
       encoding: "utf-8",
     });
@@ -45,12 +43,12 @@ export class FileDatabase extends Database {
         JSON.parse(file).password === user.password
     );
     if (index === -1) {
-      return user;
+      return "";
     }
 
     const _user = JSON.parse(userFiles[index]);
 
-    return _user;
+    return _user.id;
   }
 
   async retrieveGrids(user: string): Promise<Grid[]> {
@@ -67,15 +65,15 @@ export class FileDatabase extends Database {
     return userSessions;
   }
 
-  async createGrid(session: Omit<Grid, "id">): Promise<Grid> {
+  async createGrid(grid: Omit<Grid, "id">): Promise<Grid> {
     const id = uuidv4();
-    const _session: Grid = {
-      ...session,
+    const _grid: Grid = {
+      ...grid,
       id,
     };
-    await fs.appendFile("gridStore.json", os.EOL + JSON.stringify(_session));
+    await fs.appendFile("gridStore.json", os.EOL + JSON.stringify(_grid));
 
-    return _session;
+    return _grid;
   }
 
   async updateGrid(session: Grid): Promise<Grid> {

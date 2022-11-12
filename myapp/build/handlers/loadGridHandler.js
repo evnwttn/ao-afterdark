@@ -9,46 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.userHandler = void 0;
+exports.loadGridHandler = void 0;
 const database_1 = require("../services/database");
 const types_1 = require("../types");
-function validate(body) {
-    if (!body.email) {
-        return false;
-    }
-    if (!body.password) {
-        return false;
-    }
-    return true;
-}
-function userHandler(req, res) {
+function loadGridHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const validUser = validate(req.body);
-        if (!validUser) {
-            res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
-        }
         try {
             const db = new database_1.FileDatabase();
-            switch (req.method) {
-                case "POST":
-                    const signUpUser = yield db.signUpUser(req.body);
-                    res.status(types_1.StatusCodes.OK).send(signUpUser);
-                    break;
-                case "PUT":
-                    const loginUserId = yield db.logInUser(req.body);
-                    if (!req.session.userId) {
-                        req.session.userId = loginUserId;
-                    }
-                    res.status(types_1.StatusCodes.OK).send(true);
-                    break;
-                default:
-                    break;
-            }
+            const retrievedGrids = yield db.retrieveGrids(req.session.userId);
+            res.status(types_1.StatusCodes.OK).json(retrievedGrids);
         }
         catch (error) {
             res.sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR);
         }
     });
 }
-exports.userHandler = userHandler;
-//# sourceMappingURL=userHandler.js.map
+exports.loadGridHandler = loadGridHandler;
+//# sourceMappingURL=loadGridHandler.js.map

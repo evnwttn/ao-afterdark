@@ -24,22 +24,18 @@ function validate(body) {
 }
 function gridHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        if (req.method !== "GET") {
-            const invalid = validate(req.body);
-            if (invalid) {
-                res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
-            }
+        const invalid = validate(req.body);
+        if (invalid) {
+            res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
         try {
             const db = new database_1.FileDatabase();
             switch (req.method) {
-                case "GET":
-                    const retrievedGrids = yield db.retrieveGrids(req.query.id);
-                    res.status(types_1.StatusCodes.OK).json(retrievedGrids);
-                    break;
                 case "POST":
                     const newGrid = yield db.createGrid(req.body);
                     res.status(types_1.StatusCodes.OK).json(newGrid);
+                    console.log(req.body);
+                    console.log(newGrid);
                     break;
                 case "PUT":
                     const updatedGrid = yield db.updateGrid(req.body);

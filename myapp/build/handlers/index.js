@@ -18,4 +18,5 @@ __exportStar(require("./userHandler"), exports);
 __exportStar(require("./gridHandler"), exports);
 __exportStar(require("./contactHandler"), exports);
 __exportStar(require("./sessionHandler"), exports);
+__exportStar(require("./loadGridHandler"), exports);
 //# sourceMappingURL=index.js.map

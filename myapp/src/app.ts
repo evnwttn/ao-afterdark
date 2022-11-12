@@ -7,6 +7,7 @@ import {
   userHandler,
   contactsHandler,
   gridHandler,
+  loadGridHandler,
 } from "./handlers";
 
 require("dotenv").config();
@@ -17,17 +18,15 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(session(sessionOptions));
 
-app.put("/session", sessionHandler);
-app.post("/session", sessionHandler);
+app.put("/session", sessionHandler); // retrieve session
+app.post("/session", sessionHandler); // destroy session
+app.post("/load", loadGridHandler); // load grid list
+app.post("/contact", contactsHandler); // contact email
+app.put("/user", userHandler); // login user
+app.post("/user", userHandler); // signup user
 
-app.post("/user", userHandler);
-app.put("/user", userHandler);
-
-app.post("/contact", contactsHandler);
-
-app.get("/grid", gridHandler);
-app.post("/grid", gridHandler);
-app.put("/grid", gridHandler);
+app.put("/grid", gridHandler); // create grid
+app.post("/grid", gridHandler); // update grid
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);

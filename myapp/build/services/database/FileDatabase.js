@@ -46,10 +46,9 @@ class FileDatabase extends _1.Database {
             const userFiles = userDatabase.split(/\r?\n/);
             const index = userFiles.findIndex((file) => JSON.parse(file).id === userId);
             if (index === -1) {
-                return {};
+                return false;
             }
-            const userData = JSON.parse(userFiles[index]);
-            return userData;
+            return true;
         });
     }
     signUpUser(user) {
@@ -57,7 +56,7 @@ class FileDatabase extends _1.Database {
             const id = (0, uuid_1.v4)();
             const _user = Object.assign(Object.assign({}, user), { id });
             yield fs.appendFile("userStore.json", JSON.stringify(_user) + os.EOL);
-            return _user;
+            return true;
         });
     }
     logInUser(user) {
@@ -69,10 +68,10 @@ class FileDatabase extends _1.Database {
             const index = userFiles.findIndex((file) => JSON.parse(file).email === user.email &&
                 JSON.parse(file).password === user.password);
             if (index === -1) {
-                return user;
+                return "";
             }
             const _user = JSON.parse(userFiles[index]);
-            return _user;
+            return _user.id;
         });
     }
     retrieveGrids(user) {
@@ -87,12 +86,12 @@ class FileDatabase extends _1.Database {
             return userSessions;
         });
     }
-    createGrid(session) {
+    createGrid(grid) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = (0, uuid_1.v4)();
-            const _session = Object.assign(Object.assign({}, session), { id });
-            yield fs.appendFile("gridStore.json", os.EOL + JSON.stringify(_session));
-            return _session;
+            const _grid = Object.assign(Object.assign({}, grid), { id });
+            yield fs.appendFile("gridStore.json", os.EOL + JSON.stringify(_grid));
+            return _grid;
         });
     }
     updateGrid(session) {
