@@ -13,7 +13,7 @@ export async function sessionHandler(req: Request, res: Response) {
     switch (req.method) {
       case "POST":
         req.session.destroy(() => {
-          res.status(StatusCodes.OK).json({ data: "yo" });
+          res.status(StatusCodes.OK).send(true);
         });
 
         break;

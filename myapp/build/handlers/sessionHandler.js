@@ -22,7 +22,7 @@ function sessionHandler(req, res) {
             switch (req.method) {
                 case "POST":
                     req.session.destroy(() => {
-                        res.status(types_1.StatusCodes.OK).json({ data: "yo" });
+                        res.status(types_1.StatusCodes.OK).send(true);
                     });
                     break;
                 case "PUT":
