@@ -21,8 +21,8 @@ function sessionHandler(req, res) {
             const db = new database_1.FileDatabase();
             switch (req.method) {
                 case "POST":
-                    req.session.destroy((err) => {
-                        res.status(types_1.StatusCodes.OK);
+                    req.session.destroy(() => {
+                        res.status(types_1.StatusCodes.OK).json({ data: "yo" });
                     });
                     break;
                 case "PUT":
