@@ -3,7 +3,7 @@ import cors from "cors";
 import session from "express-session";
 import { sessionOptions, corsOptions } from "./middleware";
 import {
-  cookieHandler,
+  sessionHandler,
   userHandler,
   contactsHandler,
   gridHandler,
@@ -17,9 +17,9 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(session(sessionOptions));
 
-app.post("/cookies", cookieHandler);
-app.post("/login", userHandler);
-app.put("/login", userHandler);
+app.post("/session", sessionHandler);
+app.post("/user", userHandler);
+app.put("/user", userHandler);
 app.post("/contact", contactsHandler);
 app.get("/grid", gridHandler);
 app.post("/grid", gridHandler);

@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { FileDatabase } from "../services/database";
 import { StatusCodes } from "../types";
 
-export async function cookieHandler(req: Request, res: Response) {
+export async function sessionHandler(req: Request, res: Response) {
   if (!req.session.userId) {
     return;
   }
