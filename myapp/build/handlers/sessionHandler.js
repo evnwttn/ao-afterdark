@@ -21,7 +21,7 @@ function sessionHandler(req, res) {
             const db = new database_1.FileDatabase();
             switch (req.method) {
                 case "POST":
-                    yield db.deleteSession("hello");
+                    yield db.deleteSession(req.sessionID);
                     res.status(types_1.StatusCodes.OK);
                     break;
                 case "PUT":
