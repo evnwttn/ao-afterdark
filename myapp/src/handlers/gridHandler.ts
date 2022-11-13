@@ -38,9 +38,7 @@ export async function gridHandler(req: Request, res: Response) {
           id: newGridId,
         };
 
-        console.log(_newGrid);
-
-        res.status(StatusCodes.OK).json(newGrid as Grid);
+        res.status(StatusCodes.OK).json(_newGrid as Grid);
 
         break;
       case "PUT":
