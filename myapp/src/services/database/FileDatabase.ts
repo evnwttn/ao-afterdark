@@ -65,7 +65,7 @@ export class FileDatabase extends Database {
     return userSessions;
   }
 
-  async createGrid(grid: Omit<Grid, "id">): Promise<Grid> {
+  async createGrid(grid: Omit<Grid, "id">): Promise<string> {
     const id = uuidv4();
     const _grid: Grid = {
       ...grid,
@@ -74,7 +74,7 @@ export class FileDatabase extends Database {
 
     await fs.appendFile("gridStore.json", os.EOL + JSON.stringify(_grid));
 
-    return _grid;
+    return id;
   }
 
   async updateGrid(grid: Grid): Promise<Grid> {
