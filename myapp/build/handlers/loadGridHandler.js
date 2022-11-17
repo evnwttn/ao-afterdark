@@ -10,14 +10,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loadGridHandler = void 0;
-const database_1 = require("../services/database");
 const types_1 = require("../types");
+const database_1 = require("../services/database");
 function loadGridHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const db = new database_1.FileDatabase();
-            const retrievedGrids = yield db.retrieveGrids(req.session.userId);
-            res.status(types_1.StatusCodes.OK).json(retrievedGrids);
+            yield database_1.db.retrieveGrids(req.session.userId);
+            // const retrievedGrids = await db.retrieveGrids(req.session.userId as string);
+            // res.status(StatusCodes.OK).json(retrievedGrids as Grid[]);
         }
         catch (error) {
             res.sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR);

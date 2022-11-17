@@ -10,8 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.gridHandler = void 0;
-const database_1 = require("../services/database");
 const types_1 = require("../types");
+const database_1 = require("../services/database");
 function validate(body) {
     var _a, _b, _c, _d;
     if ((_b = (_a = body.tracks) === null || _a === void 0 ? void 0 : _a.length) !== null && _b !== void 0 ? _b : 0 > 11) {
@@ -29,18 +29,22 @@ function gridHandler(req, res) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
         try {
-            const db = new database_1.FileDatabase();
             const user = req.session.userId;
             const newGrid = Object.assign(Object.assign({}, req.body), { user });
             switch (req.method) {
                 case "POST":
-                    const newGridId = yield db.createGrid(newGrid);
-                    const newGridNoUser = Object.assign(Object.assign({}, req.body), { id: newGridId });
-                    res.status(types_1.StatusCodes.OK).json(newGridNoUser);
+                    yield database_1.db.createGrid(newGrid);
+                    // const newGridId = await db.createGrid(newGrid as Grid);
+                    // const newGridNoUser = {
+                    //   ...req.body,
+                    //   id: newGridId,
+                    // };
+                    // res.status(StatusCodes.OK).json(newGridNoUser as Grid);
                     break;
                 case "PUT":
-                    const updatedGrid = yield db.updateGrid(req.body);
-                    res.status(types_1.StatusCodes.OK).json(updatedGrid);
+                    yield database_1.db.updateGrid(req.body);
+                    // const updatedGrid = await db.updateGrid(req.body as Grid);
+                    // res.status(StatusCodes.OK).json(updatedGrid as Grid);
                     break;
                 default:
                     break;

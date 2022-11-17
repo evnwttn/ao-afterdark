@@ -10,15 +10,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sessionHandler = void 0;
-const database_1 = require("../services/database");
 const types_1 = require("../types");
+const database_1 = require("../services/database");
 function sessionHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         if (!req.session.userId) {
             return;
         }
         try {
-            const db = new database_1.FileDatabase();
             switch (req.method) {
                 case "POST":
                     req.session.destroy(() => {
@@ -26,8 +25,11 @@ function sessionHandler(req, res) {
                     });
                     break;
                 case "PUT":
-                    const retrieveUser = yield db.retrieveUser(req.session.userId);
-                    res.status(types_1.StatusCodes.OK).json(retrieveUser);
+                    yield database_1.db.retrieveUser(req.session.userId);
+                    // const retrieveUser = await db.retrieveUser(
+                    //   req.session.userId as string
+                    // );
+                    // res.status(StatusCodes.OK).json(retrieveUser);
                     break;
                 default:
                     break;

@@ -31,6 +31,7 @@ const cors_1 = __importDefault(require("cors"));
 const express_session_1 = __importDefault(require("express-session"));
 const middleware_1 = require("./middleware");
 const handlers_1 = require("./handlers");
+require("./services/database/index");
 require("dotenv").config();
 const app = express.default();
 const port = process.env.PORT || 5000;
