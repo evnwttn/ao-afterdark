@@ -4,16 +4,16 @@ import { UserLoginData, Grid } from "../../types";
 
 export class PostgresDatabase extends Database {
   sql: any;
-  host?: string;
-  database?: string;
-  user?: string;
-  password?: string;
+  host: string;
+  database: string;
+  user: string;
+  password: string;
 
   constructor(postgresOptions: {
-    host?: string;
-    database?: string;
-    user?: string;
-    password?: string;
+    host: string;
+    database: string;
+    user: string;
+    password: string;
   }) {
     super();
 
