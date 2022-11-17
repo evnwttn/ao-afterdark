@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { FileDatabase } from "../services/database";
 import { StatusCodes } from "../types";
+import { db } from "../services/database";
 
 export async function sessionHandler(req: Request, res: Response) {
   if (!req.session.userId) {
@@ -8,8 +8,6 @@ export async function sessionHandler(req: Request, res: Response) {
   }
 
   try {
-    const db = new FileDatabase();
-
     switch (req.method) {
       case "POST":
         req.session.destroy(() => {
@@ -19,10 +17,12 @@ export async function sessionHandler(req: Request, res: Response) {
         break;
 
       case "PUT":
-        const retrieveUser = await db.retrieveUser(
-          req.session.userId as string
-        );
-        res.status(StatusCodes.OK).json(retrieveUser);
+        await db.retrieveUser(req.session.userId as string);
+
+        // const retrieveUser = await db.retrieveUser(
+        //   req.session.userId as string
+        // );
+        // res.status(StatusCodes.OK).json(retrieveUser);
 
         break;
       default:
