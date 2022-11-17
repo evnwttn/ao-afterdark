@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { FileDatabase } from "../services/database";
 import { Grid, StatusCodes } from "../types";
+import { db } from "../services/database";
 
 function validate(body: Partial<Grid>): boolean {
   if (body.tracks?.length ?? 0 > 11) {
@@ -21,8 +21,6 @@ export async function gridHandler(req: Request, res: Response) {
   }
 
   try {
-    const db = new FileDatabase();
-
     const user = req.session.userId;
     const newGrid: Grid = {
       ...req.body,
@@ -31,19 +29,21 @@ export async function gridHandler(req: Request, res: Response) {
 
     switch (req.method) {
       case "POST":
-        const newGridId = await db.createGrid(newGrid as Grid);
+        await db.createGrid(newGrid as Grid);
+        // const newGridId = await db.createGrid(newGrid as Grid);
 
-        const newGridNoUser = {
-          ...req.body,
-          id: newGridId,
-        };
+        // const newGridNoUser = {
+        //   ...req.body,
+        //   id: newGridId,
+        // };
 
-        res.status(StatusCodes.OK).json(newGridNoUser as Grid);
+        // res.status(StatusCodes.OK).json(newGridNoUser as Grid);
 
         break;
       case "PUT":
-        const updatedGrid = await db.updateGrid(req.body as Grid);
-        res.status(StatusCodes.OK).json(updatedGrid as Grid);
+        await db.updateGrid(req.body as Grid);
+        // const updatedGrid = await db.updateGrid(req.body as Grid);
+        // res.status(StatusCodes.OK).json(updatedGrid as Grid);
 
         break;
       default:
