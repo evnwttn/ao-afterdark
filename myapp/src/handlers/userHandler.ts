@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { FileDatabase } from "../services/database";
 import { StatusCodes, UserLoginData } from "../types";
+import { db } from "../services/database";
 
 function validate(body: Partial<UserLoginData>): boolean {
   if (!body.email) {
@@ -21,23 +21,25 @@ export async function userHandler(req: Request, res: Response) {
   }
 
   try {
-    const db = new FileDatabase();
-
     switch (req.method) {
       case "POST":
-        const signUpUser = await db.signUpUser(req.body as UserLoginData);
+        await db.signUpUser(req.body as UserLoginData);
 
-        res.status(StatusCodes.OK).send(signUpUser);
+        // const signUpUser = await db.signUpUser(req.body as UserLoginData);
+
+        // res.status(StatusCodes.OK).send(signUpUser);
 
         break;
       case "PUT":
-        const loginUserId = await db.logInUser(req.body as UserLoginData);
+        await db.logInUser(req.body as UserLoginData);
 
-        if (!req.session.userId) {
-          req.session.userId = loginUserId;
-        }
+        // const loginUserId = await db.logInUser(req.body as UserLoginData);
 
-        res.status(StatusCodes.OK).send(true);
+        // if (!req.session.userId) {
+        //   req.session.userId = loginUserId;
+        // }
+
+        // res.status(StatusCodes.OK).send(true);
         break;
       default:
         break;
