@@ -5,6 +5,10 @@ import * as os from "os";
 import { v4 as uuidv4 } from "uuid";
 
 export class FileDatabase extends Database {
+  connect(): Promise<void> {
+    return Promise.resolve();
+  }
+
   async retrieveUser(userId: string): Promise<Boolean> {
     const userDatabase = await fs.readFile("userStore.json", {
       encoding: "utf-8",

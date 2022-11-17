@@ -9,6 +9,7 @@ import {
   gridHandler,
   loadGridHandler,
 } from "./handlers";
+import "./services/database/index";
 
 require("dotenv").config();
 const app = express.default();
