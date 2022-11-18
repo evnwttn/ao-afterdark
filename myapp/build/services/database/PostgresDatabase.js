@@ -61,7 +61,10 @@ class PostgresDatabase extends Database_1.Database {
         });
     }
     retrieveGrids(user) {
-        throw new Error("Method not implemented.");
+        return __awaiter(this, void 0, void 0, function* () {
+            const grids = yield this.sql `select * from grids where user_id = ${user}`;
+            return grids;
+        });
     }
     createGrid(grid) {
         throw new Error("Method not implemented.");

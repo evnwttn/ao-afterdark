@@ -15,9 +15,8 @@ const database_1 = require("../services/database");
 function loadGridHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            yield database_1.db.retrieveGrids(req.session.userId);
-            // const retrievedGrids = await db.retrieveGrids(req.session.userId as string);
-            // res.status(StatusCodes.OK).json(retrievedGrids as Grid[]);
+            const retrievedGrids = yield database_1.db.retrieveGrids(req.session.userId);
+            res.status(types_1.StatusCodes.OK).json(retrievedGrids);
         }
         catch (error) {
             res.sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR);

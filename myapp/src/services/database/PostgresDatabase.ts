@@ -67,9 +67,12 @@ export class PostgresDatabase extends Database {
     return login[0].user_id;
   }
 
-  retrieveGrids(user: string): Promise<Grid[]> {
-    throw new Error("Method not implemented.");
+  async retrieveGrids(user: string): Promise<Grid[]> {
+    const grids = await this.sql`select * from grids where user_id = ${user}`;
+
+    return grids;
   }
+
   createGrid(grid: Grid): Promise<string> {
     throw new Error("Method not implemented.");
   }

@@ -4,11 +4,9 @@ import { db } from "../services/database";
 
 export async function loadGridHandler(req: Request, res: Response) {
   try {
-    await db.retrieveGrids(req.session.userId as string);
+    const retrievedGrids = await db.retrieveGrids(req.session.userId as string);
 
-    // const retrievedGrids = await db.retrieveGrids(req.session.userId as string);
-
-    // res.status(StatusCodes.OK).json(retrievedGrids as Grid[]);
+    res.status(StatusCodes.OK).json(retrievedGrids as Grid[]);
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
   }
