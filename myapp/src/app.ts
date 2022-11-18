@@ -1,6 +1,7 @@
 import * as express from "express";
 import cors from "cors";
 import session from "express-session";
+require("dotenv").config();
 import { sessionOptions, corsOptions } from "./middleware";
 import {
   sessionHandler,
@@ -11,7 +12,6 @@ import {
 } from "./handlers";
 import "./services/database/index";
 
-require("dotenv").config();
 const app = express.default();
 const port = process.env.PORT || 5000;
 
