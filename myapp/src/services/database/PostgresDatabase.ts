@@ -1,5 +1,5 @@
 import postgres from "postgres";
-import { Database } from ".";
+import { Database } from "./Database";
 import { UserLoginData, Grid } from "../../types";
 
 export class PostgresDatabase extends Database {

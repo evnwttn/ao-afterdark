@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PostgresDatabase = void 0;
 const postgres_1 = __importDefault(require("postgres"));
-const _1 = require(".");
-class PostgresDatabase extends _1.Database {
+const Database_1 = require("./Database");
+class PostgresDatabase extends Database_1.Database {
     constructor(postgresOptions) {
         super();
         this.host = postgresOptions.host;
