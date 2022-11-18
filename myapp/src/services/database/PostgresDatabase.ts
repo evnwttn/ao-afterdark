@@ -36,9 +36,15 @@ export class PostgresDatabase extends Database {
     return Promise.resolve();
   }
 
-  retrieveUser(userId: string): Promise<Boolean> {
-    console.log("retrieve user");
-    throw new Error("Method not implemented.");
+  async retrieveUser(userId: string): Promise<Boolean> {
+    const returnUser = await this
+      .sql`select * from users where user_id = ${userId}`;
+
+    if (!returnUser) {
+      return false;
+    }
+
+    return true;
   }
 
   async signUpUser(user: Omit<UserLoginData, "id">): Promise<Boolean> {

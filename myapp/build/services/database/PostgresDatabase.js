@@ -35,8 +35,14 @@ class PostgresDatabase extends Database_1.Database {
         return Promise.resolve();
     }
     retrieveUser(userId) {
-        console.log("retrieve user");
-        throw new Error("Method not implemented.");
+        return __awaiter(this, void 0, void 0, function* () {
+            const returnUser = yield this
+                .sql `select * from users where user_id = ${userId}`;
+            if (!returnUser) {
+                return false;
+            }
+            return true;
+        });
     }
     signUpUser(user) {
         return __awaiter(this, void 0, void 0, function* () {

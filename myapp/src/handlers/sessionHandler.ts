@@ -17,12 +17,10 @@ export async function sessionHandler(req: Request, res: Response) {
         break;
 
       case "PUT":
-        await db.retrieveUser(req.session.userId as string);
-
-        // const retrieveUser = await db.retrieveUser(
-        //   req.session.userId as string
-        // );
-        // res.status(StatusCodes.OK).json(retrieveUser);
+        const retrieveUser = await db.retrieveUser(
+          req.session.userId as string
+        );
+        res.status(StatusCodes.OK).json(retrieveUser);
 
         break;
       default:
