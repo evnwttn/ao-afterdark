@@ -25,21 +25,27 @@ class PostgresDatabase extends Database_1.Database {
         return Promise.resolve();
     }
     retrieveUser(userId) {
+        console.log("retrieve user");
         throw new Error("Method not implemented.");
     }
     signUpUser(user) {
+        console.log("signup user");
         throw new Error("Method not implemented.");
     }
     logInUser(user) {
+        console.log("login user");
         throw new Error("Method not implemented.");
     }
     retrieveGrids(user) {
+        console.log("retrieve grids");
         throw new Error("Method not implemented.");
     }
     createGrid(grid) {
+        console.log("create grids");
         throw new Error("Method not implemented.");
     }
     updateGrid(session) {
+        console.log("update grids");
         throw new Error("Method not implemented.");
     }
 }

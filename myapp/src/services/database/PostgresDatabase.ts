@@ -35,21 +35,27 @@ export class PostgresDatabase extends Database {
     return Promise.resolve();
   }
   retrieveUser(userId: string): Promise<Boolean> {
+    console.log("retrieve user");
     throw new Error("Method not implemented.");
   }
   signUpUser(user: UserLoginData): Promise<Boolean> {
+    console.log("signup user");
     throw new Error("Method not implemented.");
   }
   logInUser(user: UserLoginData): Promise<string> {
+    console.log("login user");
     throw new Error("Method not implemented.");
   }
   retrieveGrids(user: string): Promise<Grid[]> {
+    console.log("retrieve grids");
     throw new Error("Method not implemented.");
   }
   createGrid(grid: Grid): Promise<string> {
+    console.log("create grids");
     throw new Error("Method not implemented.");
   }
   updateGrid(session: Grid): Promise<Grid> {
+    console.log("update grids");
     throw new Error("Method not implemented.");
   }
 }
