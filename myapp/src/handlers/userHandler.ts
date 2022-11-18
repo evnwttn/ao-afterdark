@@ -31,7 +31,8 @@ export async function userHandler(req: Request, res: Response) {
 
         break;
       case "PUT":
-        await db.logInUser(req.body as UserLoginData);
+        const logInUser = await db.logInUser(req.body as UserLoginData);
+        console.log(logInUser);
 
         // const loginUserId = await db.logInUser(req.body as UserLoginData);
 

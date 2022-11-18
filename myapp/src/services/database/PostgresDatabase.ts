@@ -34,18 +34,25 @@ export class PostgresDatabase extends Database {
 
     return Promise.resolve();
   }
+
   retrieveUser(userId: string): Promise<Boolean> {
     console.log("retrieve user");
     throw new Error("Method not implemented.");
   }
+
   signUpUser(user: UserLoginData): Promise<Boolean> {
     console.log("signup user");
     throw new Error("Method not implemented.");
   }
-  logInUser(user: UserLoginData): Promise<string> {
-    console.log("login user");
-    throw new Error("Method not implemented.");
+
+  async logInUser(user: UserLoginData): Promise<string> {
+    const _user = user;
+    const login = await this
+      .sql`select * from users where email = ${_user.email} and password = ${_user.password}`;
+
+    return _user.id;
   }
+
   retrieveGrids(user: string): Promise<Grid[]> {
     console.log("retrieve grids");
     throw new Error("Method not implemented.");
