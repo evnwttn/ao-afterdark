@@ -70,6 +70,8 @@ export class PostgresDatabase extends Database {
   async retrieveGrids(user: string): Promise<Grid[]> {
     const grids = await this.sql`select * from grids where user_id = ${user}`;
 
+    // this is returning a json object, original was array so grid is having issues
+
     return grids;
   }
 
