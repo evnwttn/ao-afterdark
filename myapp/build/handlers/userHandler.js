@@ -30,18 +30,15 @@ function userHandler(req, res) {
         try {
             switch (req.method) {
                 case "POST":
-                    yield database_1.db.signUpUser(req.body);
-                    // const signUpUser = await db.signUpUser(req.body as UserLoginData);
-                    // res.status(StatusCodes.OK).send(signUpUser);
+                    const signUpUser = yield database_1.db.signUpUser(req.body);
+                    res.status(types_1.StatusCodes.OK).send(signUpUser);
                     break;
                 case "PUT":
-                    const logInUser = yield database_1.db.logInUser(req.body);
-                    console.log(logInUser);
-                    // const loginUserId = await db.logInUser(req.body as UserLoginData);
-                    // if (!req.session.userId) {
-                    //   req.session.userId = loginUserId;
-                    // }
-                    // res.status(StatusCodes.OK).send(true);
+                    const loginUserId = yield database_1.db.logInUser(req.body);
+                    if (!req.session.userId) {
+                        req.session.userId = loginUserId;
+                    }
+                    res.status(types_1.StatusCodes.OK).send(true);
                     break;
                 default:
                     break;
