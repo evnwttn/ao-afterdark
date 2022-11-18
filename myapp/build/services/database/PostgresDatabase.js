@@ -49,11 +49,9 @@ class PostgresDatabase extends Database_1.Database {
     }
     logInUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            const _user = user;
             const login = yield this
-                .sql `select * from users where email = ${_user.email} and password = ${_user.password}`;
-            console.log(login);
-            return _user.email;
+                .sql `select * from users where email = ${user.email} and password = ${user.password}`;
+            return login[0].user_id;
         });
     }
     retrieveGrids(user) {

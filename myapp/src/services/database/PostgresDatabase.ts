@@ -55,13 +55,10 @@ export class PostgresDatabase extends Database {
   }
 
   async logInUser(user: UserLoginData): Promise<string> {
-    const _user = user;
     const login = await this
-      .sql`select * from users where email = ${_user.email} and password = ${_user.password}`;
+      .sql`select * from users where email = ${user.email} and password = ${user.password}`;
 
-    console.log(login);
-
-    return _user.email;
+    return login[0].user_id;
   }
 
   retrieveGrids(user: string): Promise<Grid[]> {
