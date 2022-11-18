@@ -49,7 +49,7 @@ export class PostgresDatabase extends Database {
     };
 
     await this
-      .sql`insert into users(email, password, user_id) values('${_user.email}', '${_user.password}', '${_user.id}'`;
+      .sql`insert into users(email, password, user_id) values(${_user.email}, ${_user.password}, ${_user.id}`;
 
     return true;
   }
@@ -57,8 +57,6 @@ export class PostgresDatabase extends Database {
   async logInUser(user: UserLoginData): Promise<string> {
     const login = await this
       .sql`select * from users where email = ${user.email} and password = ${user.password}`;
-
-    console.log(login);
 
     return login[0].user_id;
   }

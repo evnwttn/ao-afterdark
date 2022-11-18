@@ -35,9 +35,9 @@ function userHandler(req, res) {
                     break;
                 case "PUT":
                     const loginUserId = yield database_1.db.logInUser(req.body);
-                    // if (!req.session.userId) {
-                    //   req.session.userId = loginUserId;
-                    // }
+                    if (!req.session.userId) {
+                        req.session.userId = loginUserId;
+                    }
                     res.status(types_1.StatusCodes.OK).send(true);
                     break;
                 default:

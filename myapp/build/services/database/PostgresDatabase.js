@@ -43,7 +43,7 @@ class PostgresDatabase extends Database_1.Database {
             const id = (0, uuid_1.v4)();
             const _user = Object.assign(Object.assign({}, user), { id });
             yield this
-                .sql `insert into users(email, password, user_id) values('${_user.email}', '${_user.password}', '${_user.id}'`;
+                .sql `insert into users(email, password, user_id) values(${_user.email}, ${_user.password}, ${_user.id}`;
             return true;
         });
     }
@@ -51,7 +51,6 @@ class PostgresDatabase extends Database_1.Database {
         return __awaiter(this, void 0, void 0, function* () {
             const login = yield this
                 .sql `select * from users where email = ${user.email} and password = ${user.password}`;
-            console.log(login);
             return login[0].user_id;
         });
     }
