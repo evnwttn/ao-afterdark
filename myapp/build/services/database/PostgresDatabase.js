@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PostgresDatabase = void 0;
 const postgres_1 = __importDefault(require("postgres"));
 const Database_1 = require("./Database");
+const uuid_1 = require("uuid");
 class PostgresDatabase extends Database_1.Database {
     constructor(postgresOptions) {
         super();
@@ -38,27 +39,30 @@ class PostgresDatabase extends Database_1.Database {
         throw new Error("Method not implemented.");
     }
     signUpUser(user) {
-        console.log("signup user");
-        throw new Error("Method not implemented.");
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = (0, uuid_1.v4)();
+            const _user = Object.assign(Object.assign({}, user), { id });
+            yield this
+                .sql `insert into users(email, password, user_id) values('${_user.email}', '${_user.password}', '${_user.id}'`;
+            return true;
+        });
     }
     logInUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
             const _user = user;
             const login = yield this
                 .sql `select * from users where email = ${_user.email} and password = ${_user.password}`;
-            return _user.id;
+            console.log(login);
+            return _user.email;
         });
     }
     retrieveGrids(user) {
-        console.log("retrieve grids");
         throw new Error("Method not implemented.");
     }
     createGrid(grid) {
-        console.log("create grids");
         throw new Error("Method not implemented.");
     }
     updateGrid(session) {
-        console.log("update grids");
         throw new Error("Method not implemented.");
     }
 }

@@ -1,6 +1,7 @@
 import postgres from "postgres";
 import { Database } from "./Database";
 import { UserLoginData, Grid } from "../../types";
+import { v4 as uuidv4 } from "uuid";
 
 export class PostgresDatabase extends Database {
   sql: any;
@@ -40,9 +41,17 @@ export class PostgresDatabase extends Database {
     throw new Error("Method not implemented.");
   }
 
-  signUpUser(user: UserLoginData): Promise<Boolean> {
-    console.log("signup user");
-    throw new Error("Method not implemented.");
+  async signUpUser(user: Omit<UserLoginData, "id">): Promise<Boolean> {
+    const id = uuidv4();
+    const _user: UserLoginData = {
+      ...user,
+      id,
+    };
+
+    await this
+      .sql`insert into users(email, password, user_id) values('${_user.email}', '${_user.password}', '${_user.id}'`;
+
+    return true;
   }
 
   async logInUser(user: UserLoginData): Promise<string> {
@@ -50,19 +59,18 @@ export class PostgresDatabase extends Database {
     const login = await this
       .sql`select * from users where email = ${_user.email} and password = ${_user.password}`;
 
-    return _user.id;
+    console.log(login);
+
+    return _user.email;
   }
 
   retrieveGrids(user: string): Promise<Grid[]> {
-    console.log("retrieve grids");
     throw new Error("Method not implemented.");
   }
   createGrid(grid: Grid): Promise<string> {
-    console.log("create grids");
     throw new Error("Method not implemented.");
   }
   updateGrid(session: Grid): Promise<Grid> {
-    console.log("update grids");
     throw new Error("Method not implemented.");
   }
 }
