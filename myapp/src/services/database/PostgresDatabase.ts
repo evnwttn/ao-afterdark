@@ -78,10 +78,11 @@ export class PostgresDatabase extends Database {
     console.log(grid);
 
     await this
-      .sql`insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values(${grid.parameters}, '1234', ${grid.author}, ${grid.sessionTitle}, ${grid.tracks}, ${id})`;
+      .sql`insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values(${grid.parameters}, ${grid.user}, ${grid.author}, ${grid.sessionTitle}, ${grid.tracks}, ${id})`;
 
     return id;
   }
+
   updateGrid(session: Grid): Promise<Grid> {
     throw new Error("Method not implemented.");
   }
