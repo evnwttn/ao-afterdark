@@ -75,13 +75,10 @@ export class PostgresDatabase extends Database {
 
   async createGrid(grid: Grid): Promise<string> {
     const id = uuidv4();
-    const _grid: Grid = {
-      ...grid,
-      id,
-    };
+    console.log(grid);
 
-    await this
-      .sql`insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values('{"title", "vocals"}', '1234', 'evan', 'lalala', '{"title":"1","parameters":[{"parameter":"Vocals","colour":"#2D2D2D","comment":""}]}', '123456')`;
+    // await this
+    //   .sql`insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values('{"title", "vocals"}', '1234', 'evan', 'lalala', '{"title":"1","parameters":[{"parameter":"Vocals","colour":"#2D2D2D","comment":""}]}', '123456')`;
 
     return id;
   }
