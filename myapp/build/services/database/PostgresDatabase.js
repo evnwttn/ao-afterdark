@@ -63,12 +63,17 @@ class PostgresDatabase extends Database_1.Database {
     retrieveGrids(user) {
         return __awaiter(this, void 0, void 0, function* () {
             const grids = yield this.sql `select * from grids where user_id = ${user}`;
-            // this is returning a json object, original was array so grid is having issues
             return grids;
         });
     }
     createGrid(grid) {
-        throw new Error("Method not implemented.");
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = (0, uuid_1.v4)();
+            const _grid = Object.assign(Object.assign({}, grid), { id });
+            yield this
+                .sql `insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values('{"title", "vocals"}', '1234', 'evan', 'lalala', '{"title":"1","parameters":[{"parameter":"Vocals","colour":"#2D2D2D","comment":""}]}', '123456')`;
+            return id;
+        });
     }
     updateGrid(session) {
         throw new Error("Method not implemented.");

@@ -33,13 +33,9 @@ function gridHandler(req, res) {
             const newGrid = Object.assign(Object.assign({}, req.body), { user });
             switch (req.method) {
                 case "POST":
-                    yield database_1.db.createGrid(newGrid);
-                    // const newGridId = await db.createGrid(newGrid as Grid);
-                    // const newGridNoUser = {
-                    //   ...req.body,
-                    //   id: newGridId,
-                    // };
-                    // res.status(StatusCodes.OK).json(newGridNoUser as Grid);
+                    const newGridId = yield database_1.db.createGrid(newGrid);
+                    const newGridNoUser = Object.assign(Object.assign({}, req.body), { id: newGridId });
+                    res.status(types_1.StatusCodes.OK).json(newGridNoUser);
                     break;
                 case "PUT":
                     yield database_1.db.updateGrid(req.body);

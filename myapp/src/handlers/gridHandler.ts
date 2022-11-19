@@ -29,15 +29,14 @@ export async function gridHandler(req: Request, res: Response) {
 
     switch (req.method) {
       case "POST":
-        await db.createGrid(newGrid as Grid);
-        // const newGridId = await db.createGrid(newGrid as Grid);
+        const newGridId = await db.createGrid(newGrid as Grid);
 
-        // const newGridNoUser = {
-        //   ...req.body,
-        //   id: newGridId,
-        // };
+        const newGridNoUser = {
+          ...req.body,
+          id: newGridId,
+        };
 
-        // res.status(StatusCodes.OK).json(newGridNoUser as Grid);
+        res.status(StatusCodes.OK).json(newGridNoUser as Grid);
 
         break;
       case "PUT":
