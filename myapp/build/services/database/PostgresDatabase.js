@@ -70,8 +70,8 @@ class PostgresDatabase extends Database_1.Database {
         return __awaiter(this, void 0, void 0, function* () {
             const id = (0, uuid_1.v4)();
             console.log(grid);
-            // await this
-            //   .sql`insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values('{"title", "vocals"}', '1234', 'evan', 'lalala', '{"title":"1","parameters":[{"parameter":"Vocals","colour":"#2D2D2D","comment":""}]}', '123456')`;
+            yield this
+                .sql `insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values(${grid.parameters}, '1234', ${grid.author}, ${grid.sessionTitle}, ${grid.tracks}, ${id})`;
             return id;
         });
     }
