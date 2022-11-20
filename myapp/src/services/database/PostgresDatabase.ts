@@ -86,6 +86,9 @@ export class PostgresDatabase extends Database {
     await this
       .sql`update grids set tracks = ${grid.tracks} where user_id = ${grid.user_id}`;
 
-    return grid;
+    const _grid = await this
+      .sql`select * from grids where grid_id = ${grid.grid_id}`;
+
+    return _grid;
   }
 }

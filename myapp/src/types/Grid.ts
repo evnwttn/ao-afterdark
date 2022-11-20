@@ -5,6 +5,6 @@ export interface Grid {
   author: string;
   tracks: Track[];
   parameters: string[];
-  id: string;
+  grid_id: string;
   user_id: string;
 }
