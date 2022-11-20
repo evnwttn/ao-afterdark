@@ -74,7 +74,8 @@ class PostgresDatabase extends Database_1.Database {
             return id;
         });
     }
-    updateGrid(session) {
+    updateGrid(grid) {
+        console.log(grid);
         throw new Error("Method not implemented.");
     }
 }

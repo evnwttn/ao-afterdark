@@ -38,9 +38,8 @@ function gridHandler(req, res) {
                     res.status(types_1.StatusCodes.OK).json(newGridNoUser);
                     break;
                 case "PUT":
-                    yield database_1.db.updateGrid(req.body);
-                    // const updatedGrid = await db.updateGrid(req.body as Grid);
-                    // res.status(StatusCodes.OK).json(updatedGrid as Grid);
+                    const updatedGrid = yield database_1.db.updateGrid(req.body);
+                    res.status(types_1.StatusCodes.OK).json(updatedGrid);
                     break;
                 default:
                     break;

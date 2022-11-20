@@ -82,7 +82,9 @@ export class PostgresDatabase extends Database {
     return id;
   }
 
-  updateGrid(session: Grid): Promise<Grid> {
+  updateGrid(grid: Grid): Promise<Grid> {
+    console.log(grid);
+
     throw new Error("Method not implemented.");
   }
 }
