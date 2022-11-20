@@ -70,13 +70,16 @@ class PostgresDatabase extends Database_1.Database {
         return __awaiter(this, void 0, void 0, function* () {
             const id = (0, uuid_1.v4)();
             yield this
-                .sql `insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values(${grid.parameters}, ${grid.user}, ${grid.author}, ${grid.sessionTitle}, ${grid.tracks}, ${id})`;
+                .sql `insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values(${grid.parameters}, ${grid.user_id}, ${grid.author}, ${grid.sessionTitle}, ${grid.tracks}, ${id})`;
             return id;
         });
     }
     updateGrid(grid) {
-        console.log(grid);
-        throw new Error("Method not implemented.");
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this
+                .sql `update grids set tracks = ${grid.tracks} where user_id = ${grid.user_id}`;
+            return grid;
+        });
     }
 }
 exports.PostgresDatabase = PostgresDatabase;
