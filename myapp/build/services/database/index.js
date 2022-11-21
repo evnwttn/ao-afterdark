@@ -18,7 +18,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.db = exports.postgresOptions = void 0;
 const PostgresDatabase_1 = require("./PostgresDatabase");
 __exportStar(require("./Database"), exports);
-__exportStar(require("./FileDatabase"), exports);
 __exportStar(require("./PostgresDatabase"), exports);
 exports.postgresOptions = {
     host: (_a = process.env.PG_HOST) !== null && _a !== void 0 ? _a : "",

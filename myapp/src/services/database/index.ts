@@ -1,7 +1,6 @@
 import { PostgresDatabase } from "./PostgresDatabase";
 
 export * from "./Database";
-export * from "./FileDatabase";
 export * from "./PostgresDatabase";
 
 export const postgresOptions = {

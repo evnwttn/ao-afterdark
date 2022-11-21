@@ -103,7 +103,7 @@ class FileDatabase extends _1.Database {
                 encoding: "utf-8",
             });
             const sessionFiles = sessionsDatabase.split(/\r?\n/);
-            const index = sessionFiles.findIndex((file) => JSON.parse(file).id === grid.id);
+            const index = sessionFiles.findIndex((file) => JSON.parse(file).id === grid.grid_id);
             if (index === -1) {
                 return grid;
             }
