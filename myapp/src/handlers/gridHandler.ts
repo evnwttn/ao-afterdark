@@ -42,7 +42,7 @@ export async function gridHandler(req: Request, res: Response) {
       case "PUT":
         const updatedGrid = await db.updateGrid(req.body as Grid);
 
-        res.status(StatusCodes.OK).json(updatedGrid as Grid);
+        res.status(StatusCodes.OK).json(req.body as Grid);
 
         break;
       default:

@@ -39,7 +39,7 @@ function gridHandler(req, res) {
                     break;
                 case "PUT":
                     const updatedGrid = yield database_1.db.updateGrid(req.body);
-                    res.status(types_1.StatusCodes.OK).json(updatedGrid);
+                    res.status(types_1.StatusCodes.OK).json(req.body);
                     break;
                 default:
                     break;
