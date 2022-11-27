@@ -75,6 +75,12 @@ export class PostgresDatabase extends Database {
 
   async createGrid(grid: any): Promise<string> {
     const id = uuidv4();
+    const _grid: any = {
+      ...grid,
+      id,
+    };
+
+    console.log(_grid);
 
     await this
       .sql`insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values('${grid.parameters}', ${grid.user}, ${grid.author}, ${grid.sessionTitle}, '${grid.tracks}', '${id}')`;
