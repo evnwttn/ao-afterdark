@@ -77,7 +77,9 @@ export class PostgresDatabase extends Database {
     const id = uuidv4();
 
     await this
-      .sql`insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values(${grid.parameters}, ${grid.user}, ${grid.author}, ${grid.sessionTitle}, ${grid.tracks}, ${id})`;
+      .sql`insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values('${grid.parameters}', ${grid.user}, ${grid.author}, ${grid.sessionTitle}, '${grid.tracks}', '${id}')`;
+
+    // issue with sql call
 
     return id;
   }
