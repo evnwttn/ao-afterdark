@@ -6,8 +6,6 @@ export async function loadGridHandler(req: Request, res: Response) {
   try {
     const retrievedGrids = await db.retrieveGrids(req.session.userId as string);
 
-    console.log(retrievedGrids);
-
     res.status(StatusCodes.OK).json(retrievedGrids as Grid[]);
   } catch (error) {
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);

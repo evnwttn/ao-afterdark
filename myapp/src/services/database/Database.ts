@@ -8,6 +8,6 @@ export abstract class Database {
   abstract signUpUser(user: UserLoginData): Promise<Boolean>;
   abstract logInUser(user: UserLoginData): Promise<string>;
   abstract retrieveGrids(user: string): Promise<Grid[]>;
-  abstract createGrid(grid: Grid): Promise<string>;
+  abstract createGrid(grid: any): Promise<string>;
   abstract updateGrid(session: Grid): Promise<Grid>;
 }

@@ -29,7 +29,9 @@ export async function gridHandler(req: Request, res: Response) {
 
     switch (req.method) {
       case "POST":
-        const newGridId = await db.createGrid(newGrid as Grid);
+        const newGridId = await db.createGrid(newGrid as any);
+
+        console.log(newGridId);
 
         const newGridNoUser = {
           ...req.body,
