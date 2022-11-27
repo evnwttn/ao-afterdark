@@ -72,7 +72,7 @@ class PostgresDatabase extends Database_1.Database {
             const _grid = Object.assign(Object.assign({}, grid), { id });
             console.log(_grid);
             yield this
-                .sql `insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values('${grid.parameters}', ${grid.user}, ${grid.author}, ${grid.sessionTitle}, '${grid.tracks}', '${id}')`;
+                .sql `insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values(${_grid.parameters}, ${_grid.user}, ${_grid.author}, ${_grid.sessionTitle}, ${_grid.tracks}, ${_grid.id})`;
             // issue with sql call
             return id;
         });
