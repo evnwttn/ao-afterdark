@@ -70,13 +70,13 @@ class PostgresDatabase extends Database_1.Database {
             return grids;
         });
     }
+    // all gucci upto createGrid
     createGrid(grid) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = (0, uuid_1.v4)();
             const _grid = Object.assign(Object.assign({}, grid), { id });
             yield this
                 .sql `insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values(${_grid.parameters}, ${_grid.user}, ${_grid.author}, ${_grid.sessionTitle}, ${_grid.tracks}, ${_grid.id})`;
-            // issue with sql call
             return id;
         });
     }

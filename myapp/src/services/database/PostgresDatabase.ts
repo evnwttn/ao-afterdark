@@ -78,6 +78,8 @@ export class PostgresDatabase extends Database {
     return grids;
   }
 
+  // all gucci upto createGrid
+
   async createGrid(grid: any): Promise<string> {
     const id = uuidv4();
     const _grid: any = {
@@ -87,8 +89,6 @@ export class PostgresDatabase extends Database {
 
     await this
       .sql`insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values(${_grid.parameters}, ${_grid.user}, ${_grid.author}, ${_grid.sessionTitle}, ${_grid.tracks}, ${_grid.id})`;
-
-    // issue with sql call
 
     return id;
   }
