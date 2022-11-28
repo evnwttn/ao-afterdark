@@ -78,8 +78,6 @@ export class PostgresDatabase extends Database {
     return grids;
   }
 
-  // all gucci upto createGrid
-
   async createGrid(grid: any): Promise<string> {
     const id = uuidv4();
     const _grid: any = {
@@ -87,23 +85,10 @@ export class PostgresDatabase extends Database {
       id,
     };
 
-    const parameters = await this
-      .sql`insert into parameters(parameters, user_id) values(${_grid.parameters}, ${_grid.user})`;
+    console.log(_grid);
 
-    console.log(parameters);
-
-    const author = await this
-      .sql`insert into author(author, session_title) values(${_grid.author}, ${_grid.sessionTitle})`;
-
-    console.log(author);
-
-    const tracks = await this
-      .sql`insert into tracks(tracks, grid_id) values(${_grid.tracks}, ${_grid.id})`;
-
-    console.log(tracks);
-
-    // const newGrid = await this
-    //   .sql`insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values(${_grid.parameters}, ${_grid.user}, ${_grid.author}, ${_grid.sessionTitle}, ${_grid.tracks}, ${_grid.id})`;
+    const test = await this
+      .sql`insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values(${_grid.parameters}, ${_grid.user}, ${_grid.author}, ${_grid.sessionTitle}, ${_grid.tracks}, ${_grid.id})`;
 
     return id;
   }
