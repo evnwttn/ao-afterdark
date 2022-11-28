@@ -54,8 +54,12 @@ export class PostgresDatabase extends Database {
       id,
     };
 
-    await this
-      .sql`insert into users(email, password, user_id) values(${_user.email}, ${_user.password}, ${_user.id}`;
+    const newUser = await this
+      .sql`insert into users(email, password, user_id) values(${_user.email}, ${_user.password}, ${_user.id})`;
+
+    if (!newUser) {
+      return false;
+    }
 
     return true;
   }
@@ -79,8 +83,6 @@ export class PostgresDatabase extends Database {
       ...grid,
       id,
     };
-
-    console.log(_grid);
 
     await this
       .sql`insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values(${_grid.parameters}, ${_grid.user}, ${_grid.author}, ${_grid.sessionTitle}, ${_grid.tracks}, ${_grid.id})`;

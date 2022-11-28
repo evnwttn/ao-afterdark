@@ -16,7 +16,6 @@ function loadGridHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const retrievedGrids = yield database_1.db.retrieveGrids(req.session.userId);
-            console.log(retrievedGrids[0]);
             res.status(types_1.StatusCodes.OK).json(retrievedGrids);
         }
         catch (error) {

@@ -6,6 +6,7 @@ const filestoreOptions = {};
 export const sessionOptions = {
   store: new FileStore(filestoreOptions),
   secret: "shhh",
+  retries: 0,
   resave: true,
   saveUninitialized: false,
   cookie: {
