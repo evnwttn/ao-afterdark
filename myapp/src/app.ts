@@ -4,11 +4,11 @@ import session from "express-session";
 require("dotenv").config();
 import { sessionOptions, corsOptions } from "./middleware";
 import {
-  sessionHandler,
   userHandler,
-  contactsHandler,
-  gridHandler,
   loadGridHandler,
+  gridHandler,
+  sessionHandler,
+  contactsHandler,
 } from "./handlers";
 import "./services/database/index";
 
@@ -19,15 +19,14 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(session(sessionOptions));
 
-app.put("/session", sessionHandler); // retrieve session
-app.post("/session", sessionHandler); // destroy session
-app.post("/load", loadGridHandler); // load grid list
-app.post("/contact", contactsHandler); // contact email
 app.put("/user", userHandler); // login user
 app.post("/user", userHandler); // signup user
-
+app.post("/load", loadGridHandler); // load grid list
 app.put("/grid", gridHandler); // create grid
 app.post("/grid", gridHandler); // update grid
+app.put("/session", sessionHandler); // retrieve session
+app.post("/session", sessionHandler); // destroy session
+app.post("/contact", contactsHandler); // contact email
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
