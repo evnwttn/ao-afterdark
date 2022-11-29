@@ -78,7 +78,7 @@ export class PostgresDatabase extends Database {
     return grids;
   }
 
-  async createGrid(grid: any): Promise<string> {
+  async createGrid(grid: Omit<Grid, "id">): Promise<string> {
     const id = uuidv4();
     const _grid: any = {
       ...grid,
