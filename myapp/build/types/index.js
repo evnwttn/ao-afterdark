@@ -18,5 +18,5 @@ __exportStar(require("./Grid"), exports);
 __exportStar(require("./Track"), exports);
 __exportStar(require("./TrackParams"), exports);
 __exportStar(require("./StatusCodes"), exports);
-__exportStar(require("./UserLoginData"), exports);
+__exportStar(require("./UserData"), exports);
 //# sourceMappingURL=index.js.map

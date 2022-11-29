@@ -2,7 +2,7 @@ export * from "./Grid";
 export * from "./Track";
 export * from "./TrackParams";
 export * from "./StatusCodes";
-export * from "./UserLoginData";
+export * from "./UserData";
 
 declare module "express-session" {
   interface Session {

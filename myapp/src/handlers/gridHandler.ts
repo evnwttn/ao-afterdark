@@ -22,7 +22,7 @@ export async function gridHandler(req: Request, res: Response) {
 
   try {
     const user = req.session.userId;
-    const newGrid: Grid = {
+    const newGrid: any = {
       ...req.body,
       user,
     };
