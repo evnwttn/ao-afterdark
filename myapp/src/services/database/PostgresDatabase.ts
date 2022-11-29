@@ -1,6 +1,6 @@
 import postgres from "postgres";
 import { Database } from "./Database";
-import { UserData, Grid } from "../../types";
+import { UserLoginData, Grid } from "../../types";
 import { v4 as uuidv4 } from "uuid";
 
 export class PostgresDatabase extends Database {
@@ -47,9 +47,9 @@ export class PostgresDatabase extends Database {
     return true;
   }
 
-  async signUpUser(user: Omit<UserData, "id">): Promise<Boolean> {
+  async signUpUser(user: Omit<UserLoginData, "id">): Promise<Boolean> {
     const id = uuidv4();
-    const _user: UserData = {
+    const _user: UserLoginData = {
       ...user,
       id,
     };
@@ -64,7 +64,7 @@ export class PostgresDatabase extends Database {
     return true;
   }
 
-  async logInUser(user: UserData): Promise<string> {
+  async logInUser(user: UserLoginData): Promise<string> {
     const login = await this
       .sql`select * from users where email = ${user.email} and password = ${user.password}`;
 
