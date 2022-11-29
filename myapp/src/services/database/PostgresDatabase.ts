@@ -87,15 +87,15 @@ export class PostgresDatabase extends Database {
 
     console.log(_grid);
 
-    const test = await this
+    const saveNewGrid = await this
       .sql`insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values(${_grid.parameters}, ${_grid.user}, ${_grid.author}, ${_grid.sessionTitle}, ${_grid.tracks}, ${_grid.id})`;
 
     return id;
   }
 
-  async updateGrid(grid: Grid): Promise<Grid> {
+  async updateGrid(grid: any): Promise<any> {
     await this
-      .sql`update grids set tracks = ${grid.tracks} where user_id = ${grid.user_id}`;
+      .sql`update grids set tracks = ${grid.tracks} where user_id = ${grid.user}`;
 
     return grid;
   }
