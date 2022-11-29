@@ -74,8 +74,7 @@ class PostgresDatabase extends Database_1.Database {
         return __awaiter(this, void 0, void 0, function* () {
             const id = (0, uuid_1.v4)();
             const _grid = Object.assign(Object.assign({}, grid), { id });
-            console.log(_grid);
-            const test = yield this
+            yield this
                 .sql `insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values(${_grid.parameters}, ${_grid.user}, ${_grid.author}, ${_grid.sessionTitle}, ${_grid.tracks}, ${_grid.id})`;
             return id;
         });
