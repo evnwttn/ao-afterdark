@@ -2,9 +2,9 @@ import { Track } from "./Track";
 
 export interface Grid {
   parameters: string[];
-  user_id: string;
+  user: string;
   author: string;
-  session_title: string;
+  sessionTitle: string;
   tracks: Track[];
-  grid_id: string;
+  id: string;
 }

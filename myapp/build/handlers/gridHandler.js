@@ -33,6 +33,7 @@ function gridHandler(req, res) {
             const newGrid = Object.assign(Object.assign({}, req.body), { user });
             switch (req.method) {
                 case "POST":
+                    console.log(newGrid);
                     const newGridId = yield database_1.db.createGrid(newGrid);
                     const newGridNoUser = Object.assign(Object.assign({}, req.body), { id: newGridId });
                     res.status(types_1.StatusCodes.OK).json(newGridNoUser);
