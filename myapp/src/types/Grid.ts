@@ -1,10 +1,10 @@
 import { Track } from "./Track";
 
 export interface Grid {
-  parameters: string[];
-  user_id: string;
+  sessionTitle: string;
   author: string;
-  session_title: string;
   tracks: Track[];
+  parameters: string[];
   grid_id: string;
+  user_id: string;
 }
