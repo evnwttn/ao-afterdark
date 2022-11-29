@@ -22,25 +22,25 @@ export async function gridHandler(req: Request, res: Response) {
 
   try {
     const user = req.session.userId;
-    const newGrid: Grid = {
+    const newGrid: Omit<Grid, "id"> = {
       ...req.body,
       user,
     };
 
     switch (req.method) {
       case "POST":
-        console.log(newGrid);
-        const newGridId = await db.createGrid(newGrid as any);
+        const newGridId = await db.createGrid(newGrid as Omit<Grid, "id">);
 
         const newGridNoUser = {
           ...req.body,
           id: newGridId,
         };
 
-        res.status(StatusCodes.OK).json(newGridNoUser as Grid);
+        res.status(StatusCodes.OK).json(newGridNoUser as Omit<Grid, "user">);
 
         break;
       case "PUT":
+        console.log(req.body);
         const updatedGrid = await db.updateGrid(req.body as any);
 
         res.status(StatusCodes.OK).json(req.body as any);
