@@ -9,5 +9,5 @@ export abstract class Database {
   abstract logInUser(user: UserLoginData): Promise<string>;
   abstract retrieveGrids(user: string): Promise<Grid[]>;
   abstract createGrid(grid: any): Promise<string>;
-  abstract updateGrid(session: any): Promise<any>;
+  abstract updateGrid(session: Grid): Promise<Grid>;
 }
