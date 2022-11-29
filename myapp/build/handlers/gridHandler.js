@@ -39,8 +39,6 @@ function gridHandler(req, res) {
                     break;
                 case "PUT":
                     const updatedGrid = yield database_1.db.updateGrid(req.body);
-                    // grid put 500 error
-                    // definitely sql formatting error
                     res.status(types_1.StatusCodes.OK).json(req.body);
                     break;
                 default:

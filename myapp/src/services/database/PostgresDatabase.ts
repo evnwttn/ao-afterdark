@@ -93,7 +93,9 @@ export class PostgresDatabase extends Database {
     return id;
   }
 
-  async updateGrid(grid: Grid): Promise<Grid> {
+  async updateGrid(grid: any): Promise<any> {
+    console.log(grid);
+
     await this
       .sql`update grids set tracks = ${grid.tracks} where user_id = ${grid.user_id}`;
 

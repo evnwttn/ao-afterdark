@@ -40,12 +40,9 @@ export async function gridHandler(req: Request, res: Response) {
 
         break;
       case "PUT":
-        const updatedGrid = await db.updateGrid(req.body as Grid);
+        const updatedGrid = await db.updateGrid(req.body as any);
 
-        // grid put 500 error
-        // definitely sql formatting error
-
-        res.status(StatusCodes.OK).json(req.body as Grid);
+        res.status(StatusCodes.OK).json(req.body as any);
 
         break;
       default:
