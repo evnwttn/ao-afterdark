@@ -82,8 +82,9 @@ class PostgresDatabase extends Database_1.Database {
     }
     updateGrid(grid) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(grid);
             yield this
-                .sql `update grids set tracks = ${grid.tracks} where grid_id = ${grid.grid_id}`;
+                .sql `update grids set tracks = ${grid.tracks} where user_id = ${grid.user_id}`;
             return grid;
         });
     }
