@@ -64,7 +64,7 @@ export class PostgresDatabase extends Database {
     return true;
   }
 
-  async logInUser(user: UserLoginData): Promise<string> {
+  async logInUser(user: Omit<UserLoginData, "id">): Promise<string> {
     const login = await this
       .sql`select * from users where email = ${user.email} and password = ${user.password}`;
 
