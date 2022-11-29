@@ -85,7 +85,9 @@ export class PostgresDatabase extends Database {
       id,
     };
 
-    await this
+    console.log(_grid);
+
+    const test = await this
       .sql`insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values(${_grid.parameters}, ${_grid.user}, ${_grid.author}, ${_grid.sessionTitle}, ${_grid.tracks}, ${_grid.id})`;
 
     return id;
