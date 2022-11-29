@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { StatusCodes, UserData } from "../types";
+import { StatusCodes, UserLoginData } from "../types";
 import { db } from "../services/database";
 
-function validate(body: Partial<UserData>): boolean {
+function validate(body: Partial<UserLoginData>): boolean {
   if (!body.email) {
     return false;
   }
@@ -15,7 +15,7 @@ function validate(body: Partial<UserData>): boolean {
 }
 
 export async function userHandler(req: Request, res: Response) {
-  const validUser = validate(req.body as Partial<UserData>);
+  const validUser = validate(req.body as Partial<UserLoginData>);
   if (!validUser) {
     res.sendStatus(StatusCodes.BAD_REQUEST);
   }
@@ -23,13 +23,13 @@ export async function userHandler(req: Request, res: Response) {
   try {
     switch (req.method) {
       case "POST":
-        const signUpUser = await db.signUpUser(req.body as UserData);
+        const signUpUser = await db.signUpUser(req.body as UserLoginData);
 
         res.status(StatusCodes.OK).send(signUpUser);
 
         break;
       case "PUT":
-        const loginUserId = await db.logInUser(req.body as UserData);
+        const loginUserId = await db.logInUser(req.body as UserLoginData);
 
         if (!req.session.userId) {
           req.session.userId = loginUserId;
