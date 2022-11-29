@@ -40,10 +40,9 @@ export async function gridHandler(req: Request, res: Response) {
 
         break;
       case "PUT":
-        console.log(req.body);
-        const updatedGrid = await db.updateGrid(req.body as any);
+        const updatedGrid = await db.updateGrid(req.body as Omit<Grid, "user">);
 
-        res.status(StatusCodes.OK).json(req.body as any);
+        res.status(StatusCodes.OK).json(req.body as Omit<Grid, "user">);
 
         break;
       default:
