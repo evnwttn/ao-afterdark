@@ -3,6 +3,8 @@ import { Grid, StatusCodes } from "../types";
 import { db } from "../services/database";
 
 function validate(body: Partial<Grid>): boolean {
+  // add more validation
+
   if (body.tracks?.length ?? 0 > 11) {
     return false;
   }

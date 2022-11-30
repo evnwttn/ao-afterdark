@@ -13,6 +13,7 @@ exports.gridHandler = void 0;
 const types_1 = require("../types");
 const database_1 = require("../services/database");
 function validate(body) {
+    // add more validation
     var _a, _b, _c, _d;
     if ((_b = (_a = body.tracks) === null || _a === void 0 ? void 0 : _a.length) !== null && _b !== void 0 ? _b : 0 > 11) {
         return false;
