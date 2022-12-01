@@ -25,8 +25,8 @@ function validate(body) {
 }
 function gridHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const invalid = validate(req.body);
-        if (invalid) {
+        const valid = validate(req.body);
+        if (!valid) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
         try {

@@ -42,6 +42,9 @@ function contactsHandler(req, res) {
             user_email: req.body.email,
             message: req.body.message,
         };
+        // add validation ^^^
+        // const emailjsUserId = process.env.EMAIL ?? ''
+        // if (!emailjsUIserId) throw new Error('')
         try {
             yield emailjs.send("contact_service", "contact_form", templateParameters, process.env.EMAILJS_USER_ID);
             res.status(types_1.StatusCodes.OK);

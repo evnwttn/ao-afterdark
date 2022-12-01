@@ -1,6 +1,7 @@
 import session from "express-session";
+import filestore from "session-file-store";
 
-const FileStore = require("session-file-store")(session);
+const FileStore = filestore(session);
 const filestoreOptions = {};
 
 export const sessionOptions = {

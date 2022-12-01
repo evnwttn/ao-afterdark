@@ -17,8 +17,8 @@ function validate(body: Partial<Grid>): boolean {
 }
 
 export async function gridHandler(req: Request, res: Response) {
-  const invalid = validate(req.body as Partial<Grid>);
-  if (invalid) {
+  const valid = validate(req.body as Partial<Grid>);
+  if (!valid) {
     res.sendStatus(StatusCodes.BAD_REQUEST);
   }
 
@@ -38,7 +38,7 @@ export async function gridHandler(req: Request, res: Response) {
           id: newGridId,
         };
 
-        res.status(StatusCodes.OK).json(newGridNoUser as Omit<Grid, "user">);
+        res.status(StatusCodes.OK).json(newGridNoUser);
 
         break;
       case "PUT":

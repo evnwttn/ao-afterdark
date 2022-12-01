@@ -9,6 +9,11 @@ export async function contactsHandler(req: Request, res: Response) {
     message: req.body.message,
   };
 
+  // add validation ^^^
+
+  // const emailjsUserId = process.env.EMAIL ?? ''
+  // if (!emailjsUIserId) throw new Error('')
+
   try {
     await emailjs.send(
       "contact_service",

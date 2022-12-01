@@ -10,9 +10,14 @@ export async function sessionHandler(req: Request, res: Response) {
   try {
     switch (req.method) {
       case "POST":
-        req.session.destroy(() => {
-          res.status(StatusCodes.OK).send(true);
-        });
+        req.session.destroy(() => res.status(StatusCodes.OK).send(true));
+        // const p = new Promise((resolve, reject) => {
+        //   req.session.destroy(() => resolve())
+
+        //   reject();
+        // })
+
+        // await p;
 
         break;
 

@@ -17,6 +17,9 @@ const postgres_1 = __importDefault(require("postgres"));
 const Database_1 = require("./Database");
 const uuid_1 = require("uuid");
 class PostgresDatabase extends Database_1.Database {
+    // postgres options as type
+    // password: PostgresConfig['password']
+    // port
     constructor(postgresOptions) {
         super();
         this.host = postgresOptions.host;
@@ -34,14 +37,17 @@ class PostgresDatabase extends Database_1.Database {
         });
         return Promise.resolve();
     }
+    // doesUserExist
     retrieveUser(userId) {
         return __awaiter(this, void 0, void 0, function* () {
             const returnUser = yield this
-                .sql `select * from users where user_id = ${userId}`;
+                .sql `select * from users where user_id = ${userId} limit 1`;
+            // select exists(select 1 from contact where id=12)
             if (!returnUser) {
                 return false;
             }
             return true;
+            // return returnUser ? true : false
         });
     }
     signUpUser(user) {
@@ -63,6 +69,7 @@ class PostgresDatabase extends Database_1.Database {
             return login[0].user_id;
         });
     }
+    // const grids = await retrieveGrids()
     retrieveGrids(user) {
         return __awaiter(this, void 0, void 0, function* () {
             const grids = yield this
@@ -79,6 +86,7 @@ class PostgresDatabase extends Database_1.Database {
             return id;
         });
     }
+    //updateGridTracks
     updateGrid(grid) {
         return __awaiter(this, void 0, void 0, function* () {
             yield this

@@ -20,9 +20,12 @@ function sessionHandler(req, res) {
         try {
             switch (req.method) {
                 case "POST":
-                    req.session.destroy(() => {
-                        res.status(types_1.StatusCodes.OK).send(true);
-                    });
+                    req.session.destroy(() => res.status(types_1.StatusCodes.OK).send(true));
+                    // const p = new Promise((resolve, reject) => {
+                    //   req.session.destroy(() => resolve())
+                    //   reject();
+                    // })
+                    // await p;
                     break;
                 case "PUT":
                     const retrieveUser = yield database_1.db.retrieveUser(req.session.userId);

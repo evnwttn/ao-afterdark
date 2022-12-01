@@ -21,6 +21,8 @@ function validate(body) {
     }
     return true;
 }
+// async function post() or createUser
+// async function put() or login
 function userHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const validUser = validate(req.body);
@@ -29,6 +31,7 @@ function userHandler(req, res) {
         }
         try {
             switch (req.method) {
+                // HttpMethods.POST
                 case "POST":
                     const signUpUser = yield database_1.db.signUpUser(req.body);
                     res.status(types_1.StatusCodes.OK).send(signUpUser);
@@ -41,6 +44,7 @@ function userHandler(req, res) {
                     res.status(types_1.StatusCodes.OK).send(true);
                     break;
                 default:
+                    // res.status(400).sent('unsupported http method')
                     break;
             }
         }

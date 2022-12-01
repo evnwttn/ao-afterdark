@@ -10,6 +10,10 @@ export class PostgresDatabase extends Database {
   user: string;
   password: string;
 
+  // postgres options as type
+  // password: PostgresConfig['password']
+  // port
+
   constructor(postgresOptions: {
     host: string;
     database: string;
@@ -36,15 +40,19 @@ export class PostgresDatabase extends Database {
     return Promise.resolve();
   }
 
+  // doesUserExist
   async retrieveUser(userId: string): Promise<Boolean> {
     const returnUser = await this
-      .sql`select * from users where user_id = ${userId}`;
+      .sql`select * from users where user_id = ${userId} limit 1`;
+    // select exists(select 1 from contact where id=12)
 
     if (!returnUser) {
       return false;
     }
 
     return true;
+
+    // return returnUser ? true : false
   }
 
   async signUpUser(user: Omit<UserLoginData, "id">): Promise<Boolean> {
@@ -70,7 +78,7 @@ export class PostgresDatabase extends Database {
 
     return login[0].user_id;
   }
-
+  // const grids = await retrieveGrids()
   async retrieveGrids(user: string): Promise<Grid[]> {
     const grids = await this
       .sql`select parameters, author, session_title, tracks, grid_id from grids where user_id = ${user}`;
@@ -91,6 +99,7 @@ export class PostgresDatabase extends Database {
     return id;
   }
 
+  //updateGridTracks
   async updateGrid(grid: Omit<Grid, "user">): Promise<Omit<Grid, "user">> {
     await this
       .sql`update grids set tracks = ${grid.tracks} where grid_id = ${grid.id}`;
