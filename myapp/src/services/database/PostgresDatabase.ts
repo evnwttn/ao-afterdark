@@ -5,16 +5,14 @@ import { v4 as uuidv4 } from "uuid";
 
 export class PostgresDatabase extends Database {
   sql: any;
+  port: number;
   host: string;
   database: string;
   user: string;
   password: string;
 
-  // postgres options as type
-  // password: PostgresConfig['password']
-  // port
-
   constructor(postgresOptions: {
+    port: number;
     host: string;
     database: string;
     user: string;
@@ -22,6 +20,7 @@ export class PostgresDatabase extends Database {
   }) {
     super();
 
+    this.port = 5432;
     this.host = postgresOptions.host;
     this.database = postgresOptions.database;
     this.user = postgresOptions.user;
@@ -30,7 +29,7 @@ export class PostgresDatabase extends Database {
 
   connect(): Promise<void> {
     this.sql = postgres({
-      port: 5432,
+      port: this.port,
       host: this.host,
       database: this.database,
       user: this.user,

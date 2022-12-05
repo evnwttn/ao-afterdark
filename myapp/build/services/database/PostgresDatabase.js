@@ -17,11 +17,9 @@ const postgres_1 = __importDefault(require("postgres"));
 const Database_1 = require("./Database");
 const uuid_1 = require("uuid");
 class PostgresDatabase extends Database_1.Database {
-    // postgres options as type
-    // password: PostgresConfig['password']
-    // port
     constructor(postgresOptions) {
         super();
+        this.port = 5432;
         this.host = postgresOptions.host;
         this.database = postgresOptions.database;
         this.user = postgresOptions.user;
@@ -29,7 +27,7 @@ class PostgresDatabase extends Database_1.Database {
     }
     connect() {
         this.sql = (0, postgres_1.default)({
-            port: 5432,
+            port: this.port,
             host: this.host,
             database: this.database,
             user: this.user,
