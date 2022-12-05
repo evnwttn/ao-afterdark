@@ -36,7 +36,7 @@ class PostgresDatabase extends Database_1.Database {
         return Promise.resolve();
     }
     // doesUserExist
-    retrieveUser(userId) {
+    doesUserExist(userId) {
         return __awaiter(this, void 0, void 0, function* () {
             const returnUser = yield this
                 .sql `select * from users where user_id = ${userId} limit 1`;

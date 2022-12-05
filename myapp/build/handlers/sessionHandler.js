@@ -28,7 +28,7 @@ function sessionHandler(req, res) {
                     // await p;
                     break;
                 case "PUT":
-                    const retrieveUser = yield database_1.db.retrieveUser(req.session.userId);
+                    const retrieveUser = yield database_1.db.doesUserExist(req.session.userId);
                     res.status(types_1.StatusCodes.OK).json(retrieveUser);
                     break;
                 default:

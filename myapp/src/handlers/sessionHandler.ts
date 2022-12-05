@@ -22,7 +22,7 @@ export async function sessionHandler(req: Request, res: Response) {
         break;
 
       case "PUT":
-        const retrieveUser = await db.retrieveUser(
+        const retrieveUser = await db.doesUserExist(
           req.session.userId as string
         );
         res.status(StatusCodes.OK).json(retrieveUser);
