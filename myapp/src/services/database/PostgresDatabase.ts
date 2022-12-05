@@ -33,19 +33,11 @@ export class PostgresDatabase extends Database {
     return Promise.resolve();
   }
 
-  // doesUserExist
   async doesUserExist(userId: string): Promise<Boolean> {
     const returnUser = await this
       .sql`select * from users where user_id = ${userId} limit 1`;
-    // select exists(select 1 from contact where id=12)
 
-    if (!returnUser) {
-      return false;
-    }
-
-    return true;
-
-    // return returnUser ? true : false
+    return returnUser ? true : false;
   }
 
   async signUpUser(user: Omit<UserLoginData, "id">): Promise<Boolean> {

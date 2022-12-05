@@ -35,17 +35,11 @@ class PostgresDatabase extends Database_1.Database {
         });
         return Promise.resolve();
     }
-    // doesUserExist
     doesUserExist(userId) {
         return __awaiter(this, void 0, void 0, function* () {
             const returnUser = yield this
                 .sql `select * from users where user_id = ${userId} limit 1`;
-            // select exists(select 1 from contact where id=12)
-            if (!returnUser) {
-                return false;
-            }
-            return true;
-            // return returnUser ? true : false
+            return returnUser ? true : false;
         });
     }
     signUpUser(user) {
