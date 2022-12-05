@@ -9,5 +9,7 @@ export abstract class Database {
   abstract logInUser(user: UserLoginData): Promise<string>;
   abstract retrieveGrids(user: string): Promise<Grid[]>;
   abstract createGrid(grid: Omit<Grid, "id">): Promise<string>;
-  abstract updateGrid(grid: Omit<Grid, "user">): Promise<Omit<Grid, "user">>;
+  abstract updateGridTracks(
+    grid: Omit<Grid, "user">
+  ): Promise<Omit<Grid, "user">>;
 }

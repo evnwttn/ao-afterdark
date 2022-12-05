@@ -63,7 +63,7 @@ export class PostgresDatabase extends Database {
 
     return login[0].user_id;
   }
-  // const grids = await retrieveGrids()
+
   async retrieveGrids(user: string): Promise<Grid[]> {
     const grids = await this
       .sql`select parameters, author, session_title, tracks, grid_id from grids where user_id = ${user}`;
@@ -84,8 +84,9 @@ export class PostgresDatabase extends Database {
     return id;
   }
 
-  //updateGridTracks
-  async updateGrid(grid: Omit<Grid, "user">): Promise<Omit<Grid, "user">> {
+  async updateGridTracks(
+    grid: Omit<Grid, "user">
+  ): Promise<Omit<Grid, "user">> {
     await this
       .sql`update grids set tracks = ${grid.tracks} where grid_id = ${grid.id}`;
 

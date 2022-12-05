@@ -61,7 +61,6 @@ class PostgresDatabase extends Database_1.Database {
             return login[0].user_id;
         });
     }
-    // const grids = await retrieveGrids()
     retrieveGrids(user) {
         return __awaiter(this, void 0, void 0, function* () {
             const grids = yield this
@@ -78,8 +77,7 @@ class PostgresDatabase extends Database_1.Database {
             return id;
         });
     }
-    //updateGridTracks
-    updateGrid(grid) {
+    updateGridTracks(grid) {
         return __awaiter(this, void 0, void 0, function* () {
             yield this
                 .sql `update grids set tracks = ${grid.tracks} where grid_id = ${grid.id}`;

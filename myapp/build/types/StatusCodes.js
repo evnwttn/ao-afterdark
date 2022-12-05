@@ -10,6 +10,7 @@ var StatusCodes;
 var HttpMethods;
 (function (HttpMethods) {
     HttpMethods["POST"] = "POST";
+    HttpMethods["PUT"] = "PUT";
     HttpMethods["GET"] = "GET";
 })(HttpMethods = exports.HttpMethods || (exports.HttpMethods = {}));
 //# sourceMappingURL=StatusCodes.js.map

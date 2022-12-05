@@ -3,8 +3,6 @@ import { Grid, StatusCodes } from "../types";
 import { db } from "../services/database";
 
 function validate(body: Partial<Grid>): boolean {
-  // add more validation
-
   if (body.tracks?.length ?? 0 > 11) {
     return false;
   }
@@ -42,7 +40,9 @@ export async function gridHandler(req: Request, res: Response) {
 
         break;
       case "PUT":
-        const updatedGrid = await db.updateGrid(req.body as Omit<Grid, "user">);
+        const updatedGridTracks = await db.updateGridTracks(
+          req.body as Omit<Grid, "user">
+        );
 
         res.status(StatusCodes.OK).json(req.body as Omit<Grid, "user">);
 
