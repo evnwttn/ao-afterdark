@@ -15,6 +15,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./Grid"), exports);
+__exportStar(require("./PostgresOptions"), exports);
 __exportStar(require("./Track"), exports);
 __exportStar(require("./TrackParams"), exports);
 __exportStar(require("./StatusCodes"), exports);

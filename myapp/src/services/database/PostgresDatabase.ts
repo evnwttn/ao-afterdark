@@ -1,6 +1,6 @@
 import postgres from "postgres";
 import { Database } from "./Database";
-import { UserLoginData, Grid } from "../../types";
+import { PostgresOptions, UserLoginData, Grid } from "../../types";
 import { v4 as uuidv4 } from "uuid";
 
 export class PostgresDatabase extends Database {

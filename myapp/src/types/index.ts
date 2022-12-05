@@ -1,4 +1,5 @@
 export * from "./Grid";
+export * from "./PostgresOptions";
 export * from "./Track";
 export * from "./TrackParams";
 export * from "./StatusCodes";
