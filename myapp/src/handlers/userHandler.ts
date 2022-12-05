@@ -41,7 +41,7 @@ export async function userHandler(req: Request, res: Response) {
         res.status(StatusCodes.OK).send(true);
         break;
       default:
-        // res.status(400).sent('unsupported http method')
+        res.status(StatusCodes.BAD_REQUEST);
         break;
     }
   } catch (error) {

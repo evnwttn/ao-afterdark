@@ -43,7 +43,7 @@ function userHandler(req, res) {
                     res.status(types_1.StatusCodes.OK).send(true);
                     break;
                 default:
-                    // res.status(400).sent('unsupported http method')
+                    res.status(types_1.StatusCodes.BAD_REQUEST);
                     break;
             }
         }
