@@ -11,13 +11,7 @@ export class PostgresDatabase extends Database {
   user: string;
   password: string;
 
-  constructor(postgresOptions: {
-    port: number;
-    host: string;
-    database: string;
-    user: string;
-    password: string;
-  }) {
+  constructor(postgresOptions: PostgresOptions) {
     super();
 
     this.port = 5432;
