@@ -26,11 +26,11 @@ exports.postgresOptions = {
     user: (_c = process.env.PG_USER) !== null && _c !== void 0 ? _c : "",
     password: (_d = process.env.PG_PW) !== null && _d !== void 0 ? _d : "",
 };
+const _db = new PostgresDatabase_1.PostgresDatabase(exports.postgresOptions);
+_db.connect();
+exports.db = _db;
 // read in config.son
 // check what database to use -> database: { postgres: .. } || database: { file: }
 // parse the 'database' config and then build whichever depending on config
 // const _db = config.database.postgres ? new PostgresDatabase(config.database) : new File
-const _db = new PostgresDatabase_1.PostgresDatabase(exports.postgresOptions);
-_db.connect();
-exports.db = _db;
 //# sourceMappingURL=index.js.map
