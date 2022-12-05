@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { StatusCodes, UserLoginData } from "../types";
+import { StatusCodes, HttpMethods, UserLoginData } from "../types";
 import { db } from "../services/database";
 
 function validate(body: Partial<UserLoginData>): boolean {
@@ -25,14 +25,13 @@ export async function userHandler(req: Request, res: Response) {
 
   try {
     switch (req.method) {
-      // HttpMethods.POST
-      case "POST":
+      case HttpMethods.POST:
         const signUpUser = await db.signUpUser(req.body as UserLoginData);
 
         res.status(StatusCodes.OK).send(signUpUser);
 
         break;
-      case "PUT":
+      case HttpMethods.PUT:
         const loginUserId = await db.logInUser(req.body as UserLoginData);
 
         if (!req.session.userId) {
