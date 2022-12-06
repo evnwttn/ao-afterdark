@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { StatusCodes } from "../types";
+import { StatusCodes, HttpMethods } from "../types";
 import { db } from "../services/database";
 
 export async function sessionHandler(req: Request, res: Response) {
@@ -9,26 +9,22 @@ export async function sessionHandler(req: Request, res: Response) {
 
   try {
     switch (req.method) {
-      case "POST":
-        req.session.destroy(() => res.status(StatusCodes.OK).send(true));
-        // const p = new Promise((resolve, reject) => {
-        //   req.session.destroy(() => resolve())
-
-        //   reject();
-        // })
-
-        // await p;
+      case HttpMethods.POST:
+        req.session.destroy(() => res.status(StatusCodes.OK));
 
         break;
 
-      case "PUT":
+      case HttpMethods.PUT:
         const retrieveUser = await db.doesUserExist(
           req.session.userId as string
         );
+
         res.status(StatusCodes.OK).json(retrieveUser);
 
         break;
       default:
+        res.status(StatusCodes.BAD_REQUEST);
+
         break;
     }
   } catch (error) {

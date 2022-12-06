@@ -19,19 +19,15 @@ function sessionHandler(req, res) {
         }
         try {
             switch (req.method) {
-                case "POST":
-                    req.session.destroy(() => res.status(types_1.StatusCodes.OK).send(true));
-                    // const p = new Promise((resolve, reject) => {
-                    //   req.session.destroy(() => resolve())
-                    //   reject();
-                    // })
-                    // await p;
+                case types_1.HttpMethods.POST:
+                    req.session.destroy(() => res.status(types_1.StatusCodes.OK));
                     break;
-                case "PUT":
+                case types_1.HttpMethods.PUT:
                     const retrieveUser = yield database_1.db.doesUserExist(req.session.userId);
                     res.status(types_1.StatusCodes.OK).json(retrieveUser);
                     break;
                 default:
+                    res.status(types_1.StatusCodes.BAD_REQUEST);
                     break;
             }
         }
