@@ -21,8 +21,6 @@ function validate(body) {
     }
     return true;
 }
-// async function post() or createUser
-// async function put() or login
 function userHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const validUser = validate(req.body);

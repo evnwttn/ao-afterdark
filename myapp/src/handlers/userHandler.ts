@@ -14,9 +14,6 @@ function validate(body: Partial<UserLoginData>): boolean {
   return true;
 }
 
-// async function post() or createUser
-// async function put() or login
-
 export async function userHandler(req: Request, res: Response) {
   const validUser = validate(req.body as Partial<UserLoginData>);
   if (!validUser) {
@@ -39,9 +36,11 @@ export async function userHandler(req: Request, res: Response) {
         }
 
         res.status(StatusCodes.OK).send(true);
+
         break;
       default:
         res.status(StatusCodes.BAD_REQUEST);
+
         break;
     }
   } catch (error) {
