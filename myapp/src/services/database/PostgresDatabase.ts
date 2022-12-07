@@ -14,7 +14,7 @@ export class PostgresDatabase extends Database {
   constructor(postgresOptions: PostgresOptions) {
     super();
 
-    this.port = 5432;
+    this.port = postgresOptions.port;
     this.host = postgresOptions.host;
     this.database = postgresOptions.database;
     this.user = postgresOptions.user;
