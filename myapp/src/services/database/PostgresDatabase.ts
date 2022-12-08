@@ -79,11 +79,7 @@ export class PostgresDatabase extends Database {
     };
 
     const saveNewGrid = await this
-      .sql`insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values('{${_grid.parameters.join(
-      ", "
-    )}}', ${_grid.user}, ${_grid.author}, ${_grid.sessionTitle}, ${
-      _grid.tracks
-    }, ${_grid.id})`;
+      .sql`insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values(${_grid.parameters}, ${_grid.user}, ${_grid.author}, ${_grid.sessionTitle}, ${_grid.tracks}, ${_grid.id})`;
 
     return id;
   }
