@@ -20,6 +20,8 @@ export async function userHandler(req: Request, res: Response) {
     res.sendStatus(StatusCodes.BAD_REQUEST);
   }
 
+  console.log("hello!");
+
   try {
     switch (req.method) {
       case HttpMethods.POST:

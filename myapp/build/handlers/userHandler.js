@@ -27,6 +27,7 @@ function userHandler(req, res) {
         if (!validUser) {
             res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
         }
+        console.log("hello!");
         try {
             switch (req.method) {
                 case types_1.HttpMethods.POST:
