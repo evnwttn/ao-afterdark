@@ -19,7 +19,7 @@ const uuid_1 = require("uuid");
 class PostgresDatabase extends Database_1.Database {
     constructor(postgresOptions) {
         super();
-        this.port = 5432;
+        this.port = postgresOptions.port;
         this.host = postgresOptions.host;
         this.database = postgresOptions.database;
         this.user = postgresOptions.user;
@@ -73,7 +73,7 @@ class PostgresDatabase extends Database_1.Database {
             const id = (0, uuid_1.v4)();
             const _grid = Object.assign(Object.assign({}, grid), { id });
             const saveNewGrid = yield this
-                .sql `insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values(${_grid.parameters}, ${_grid.user}, ${_grid.author}, ${_grid.sessionTitle}, ${_grid.tracks}, ${_grid.id})`;
+                .sql `insert into grids(parameters, user_id, author, session_title, tracks, grid_id) values('{${_grid.parameters.join(", ")}}', ${_grid.user}, ${_grid.author}, ${_grid.sessionTitle}, ${_grid.tracks}, ${_grid.id})`;
             return id;
         });
     }

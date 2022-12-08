@@ -1,5 +1,4 @@
 export const corsOptions = {
-  origin: true,
   methods: "POST, PUT, GET, OPTIONS",
   allowedHeaders:
     "Access-Control-Allow-Headers, Origin, Authorization, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers",

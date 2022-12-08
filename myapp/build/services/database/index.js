@@ -20,7 +20,7 @@ const PostgresDatabase_1 = require("./PostgresDatabase");
 __exportStar(require("./Database"), exports);
 __exportStar(require("./PostgresDatabase"), exports);
 exports.postgresOptions = {
-    port: 5432,
+    port: 6034,
     host: (_a = process.env.PG_HOST) !== null && _a !== void 0 ? _a : "",
     database: (_b = process.env.PG_DB) !== null && _b !== void 0 ? _b : "",
     user: (_c = process.env.PG_USER) !== null && _c !== void 0 ? _c : "",
@@ -29,6 +29,23 @@ exports.postgresOptions = {
 const _db = new PostgresDatabase_1.PostgresDatabase(exports.postgresOptions);
 _db.connect();
 exports.db = _db;
+// const main = async () => {
+//   _db.updateGridTracks({
+//     author: "123",
+//     id: "234",
+//     parameters: ["title", "11111111111"],
+//     sessionTitle: "123",
+//     tracks: [
+//       {
+//         title: "11111111111",
+//         parameters: [
+//           { parameter: "11111111111", colour: "#7284A8", comment: "" },
+//         ],
+//       },
+//     ],
+//   });
+// };
+// main().then(() => console.log("sent"));
 // read in config.son
 // check what database to use -> database: { postgres: .. } || database: { file: }
 // parse the 'database' config and then build whichever depending on config
