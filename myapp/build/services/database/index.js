@@ -20,7 +20,7 @@ const PostgresDatabase_1 = require("./PostgresDatabase");
 __exportStar(require("./Database"), exports);
 __exportStar(require("./PostgresDatabase"), exports);
 exports.postgresOptions = {
-    port: 6034,
+    port: 7142,
     host: (_a = process.env.PG_HOST) !== null && _a !== void 0 ? _a : "",
     database: (_b = process.env.PG_DB) !== null && _b !== void 0 ? _b : "",
     user: (_c = process.env.PG_USER) !== null && _c !== void 0 ? _c : "",

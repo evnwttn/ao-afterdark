@@ -5,7 +5,7 @@ export * from "./Database";
 export * from "./PostgresDatabase";
 
 export const postgresOptions: PostgresOptions = {
-  port: 6034,
+  port: 7142,
   host: process.env.PG_HOST ?? "",
   database: process.env.PG_DB ?? "",
   user: process.env.PG_USER ?? "",
