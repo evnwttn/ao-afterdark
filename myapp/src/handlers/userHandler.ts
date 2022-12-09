@@ -20,14 +20,12 @@ export async function userHandler(req: Request, res: Response) {
     res.sendStatus(StatusCodes.BAD_REQUEST);
   }
 
-  console.log("hello!");
-
   try {
     switch (req.method) {
       case HttpMethods.POST:
         const signUpUser = await db.signUpUser(req.body as UserLoginData);
 
-        res.status(StatusCodes.OK).send(signUpUser);
+        res.status(StatusCodes.OK).send(signUpUser).json({ data: "yo yo" });
 
         break;
       case HttpMethods.PUT:
@@ -37,7 +35,7 @@ export async function userHandler(req: Request, res: Response) {
           req.session.userId = loginUserId;
         }
 
-        res.status(StatusCodes.OK).send(true);
+        res.status(StatusCodes.OK).send(true).json({ data: "yo yo" });
 
         break;
       default:

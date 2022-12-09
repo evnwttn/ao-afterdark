@@ -27,7 +27,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
-const cors_1 = __importDefault(require("cors"));
 const express_session_1 = __importDefault(require("express-session"));
 require("dotenv").config();
 const middleware_1 = require("./middleware");
@@ -36,7 +35,8 @@ require("./services/database/index");
 const app = express.default();
 const port = process.env.PORT || 5000;
 app.use(express.json());
-app.use(cors_1.default);
+app.use(middleware_1.corsHandler);
+// app.use(cors);
 app.use((0, express_session_1.default)(middleware_1.sessionOptions));
 app.put("/user", handlers_1.userHandler); // login user
 app.post("/user", handlers_1.userHandler); // signup user

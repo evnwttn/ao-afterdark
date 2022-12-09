@@ -1,10 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.corsOptions = void 0;
-exports.corsOptions = {
-    methods: "POST, PUT, GET, OPTIONS",
-    allowedHeaders: "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Authorization, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers",
-    credentials: true,
-    preflightContinue: true,
-};
+exports.corsHandler = void 0;
+function corsHandler(req, res, next) {
+    res.set({
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "*",
+        "Access-Control-Allow-Headers": "*",
+    });
+    next();
+}
+exports.corsHandler = corsHandler;
 //# sourceMappingURL=cors.js.map
