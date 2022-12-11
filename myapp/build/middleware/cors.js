@@ -4,8 +4,9 @@ exports.corsHandler = void 0;
 function corsHandler(req, res, next) {
     res.set({
         "Access-Control-Allow-Origin": "http://localhost:3000",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE",
-        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Headers": "Content-Type",
     });
     next();
 }
