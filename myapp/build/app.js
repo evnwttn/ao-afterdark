@@ -36,7 +36,6 @@ const app = express.default();
 const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use(middleware_1.corsHandler);
-// app.use(cors);
 app.use((0, express_session_1.default)(middleware_1.sessionOptions));
 app.put("/user", handlers_1.userHandler); // login user
 app.post("/user", handlers_1.userHandler); // signup user
