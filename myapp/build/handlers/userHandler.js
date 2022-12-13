@@ -31,14 +31,14 @@ function userHandler(req, res) {
             switch (req.method) {
                 case types_1.HttpMethods.POST:
                     const signUpUser = yield database_1.db.signUpUser(req.body);
-                    res.status(types_1.StatusCodes.OK).send(signUpUser).json({ data: "yo yo" });
+                    res.status(types_1.StatusCodes.OK).send(signUpUser);
                     break;
                 case types_1.HttpMethods.PUT:
                     const loginUserId = yield database_1.db.logInUser(req.body);
                     if (!req.session.userId) {
                         req.session.userId = loginUserId;
                     }
-                    res.status(types_1.StatusCodes.OK).send(true).json({ data: "yo yo" });
+                    res.status(types_1.StatusCodes.OK).send(true);
                     break;
                 default:
                     res.status(types_1.StatusCodes.BAD_REQUEST);
