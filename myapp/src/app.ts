@@ -1,7 +1,7 @@
 import * as express from "express";
 import session from "express-session";
 require("dotenv").config();
-import { sessionOptions, corsHandler } from "./middleware";
+import { connectPg, corsHandler } from "./middleware";
 import {
   userHandler,
   loadGridHandler,
@@ -16,7 +16,7 @@ const port = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(corsHandler);
-app.use(session(sessionOptions));
+app.use(session(connectPg));
 
 app.put("/user", userHandler); // login user
 app.post("/user", userHandler); // signup user
