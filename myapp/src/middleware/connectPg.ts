@@ -1,11 +1,11 @@
 import session from "express-session";
 import pgSession from "connect-pg-simple";
 
-const sessionStore = pgSession(session);
+const SessionStore = pgSession(session);
 const storeOptions = {};
 
 export const connectPg = {
-  store: new sessionStore(storeOptions),
+  store: new SessionStore(storeOptions),
   secret: "shhh",
   retries: 0,
   resave: true,
