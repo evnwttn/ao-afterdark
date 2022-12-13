@@ -4,12 +4,20 @@ import { PostgresOptions } from "../../types";
 export * from "./Database";
 export * from "./PostgresDatabase";
 
+// export const postgresOptions: PostgresOptions = {
+//   port: 7142,
+//   host: process.env.PG_HOST ?? "",
+//   database: process.env.PG_DB ?? "",
+//   user: process.env.PG_USER ?? "",
+//   password: process.env.PG_PW ?? "",
+// };
+
 export const postgresOptions: PostgresOptions = {
   port: 7142,
-  host: process.env.PG_HOST ?? "",
-  database: process.env.PG_DB ?? "",
-  user: process.env.PG_USER ?? "",
-  password: process.env.PG_PW ?? "",
+  host: process.env.PGHOST ?? "",
+  database: process.env.PGDATABASE ?? "",
+  user: process.env.PGUSER ?? "",
+  password: process.env.PGPASSWORD ?? "",
 };
 
 const _db = new PostgresDatabase(postgresOptions);
