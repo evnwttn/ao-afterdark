@@ -21,8 +21,8 @@ app.use(session(connectPg));
 app.put("/user", userHandler); // login user
 app.post("/user", userHandler); // signup user
 app.post("/load", loadGridHandler); // load grid list
-app.put("/grid", gridHandler); // create grid
-app.post("/grid", gridHandler); // update grid
+app.put("/grid", gridHandler); // update grid
+app.post("/grid", gridHandler); // create grids
 app.put("/session", sessionHandler); // retrieve session
 app.post("/session", sessionHandler); // destroy session
 app.post("/contact", contactsHandler); // contact email

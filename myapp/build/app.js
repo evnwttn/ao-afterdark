@@ -40,8 +40,8 @@ app.use((0, express_session_1.default)(middleware_1.connectPg));
 app.put("/user", handlers_1.userHandler); // login user
 app.post("/user", handlers_1.userHandler); // signup user
 app.post("/load", handlers_1.loadGridHandler); // load grid list
-app.put("/grid", handlers_1.gridHandler); // create grid
-app.post("/grid", handlers_1.gridHandler); // update grid
+app.put("/grid", handlers_1.gridHandler); // update grid
+app.post("/grid", handlers_1.gridHandler); // create grids
 app.put("/session", handlers_1.sessionHandler); // retrieve session
 app.post("/session", handlers_1.sessionHandler); // destroy session
 app.post("/contact", handlers_1.contactsHandler); // contact email

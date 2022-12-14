@@ -2,23 +2,23 @@ import { Request, Response } from "express";
 import { Grid, StatusCodes } from "../types";
 import { db } from "../services/database";
 
-function validate(body: Partial<Grid>): boolean {
-  if (body.tracks?.length ?? 0 > 11) {
-    return false;
-  }
+// function validate(body: Partial<Grid>): boolean {
+//   if (body.tracks?.length ?? 0 > 11) {
+//     return false;
+//   }
 
-  if (body.parameters?.length ?? 0 > 10) {
-    return false;
-  }
+//   if (body.parameters?.length ?? 0 > 10) {
+//     return false;
+//   }
 
-  return true;
-}
+//   return true;
+// }
 
 export async function gridHandler(req: Request, res: Response) {
-  const valid = validate(req.body as Partial<Grid>);
-  if (!valid) {
-    res.sendStatus(StatusCodes.BAD_REQUEST);
-  }
+  // const valid = validate(req.body as Partial<Grid>);
+  // if (!valid) {
+  //   res.sendStatus(StatusCodes.BAD_REQUEST);
+  // }
 
   try {
     const user = req.session.userId;

@@ -12,22 +12,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.gridHandler = void 0;
 const types_1 = require("../types");
 const database_1 = require("../services/database");
-function validate(body) {
-    var _a, _b, _c, _d;
-    if ((_b = (_a = body.tracks) === null || _a === void 0 ? void 0 : _a.length) !== null && _b !== void 0 ? _b : 0 > 11) {
-        return false;
-    }
-    if ((_d = (_c = body.parameters) === null || _c === void 0 ? void 0 : _c.length) !== null && _d !== void 0 ? _d : 0 > 10) {
-        return false;
-    }
-    return true;
-}
+// function validate(body: Partial<Grid>): boolean {
+//   if (body.tracks?.length ?? 0 > 11) {
+//     return false;
+//   }
+//   if (body.parameters?.length ?? 0 > 10) {
+//     return false;
+//   }
+//   return true;
+// }
 function gridHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const valid = validate(req.body);
-        if (!valid) {
-            res.sendStatus(types_1.StatusCodes.BAD_REQUEST);
-        }
+        // const valid = validate(req.body as Partial<Grid>);
+        // if (!valid) {
+        //   res.sendStatus(StatusCodes.BAD_REQUEST);
+        // }
         try {
             const user = req.session.userId;
             const newGrid = Object.assign(Object.assign({}, req.body), { user });
