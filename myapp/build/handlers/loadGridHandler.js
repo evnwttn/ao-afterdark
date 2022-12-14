@@ -16,10 +16,15 @@ function loadGridHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const retrievedGrids = yield database_1.db.retrieveGrids(req.session.userId);
-            res.status(types_1.StatusCodes.OK).json(retrievedGrids);
+            res
+                .status(types_1.StatusCodes.OK)
+                .json(retrievedGrids)
+                .send({ data: req.session });
         }
         catch (error) {
-            res.sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR);
+            res
+                .sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR)
+                .send({ data: req.session });
         }
     });
 }
