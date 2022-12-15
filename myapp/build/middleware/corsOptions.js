@@ -9,7 +9,4 @@ exports.corsOptions = {
     maxAge: 5,
     preflightContinue: true,
 };
-// chrome & firefox
-// postman / test end point
-// swap out axios
 //# sourceMappingURL=corsOptions.js.map

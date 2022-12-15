@@ -6,7 +6,3 @@ export const corsOptions: any = {
   maxAge: 5,
   preflightContinue: true,
 };
-
-// chrome & firefox
-// postman / test end point
-// swap out axios

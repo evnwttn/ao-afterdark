@@ -35,8 +35,6 @@ export async function userHandler(req: Request, res: Response) {
           req.session.userId = loginUserId;
         }
 
-        console.log(`TEST req.session.userId: ${req.session.userId}`);
-
         res.status(StatusCodes.OK).send(true);
 
         break;
