@@ -27,6 +27,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const express_session_1 = __importDefault(require("express-session"));
 require("dotenv").config();
 const middleware_1 = require("./middleware");
@@ -34,8 +35,15 @@ const handlers_1 = require("./handlers");
 require("./services/database/index");
 const app = express.default();
 const port = process.env.PORT || 5000;
+const corsOptions = {
+    origin: "https://evnwttn.github.io",
+    methods: "POST, PUT, GET, OPTIONS",
+    allowedHeaders: "Content-Type",
+    credentials: "true",
+};
 app.use(express.json());
-app.use(middleware_1.corsHandler);
+app.use((0, cors_1.default)(corsOptions));
+// app.use(corsHandler);
 app.use((0, express_session_1.default)(middleware_1.connectPg));
 app.put("/user", handlers_1.userHandler); // login user
 app.post("/user", handlers_1.userHandler); // signup user
@@ -45,7 +53,7 @@ app.post("/grid", handlers_1.gridHandler); // create grids
 app.put("/session", handlers_1.sessionHandler); // retrieve session
 app.post("/session", handlers_1.sessionHandler); // destroy session
 app.post("/contact", handlers_1.contactsHandler); // contact email
-app.options("/load", handlers_1.loadGridHandler);
+// app.options("/load", loadGridHandler);
 app.listen(port, () => {
     console.log(`app listening on port ${port}`);
 });
