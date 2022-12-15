@@ -1,6 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 
 export function corsHandler(req: Request, res: Response, next: NextFunction) {
+  // console.log(JSON.stringify(req.headers));
+  // console.log(req.method);
+  // console.log(req.path);
+
   res.set({
     "Access-Control-Allow-Origin": "https://evnwttn.github.io",
     "Access-Control-Allow-Methods": "POST, PUT, GET, OPTIONS",
@@ -10,3 +14,9 @@ export function corsHandler(req: Request, res: Response, next: NextFunction) {
 
   next();
 }
+
+// cors middleware package w ^^^^^
+// Access-Control-Max-Age
+// chrome & firefox
+// postman / test end point
+// swap out axios

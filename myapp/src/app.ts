@@ -27,6 +27,8 @@ app.put("/session", sessionHandler); // retrieve session
 app.post("/session", sessionHandler); // destroy session
 app.post("/contact", contactsHandler); // contact email
 
+app.options("/load", loadGridHandler);
+
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
 });

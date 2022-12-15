@@ -45,6 +45,7 @@ app.post("/grid", handlers_1.gridHandler); // create grids
 app.put("/session", handlers_1.sessionHandler); // retrieve session
 app.post("/session", handlers_1.sessionHandler); // destroy session
 app.post("/contact", handlers_1.contactsHandler); // contact email
+app.options("/load", handlers_1.loadGridHandler);
 app.listen(port, () => {
     console.log(`app listening on port ${port}`);
 });
