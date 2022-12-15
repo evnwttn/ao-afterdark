@@ -27,16 +27,22 @@ function gridHandler(req, res) {
         // if (!valid) {
         //   res.sendStatus(StatusCodes.BAD_REQUEST);
         // }
+        console.log(`gridHandler userId: ${req.session.userId}`);
+        console.log(`gridHandler body: ${req.body}`);
         try {
             const user = req.session.userId;
             const newGrid = Object.assign(Object.assign({}, req.body), { user });
             switch (req.method) {
                 case "POST":
+                    console.log(`post/grid/ user: ${req.session.userId}`);
+                    console.log(`post/grid/ grid: ${newGrid}`);
                     const newGridId = yield database_1.db.createGrid(newGrid);
                     const newGridNoUser = Object.assign(Object.assign({}, req.body), { id: newGridId });
                     res.status(types_1.StatusCodes.OK).json(newGridNoUser);
                     break;
                 case "PUT":
+                    console.log(`put/grid/ user: ${req.session.userId}`);
+                    console.log(`put/grid/ grid: ${req.body}`);
                     const updatedGridTracks = yield database_1.db.updateGridTracks(req.body);
                     res.status(types_1.StatusCodes.OK).json(req.body);
                     break;
@@ -45,6 +51,8 @@ function gridHandler(req, res) {
             }
         }
         catch (error) {
+            console.log(`error/grid/ user: ${req.session.userId}`);
+            console.log(`error/grid/ grid: ${req.body}`);
             res.sendStatus(types_1.StatusCodes.INTERNAL_SERVER_ERROR);
         }
     });

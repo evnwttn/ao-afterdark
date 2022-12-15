@@ -20,6 +20,9 @@ export async function gridHandler(req: Request, res: Response) {
   //   res.sendStatus(StatusCodes.BAD_REQUEST);
   // }
 
+  console.log(`gridHandler userId: ${req.session.userId}`);
+  console.log(`gridHandler body: ${req.body}`);
+
   try {
     const user = req.session.userId;
     const newGrid: Omit<Grid, "id"> = {
@@ -29,6 +32,9 @@ export async function gridHandler(req: Request, res: Response) {
 
     switch (req.method) {
       case "POST":
+        console.log(`post/grid/ user: ${req.session.userId}`);
+        console.log(`post/grid/ grid: ${newGrid}`);
+
         const newGridId = await db.createGrid(newGrid as Omit<Grid, "id">);
 
         const newGridNoUser = {
@@ -40,6 +46,9 @@ export async function gridHandler(req: Request, res: Response) {
 
         break;
       case "PUT":
+        console.log(`put/grid/ user: ${req.session.userId}`);
+        console.log(`put/grid/ grid: ${req.body}`);
+
         const updatedGridTracks = await db.updateGridTracks(
           req.body as Omit<Grid, "user">
         );
@@ -51,6 +60,9 @@ export async function gridHandler(req: Request, res: Response) {
         break;
     }
   } catch (error) {
+    console.log(`error/grid/ user: ${req.session.userId}`);
+    console.log(`error/grid/ grid: ${req.body}`);
+
     res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
   }
 }
