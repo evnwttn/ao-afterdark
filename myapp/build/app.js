@@ -39,7 +39,9 @@ const corsOptions = {
     origin: "https://evnwttn.github.io",
     methods: "POST, PUT, GET, OPTIONS",
     allowedHeaders: "Content-Type",
-    credentials: "true",
+    credentials: true,
+    maxAge: 5,
+    preflightContinue: true,
 };
 app.use(express.json());
 app.use((0, cors_1.default)(corsOptions));
