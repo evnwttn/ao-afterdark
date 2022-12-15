@@ -68,7 +68,6 @@ export class PostgresDatabase extends Database {
     const grids = await this
       .sql`select parameters, author, session_title, tracks, grid_id from grids where user_id = ${user}`;
 
-    console.log(grids);
     return grids;
   }
 

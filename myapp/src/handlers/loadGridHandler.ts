@@ -4,8 +4,6 @@ import { db } from "../services/database";
 
 export async function loadGridHandler(req: Request, res: Response) {
   try {
-    console.log(`loadGridHandler: ${req.session.userId}`);
-
     const retrievedGrids = await db.retrieveGrids(req.session.userId as string);
 
     res.status(StatusCodes.OK).json(retrievedGrids as Grid[]);

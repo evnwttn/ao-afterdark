@@ -15,7 +15,6 @@ const database_1 = require("../services/database");
 function loadGridHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            console.log(`loadGridHandler: ${req.session.userId}`);
             const retrievedGrids = yield database_1.db.retrieveGrids(req.session.userId);
             res.status(types_1.StatusCodes.OK).json(retrievedGrids);
         }
