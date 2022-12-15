@@ -38,6 +38,8 @@ function userHandler(req, res) {
                     if (!req.session.userId) {
                         req.session.userId = loginUserId;
                     }
+                    console.log(`req.session.userId: ${req.session.userId}`);
+                    //req.session.userId: c5bd16f7-08b9-4cb4-93b7-ed873b2b9073
                     res.status(types_1.StatusCodes.OK).send(true);
                     break;
                 default:

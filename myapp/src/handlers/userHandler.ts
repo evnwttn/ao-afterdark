@@ -35,6 +35,9 @@ export async function userHandler(req: Request, res: Response) {
           req.session.userId = loginUserId;
         }
 
+        console.log(`req.session.userId: ${req.session.userId}`);
+        //req.session.userId: c5bd16f7-08b9-4cb4-93b7-ed873b2b9073
+
         res.status(StatusCodes.OK).send(true);
 
         break;
