@@ -11,12 +11,13 @@ const storeOptions = {};
 exports.connectPg = {
     store: new SessionStore(storeOptions),
     secret: "shhh",
-    retries: 0,
     resave: true,
     saveUninitialized: false,
     cookie: {
         maxAge: 2592000000,
-        secure: false,
+        secure: true,
+        httpOnly: false,
+        sameSite: "none",
     },
 };
 //# sourceMappingURL=connectPg.js.map

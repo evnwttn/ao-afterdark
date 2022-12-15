@@ -36,6 +36,7 @@ require("./services/database/index");
 const app = express.default();
 const port = process.env.PORT || 5000;
 app.use(express.json());
+app.set("trust proxy", 1);
 app.use((0, cors_1.default)(middleware_1.corsOptions));
 app.use((0, express_session_1.default)(middleware_1.connectPg));
 app.put("/user", handlers_1.userHandler); // login user
