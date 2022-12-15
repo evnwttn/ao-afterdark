@@ -1,2 +1,2 @@
 export * from "./connectPg";
-export * from "./cors";
+export * from "./corsOptions";
